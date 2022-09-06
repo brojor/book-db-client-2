@@ -5,6 +5,12 @@ import App from './App.vue'
 import router from './router'
 
 import './assets/main.css'
+// UnoCSS import
+import 'uno.css'
+
+// import styles
+import 'anu-vue/dist/style.css'
+
 
 const app = createApp(App)
 

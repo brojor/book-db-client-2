@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import { ASelect } from 'anu-vue';
+import { ref } from 'vue';
+
+const selected = ref();
+const fruits = ['banana', 'apple', 'watermelon', 'orange'];
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <h1>hello</h1>
+  <ASelect v-model="selected" placeholder="Select Fruit" :options="fruits" />
 </template>
