@@ -5,3 +5,13 @@
 
   font-weight: normal;
 }
+
+input {
+  background-color: transparent;
+}
+
+.dark {
+  background-color: #222;
+  color: white;
+  color-scheme: 'dark';
+}
