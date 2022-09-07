@@ -10,14 +10,17 @@
     "test:e2e:ci": "start-server-and-test preview http://localhost:4173/ 'cypress run --e2e'",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "set:url": "echo VITE_API_URL=http://$(ipconfig getifaddr en0):3333 > .env.local"
   },
   "dependencies": {
+    "@capacitor-community/barcode-scanner": "^3.0.0",
     "@capacitor/android": "^4.1.0",
     "@capacitor/core": "^4.1.0",
     "@unocss/reset": "^0.41.1",
     "@vueuse/core": "^8.9.4",
     "anu-vue": "^0.7.1",
+    "axios": "^0.27.2",
     "pinia": "^2.0.21",
     "swiper": "^8.3.2",
     "vue": "^3.2.38",

@@ -2,22 +2,44 @@
 import { ASelect } from 'anu-vue'
 import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
+import type { Swiper as SwiperType } from 'swiper/types'
 import DarkSwitcher from '@/components/DarkSwitcher.vue'
 import 'swiper/css'
+import { collectionList, useCollectionStore } from '@/stores/collection'
 
 const selected = ref()
 const fruits = ['banana', 'apple', 'watermelon', 'orange']
+
+const collectionStore = useCollectionStore()
+const swiperInstance = ref<SwiperType | null>(null)
+
+const onSwiper = (swiper: SwiperType) => {
+  swiperInstance.value = swiper
+}
+
+const onSlideChange = (swiper: SwiperType) => {
+  collectionStore.activeCollectionName = collectionList[swiper.activeIndex].id
+}
 </script>
 
 <template>
-  <h1>hello</h1>
   <DarkSwitcher />
   <ASelect v-model="selected" placeholder="Select Fruit" :options="fruits" />
-  <Swiper>
-    <SwiperSlide>Slide 1</SwiperSlide>
-    <SwiperSlide>Slide 2</SwiperSlide>
-    <SwiperSlide>Slide 3</SwiperSlide>
+  <MainHeader />
+  <TabsHeader :collections="collectionList" :swiper-instance="swiperInstance" />
+  <Swiper @slide-change="onSlideChange" @swiper="onSwiper">
+    <SwiperSlide v-for="collection in collectionList" :key="collection.id">
+      <CollectionList :collection-type="collection.id" />
+    </SwiperSlide>
   </Swiper>
+  <RouterLink
+    to="/add-book" flex items-center justify-center
+    absolute bottom-16 right-6 z-2 h-14 w-14
+    bg-teal-700 text-white rounded-full
+  >
+    <AddBook text-3xl />
+  </RouterLink>
+  <MainFooter />
 </template>
 
 <style>
