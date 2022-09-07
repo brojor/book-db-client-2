@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { Capacitor } from '@capacitor/core'
 import type { BookToAdd } from '@/types'
 import apiService from '@/services/api'
 import { useScanner } from '@/composables/scanner'
 import { useCollectionStore } from '@/stores/collection'
 
+const isNative = Capacitor.isNativePlatform()
 const { startScan, stopScan, isScanning } = useScanner()
 const collection = useCollectionStore()
 const router = useRouter()
@@ -30,7 +32,7 @@ const onStartScanning = async () => {
   bookToAdd.value = emptyForm
   isLoading.value = true
 
-  const result = await startScan()
+  const result = await startScan!()
   if (result) {
     bookToAdd.value.isbn = Number(result)
     await fetchInfo(result)
@@ -59,7 +61,7 @@ const onSubmit = async () => {
     <button
       flex items-center gap2 mx-a p="y-2 x-3" bg-transparent
       border="1px solid teal-700 rounded" text-teal font-bold
-      @click="onStartScanning"
+      :disabled="!isNative" @click="onStartScanning"
     >
       <BarCodeIcon text="xl teal" />
       <p>Naskenovat kód</p>

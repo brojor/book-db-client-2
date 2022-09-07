@@ -1,6 +1,9 @@
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner'
+import { Capacitor } from '@capacitor/core'
 
 export function useScanner() {
+  if (!Capacitor.isNativePlatform())
+    return {}
   BarcodeScanner.checkPermission({ force: true })
 
   const isScanning = ref<boolean>(false)
