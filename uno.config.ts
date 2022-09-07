@@ -1,6 +1,7 @@
 import { presetCore, presetThemeDefault } from 'anu-vue'
 import {
   defineConfig,
+  presetAttributify,
   presetIcons,
   presetUno,
 } from 'unocss'
@@ -19,6 +20,8 @@ export default defineConfig({
     // anu-vue presets
     presetCore(),
     presetThemeDefault(),
+
+    presetAttributify({}),
   ],
   include: [/.*\/anu-vue\.js(.*)?$/, './**/*.vue', './**/*.md'],
 })
