@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">book-db-client-2</string>
+    <string name="title_activity_main">book-db-client-2</string>
+    <string name="package_name">me.brojor.books</string>
+    <string name="custom_url_scheme">me.brojor.books</string>
+</resources>
