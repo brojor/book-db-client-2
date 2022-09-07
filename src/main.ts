@@ -11,7 +11,6 @@ import 'uno.css'
 // import styles
 import 'anu-vue/dist/style.css'
 
-
 const app = createApp(App)
 
 app.use(createPinia())

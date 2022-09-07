@@ -2,7 +2,7 @@
 
 describe('My First Test', () => {
   it('visits the app root url', () => {
-    cy.visit('/');
-    cy.get('input[placeholder="Select Fruit"]').should('exist');
-  });
-});
+    cy.visit('/')
+    cy.get('input[placeholder="Select Fruit"]').should('exist')
+  })
+})
