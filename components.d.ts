@@ -15,6 +15,7 @@ declare module '@vue/runtime-core' {
     DarkSwitcher: typeof import('./src/components/DarkSwitcher.vue')['default']
     DividerWithText: typeof import('./src/components/DividerWithText.vue')['default']
     DotsVertical: typeof import('./src/components/icons/DotsVertical.vue')['default']
+    EnterForm: typeof import('./src/components/EnterForm.vue')['default']
     EyeOffOutline: typeof import('./src/components/icons/EyeOffOutline.vue')['default']
     EyeOutline: typeof import('./src/components/icons/EyeOutline.vue')['default']
     ListItem: typeof import('./src/components/ListItem.vue')['default']
