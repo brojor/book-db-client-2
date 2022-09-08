@@ -3,7 +3,6 @@ import { ASelect } from 'anu-vue'
 import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import type { Swiper as SwiperType } from 'swiper/types'
-import DarkSwitcher from '@/components/DarkSwitcher.vue'
 import 'swiper/css'
 import { collectionList, useCollectionStore } from '@/stores/collection'
 
@@ -23,7 +22,6 @@ const onSlideChange = (swiper: SwiperType) => {
 </script>
 
 <template>
-  <DarkSwitcher />
   <ASelect v-model="selected" placeholder="Select Fruit" :options="fruits" />
   <MainHeader />
   <TabsHeader :collections="collectionList" :swiper-instance="swiperInstance" />

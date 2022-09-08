@@ -5,16 +5,5 @@ const toggleDark = useToggle(isDark)
 </script>
 
 <template>
-  <button @click="toggleDark()">
-    {{ isDark ? 'dark' : 'light' }}
-  </button>
+  <button i-carbon-sun dark:i-carbon-moon @click="toggleDark()" />
 </template>
-
-<style scoped>
-    button {
-        margin: 1rem 0;
-        border: 1px solid teal;
-        padding: 0.5rem 1rem;
-        border-radius: 0.375rem;
-    }
-</style>
