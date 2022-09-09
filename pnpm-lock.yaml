@@ -20,7 +20,7 @@ specifiers:
   '@vue/test-utils': ^2.0.2
   '@vue/tsconfig': ^0.1.3
   '@vueuse/core': ^8.9.4
-  anu-vue: ^0.7.1
+  anu-vue: ^0.7.2
   axios: ^0.27.2
   cypress: ^10.7.0
   eslint: ^8.23.0
@@ -35,11 +35,13 @@ specifiers:
   unocss: ^0.45.18
   unplugin-auto-import: ^0.11.2
   unplugin-vue-components: ^0.22.4
+  vee-validate: ^4.6.7
   vite: ^3.0.9
   vitest: ^0.23.0
   vue: ^3.2.38
   vue-router: ^4.1.5
   vue-tsc: ^0.40.7
+  yup: ^0.32.11
 
 dependencies:
   '@capacitor-community/barcode-scanner': 3.0.0_@capacitor+core@4.1.0
@@ -47,12 +49,14 @@ dependencies:
   '@capacitor/core': 4.1.0
   '@unocss/reset': 0.41.2
   '@vueuse/core': 8.9.4_vue@3.2.38
-  anu-vue: 0.7.1_o7eiemkoi5nni6euucacuo2t74
+  anu-vue: 0.7.2_o7eiemkoi5nni6euucacuo2t74
   axios: 0.27.2
   pinia: 2.0.21_fl6vay66s5mfyioevoftbjhvcm
   swiper: 8.3.2
+  vee-validate: 4.6.7_vue@3.2.38
   vue: 3.2.38
   vue-router: 4.1.5_vue@3.2.38
+  yup: 0.32.11
 
 devDependencies:
   '@antfu/eslint-config': 0.26.3_sorwav4hsh5vncerguqybud76i
@@ -236,6 +240,13 @@ packages:
     hasBin: true
     dependencies:
       '@babel/types': 7.19.0
+
+  /@babel/runtime/7.19.0:
+    resolution: {integrity: sha512-eR8Lo9hnDS7tqkO7NsV+mKvCmv5boaXFSZ70DnfhcgiEne8hv9oCEd36Klw74EtizEqLsy4YnW8UWwpBVolHZA==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.13.9
+    dev: false
 
   /@babel/types/7.19.0:
     resolution: {integrity: sha512-YuGopBq3ke25BVSiS6fgF49Ul9gH1x70Bcr6bqRLjWCkcX8Hre1/5+z+IiWOIerRMSSEfGZVB9z9kyq7wVs9YA==}
@@ -654,6 +665,10 @@ packages:
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
+
+  /@types/lodash/4.14.184:
+    resolution: {integrity: sha512-RoZphVtHbxPZizt4IcILciSWiC6dcn+eZ8oX9IWEYfDMcocdd42f7NPI6fQj+6zI8y4E0L7gu2pcZKLGTRaV9Q==}
+    dev: false
 
   /@types/mdast/3.0.10:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==}
@@ -1279,8 +1294,8 @@ packages:
       color-convert: 2.0.1
     dev: true
 
-  /anu-vue/0.7.1_o7eiemkoi5nni6euucacuo2t74:
-    resolution: {integrity: sha512-ZcRjjEklsqPIzkCq0ploDuWcowtOfHcrKijGsQ//FYRQer/Qg+B4kyE+4NLgXspfWxDqAAtLB3rAMV0uCKpadQ==}
+  /anu-vue/0.7.2_o7eiemkoi5nni6euucacuo2t74:
+    resolution: {integrity: sha512-FOReM+HkBif01gkjMtzd5Bo2WWcPlrt2rHm2nKZebbgrfPf6ZauImpQDyS+JVgdwxqSCXOeR++Dx8RPGAMHyPw==}
     peerDependencies:
       '@unocss/reset': ^0.41.1
       '@vueuse/core': ^8.7.5
@@ -3651,6 +3666,10 @@ packages:
       p-locate: 5.0.0
     dev: true
 
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
+
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
@@ -3661,7 +3680,6 @@ packages:
 
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: true
 
   /log-symbols/4.1.0:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==}
@@ -3851,6 +3869,10 @@ packages:
   /ms/2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
     dev: true
+
+  /nanoclone/0.2.1:
+    resolution: {integrity: sha512-wynEP02LmIbLpcYw8uBKpcfF6dmg2vcpKqxeH5UcoKEYdExslsdUA4ugFauuaeYdTB76ez6gJW8XAZ6CgkXYxA==}
+    dev: false
 
   /nanoid/3.3.4:
     resolution: {integrity: sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==}
@@ -4311,6 +4333,10 @@ packages:
       react-is: 16.13.1
     dev: true
 
+  /property-expr/2.0.5:
+    resolution: {integrity: sha512-IJUkICM5dP5znhCckHSv30Q4b5/JA5enCtkRHYaOVOAocnH/1BQEYTC5NMfT3AVl/iXKdr3aqQbQn9DxyWknwA==}
+    dev: false
+
   /proxy-from-env/1.0.0:
     resolution: {integrity: sha512-F2JHgJQ1iqwnHDcQjVBsq3n/uoaFL+iPW/eAeL7kVxy/2RrWaN4WroKjjvbsoRtv0ftelNyC01bjRhn/bhcf4A==}
     dev: true
@@ -4399,6 +4425,10 @@ packages:
     dependencies:
       picomatch: 2.3.1
     dev: true
+
+  /regenerator-runtime/0.13.9:
+    resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
+    dev: false
 
   /regexp-tree/0.1.24:
     resolution: {integrity: sha512-s2aEVuLhvnVJW6s/iPgEGK6R+/xngd2jNQ+xy4bXNDKxZKJH6jpPHY6kVeVv1IeLCHgswRj+Kl3ELaDjG6V1iw==}
@@ -4899,6 +4929,10 @@ packages:
       is-number: 7.0.0
     dev: true
 
+  /toposort/2.0.2:
+    resolution: {integrity: sha512-0a5EOkAUp8D4moMi2W8ZF8jcga7BgZd91O/yabJCFY8az+XSzeGyTKs0Aoo897iV1Nj6guFq8orWDS96z91oGg==}
+    dev: false
+
   /totalist/3.0.0:
     resolution: {integrity: sha512-eM+pCBxXO/njtF7vdFsHuqb+ElbxqtI4r5EAvk6grfAFyJ6IvWlSkfZ5T9ozC6xWw3Fj1fGoSmrl0gUs46JVIw==}
     engines: {node: '>=6'}
@@ -5216,6 +5250,15 @@ packages:
       spdx-correct: 3.1.1
       spdx-expression-parse: 3.0.1
     dev: true
+
+  /vee-validate/4.6.7_vue@3.2.38:
+    resolution: {integrity: sha512-8W9cR/EGqPuHJpodYriAlp5BndQf/IWFifZLyIWeNs7RGB+B0jr50TACjzgtwtp5qE6hgRskOToEhcfhWJdgyw==}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      '@vue/devtools-api': 6.2.1
+      vue: 3.2.38
+    dev: false
 
   /verror/1.10.0:
     resolution: {integrity: sha512-ZZKSmDAEFOijERBLkmYfJ+vmk3w+7hOLYDNkRCuRuMJGEmqYNCNLyBBFwWKVMhfwaEF3WOd0Zlw86U/WC/+nYw==}
@@ -5538,3 +5581,16 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /yup/0.32.11:
+    resolution: {integrity: sha512-Z2Fe1bn+eLstG8DRR6FTavGD+MeAwyfmouhHsIUgaADz8jvFKbO/fXc2trJKZg+5EBjh4gGm3iU/t3onKlXHIg==}
+    engines: {node: '>=10'}
+    dependencies:
+      '@babel/runtime': 7.19.0
+      '@types/lodash': 4.14.184
+      lodash: 4.17.21
+      lodash-es: 4.17.21
+      nanoclone: 0.2.1
+      property-expr: 2.0.5
+      toposort: 2.0.2
+    dev: false

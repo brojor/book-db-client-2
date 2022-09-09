@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { AAlert, ABtn, ACheckbox, AInput } from 'anu-vue'
+import { AAlert, ABtn, ACheckbox } from 'anu-vue'
 import { useVModel } from '@vueuse/core'
 import { useForm } from 'vee-validate'
 import * as yup from 'yup'
@@ -54,38 +54,10 @@ useForm({
     </AAlert>
 
     <ValidatedInput name="email" type="text" label="Email" />
-    <ValidatedInput name="password" type="password" label="Heslo">
+    <ValidatedInput name="password" :type="showPassword ? 'text' : 'password'" label="Heslo">
       <button v-if="showPassword" i-mdi:eye-off-outline absolute right-3 @click="showPassword = !showPassword" />
       <button v-else i-mdi:eye-outline absolute right-3 @click="showPassword = !showPassword" />
     </ValidatedInput>
-
-    <div my2>
-      <AInput
-        v-model="data.email" type="email" label="Email" name="emailisko"
-        :hint="formType === 'register' ? 'Váš e-mail zůstane důvěrný' : ''"
-      />
-    </div>
-
-    <!-- TODO - Find out why input type cannot be changed dynamically -->
-    <div my2>
-      <AInput
-        v-if="showPassword" v-model="data.password" type="text" label="Heslo" name="heslisko"
-        :hint="formType === 'register' ? 'Heslo musí mít alespoň osm znaků' : ''"
-      >
-        <template #append-inner>
-          <button i-mdi:eye-off-outline absolute right-3 @click="showPassword = !showPassword" />
-        </template>
-      </AInput>
-
-      <AInput
-        v-else v-model="data.password" type="password" label="Heslo" name="heslisko"
-        :hint="formType === 'register' ? 'Heslo musí mít alespoň osm znaků' : ''"
-      >
-        <template #append-inner>
-          <button i-mdi:eye-outline absolute right-3 @click="showPassword = !showPassword" />
-        </template>
-      </AInput>
-    </div>
 
     <div my4>
       <ACheckbox v-model="data.rememberMe">
