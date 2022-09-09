@@ -2,6 +2,7 @@
 import { AAlert, ABtn, ACheckbox, AInput } from 'anu-vue'
 import { useVModel } from '@vueuse/core'
 import { useForm } from 'vee-validate'
+import * as yup from 'yup'
 import ValidatedInput from './ValidatedInput.vue'
 
 const props = defineProps<{
@@ -32,25 +33,10 @@ const texts = computed(() =>
 )
 
 /* Validation */
-const simpleSchema = {
-  email(value: string) {
-    if (!value)
-      return 'This is required from FORM'
-
-    if (value.length <= 8)
-      return 'Field must have at least 8 characters from FORM'
-
-    return true
-  },
-  password(value: string) {
-    if (!value)
-      return 'Passswd from FORM'
-    if (value.length <= 8)
-      return 'Too short from FORM'
-
-    return true
-  },
-}
+const simpleSchema = yup.object({
+  email: yup.string().required().email(),
+  password: yup.string().required().min(8),
+})
 // Create a form context with the validation schema
 useForm({
   validationSchema: simpleSchema,
