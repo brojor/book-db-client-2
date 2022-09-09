@@ -40,6 +40,9 @@ export const useCollectionStore = defineStore({
       const response = await apiService.post(`/collections/${collectionType}`, book)
       this.collections[collectionType] = response.data as Collection
     },
+    async fetchCollections() {
+      await Promise.all(collectionList.map(({ id }) => this.getCollection(id)))
+    },
   },
   getters: {
     activeCollection: state => state.collections[state.activeCollectionName],

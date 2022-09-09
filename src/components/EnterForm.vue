@@ -4,7 +4,10 @@ import { useVModel } from '@vueuse/core'
 import { useForm } from 'vee-validate'
 import { toFormValidator } from '@vee-validate/zod'
 import * as zod from 'zod'
+
 import ValidatedInput from './ValidatedInput.vue'
+import { useUserStore } from '@/stores/user'
+import router from '@/router'
 
 const props = defineProps<{
   formType: 'register' | 'login'
@@ -18,6 +21,13 @@ const props = defineProps<{
 
 const emit = defineEmits(['submit', 'update:modelValue'])
 
+const userStore = useUserStore()
+
+interface ValidatorError {
+  field: string
+  message: string
+}
+const rememberMe = ref<boolean>(true)
 const data = useVModel(props, 'modelValue', emit)
 
 const showPassword = ref<boolean>(false)
@@ -39,12 +49,25 @@ const zodSchema = zod.object({
   password: zod.string().min(8, { message: 'Heslo musí mít alespoň 8 znaků' }),
 })
 const validationSchema = toFormValidator(zodSchema)
-useForm({ validationSchema })
+
+/* Submission */
+const { handleSubmit, setFieldError } = useForm({ validationSchema })
+
+const onSubmit = handleSubmit(async (values) => {
+  const credentials = zodSchema.parse(values) // adds correct typing
+  try {
+    await userStore[props.formType](credentials, rememberMe.value)
+    router.push('/')
+  }
+  catch (error: any) {
+    const { errors } = error.response.data
+    errors.forEach(({ field, message }: ValidatorError) => setFieldError(field, message))
+  }
 })
 </script>
 
 <template>
-  <form mt16 @submit.prevent="$emit('submit')">
+  <form mt16 @submit.prevent="onSubmit">
     <h2 text-base font-bold text-center mb4>
       {{ texts.title }}
     </h2>
@@ -54,6 +77,7 @@ useForm({ validationSchema })
     </AAlert>
 
     <ValidatedInput name="email" type="text" label="Email" />
+
     <ValidatedInput name="password" :type="showPassword ? 'text' : 'password'" label="Heslo">
       <button v-if="showPassword" i-mdi:eye-off-outline absolute right-3 @click="showPassword = !showPassword" />
       <button v-else i-mdi:eye-outline absolute right-3 @click="showPassword = !showPassword" />
