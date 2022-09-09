@@ -4,6 +4,8 @@ import { useField } from 'vee-validate'
 import { AInput } from 'anu-vue'
 const props = defineProps<{
   name: string
+  type: 'text' | 'password'
+  label: string
 }>()
 
 const nameRef = toRef(props, 'name')
@@ -30,7 +32,5 @@ const validationListeners = computed(() => {
 </script>
 
 <template>
-  <div>
-    <AInput v-model="value" type="text" :error="errorMessage" v-on="validationListeners" />
-  </div>
+  <AInput v-model="value" :type="props.type" :error="errorMessage" :label="props.label" v-on="validationListeners" />
 </template>

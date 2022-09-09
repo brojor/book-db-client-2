@@ -53,8 +53,8 @@ useForm({
       Nesprávné přihlašovací údaje
     </AAlert>
 
-    <ValidatedInput name="email" />
-    <ValidatedInput name="password" />
+    <ValidatedInput name="email" type="text" label="Email" />
+    <ValidatedInput name="password" type="password" label="Heslo" />
 
     <div my2>
       <AInput
