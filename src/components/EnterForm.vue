@@ -2,7 +2,8 @@
 import { AAlert, ABtn, ACheckbox } from 'anu-vue'
 import { useVModel } from '@vueuse/core'
 import { useForm } from 'vee-validate'
-import * as yup from 'yup'
+import { toFormValidator } from '@vee-validate/zod'
+import * as zod from 'zod'
 import ValidatedInput from './ValidatedInput.vue'
 
 const props = defineProps<{
@@ -33,13 +34,12 @@ const texts = computed(() =>
 )
 
 /* Validation */
-const simpleSchema = yup.object({
-  email: yup.string().required().email(),
-  password: yup.string().required().min(8),
+const zodSchema = zod.object({
+  email: zod.string().email({ message: 'Zadejte prosím platný email' }),
+  password: zod.string().min(8, { message: 'Heslo musí mít alespoň 8 znaků' }),
 })
-// Create a form context with the validation schema
-useForm({
-  validationSchema: simpleSchema,
+const validationSchema = toFormValidator(zodSchema)
+useForm({ validationSchema })
 })
 </script>
 
