@@ -44,17 +44,31 @@ const texts = computed(() =>
 )
 
 /* Validation */
-const zodSchema = zod.object({
-  email: zod.string().email({ message: 'Zadejte prosím platný email' }),
-  password: zod.string().min(8, { message: 'Heslo musí mít alespoň 8 znaků' }),
-})
-const validationSchema = toFormValidator(zodSchema)
+const schema = {
+  register: zod.object({
+    email: zod.string().email({ message: 'Zadejte prosím platný email' }),
+    password: zod.string().min(8, { message: 'Heslo musí mít alespoň 8 znaků' }),
+  }),
+  login: zod.object({
+    email: zod.string().min(1, 'Bez emailu Vás nemohu přihlásit'),
+    password: zod.string().min(1, 'Bez hesla Vás nemohu přihlásit'),
+  }),
+}
+const validationSchema = computed(() => toFormValidator(schema[props.formType]))
+
+const { handleSubmit, setFieldError, resetForm } = useForm({ validationSchema })
+
+watch(
+  () => props.formType,
+  () => {
+    resetForm()
+  },
+)
 
 /* Submission */
-const { handleSubmit, setFieldError } = useForm({ validationSchema })
 
 const onSubmit = handleSubmit(async (values) => {
-  const credentials = zodSchema.parse(values) // adds correct typing
+  const credentials = schema[props.formType].parse(values) // adds correct typing
   try {
     await userStore[props.formType](credentials, rememberMe.value)
     router.push('/')
