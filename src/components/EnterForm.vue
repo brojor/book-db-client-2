@@ -54,7 +54,10 @@ useForm({
     </AAlert>
 
     <ValidatedInput name="email" type="text" label="Email" />
-    <ValidatedInput name="password" type="password" label="Heslo" />
+    <ValidatedInput name="password" type="password" label="Heslo">
+      <button v-if="showPassword" i-mdi:eye-off-outline absolute right-3 @click="showPassword = !showPassword" />
+      <button v-else i-mdi:eye-outline absolute right-3 @click="showPassword = !showPassword" />
+    </ValidatedInput>
 
     <div my2>
       <AInput

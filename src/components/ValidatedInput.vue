@@ -32,5 +32,9 @@ const validationListeners = computed(() => {
 </script>
 
 <template>
-  <AInput v-model="value" :type="props.type" :error="errorMessage" :label="props.label" v-on="validationListeners" />
+  <AInput v-model="value" :type="props.type" :error="errorMessage" :label="props.label" v-on="validationListeners">
+    <template #append-inner>
+      <slot />
+    </template>
+  </AInput>
 </template>
