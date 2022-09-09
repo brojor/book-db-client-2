@@ -1,3 +1,11 @@
+:root {
+  --a-primary: 175, 84%, 32% !important;
+}
+:root.dark {
+  --a-primary: 175, 84%, 32% !important;
+}
+
+
 html {
   overflow: hidden;
   user-select: none
@@ -22,3 +30,4 @@ input {
   color: white;
   color-scheme: 'dark';
 }
+
