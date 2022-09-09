@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { AAlert, ABtn, ACheckbox, AInput } from 'anu-vue'
 import { useVModel } from '@vueuse/core'
+import { useForm } from 'vee-validate'
 import ValidatedInput from './ValidatedInput.vue'
 
 const props = defineProps<{
@@ -29,6 +30,31 @@ const texts = computed(() =>
         button: 'Přihlásit se',
       },
 )
+
+/* Validation */
+const simpleSchema = {
+  email(value: string) {
+    if (!value)
+      return 'This is required from FORM'
+
+    if (value.length <= 8)
+      return 'Field must have at least 8 characters from FORM'
+
+    return true
+  },
+  password(value: string) {
+    if (!value)
+      return 'Passswd from FORM'
+    if (value.length <= 8)
+      return 'Too short from FORM'
+
+    return true
+  },
+}
+// Create a form context with the validation schema
+useForm({
+  validationSchema: simpleSchema,
+})
 </script>
 
 <template>
@@ -41,7 +67,8 @@ const texts = computed(() =>
       Nesprávné přihlašovací údaje
     </AAlert>
 
-    <ValidatedInput />
+    <ValidatedInput name="email" />
+    <ValidatedInput name="password" />
 
     <div my2>
       <AInput

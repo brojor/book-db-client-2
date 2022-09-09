@@ -2,19 +2,13 @@
 import { computed } from 'vue'
 import { useField } from 'vee-validate'
 import { AInput } from 'anu-vue'
+const props = defineProps<{
+  name: string
+}>()
 
-function validateField(value: string) {
-  if (!value)
-    return 'This is required'
+const nameRef = toRef(props, 'name')
+const { errorMessage, value, handleChange } = useField<string>(nameRef, undefined, { validateOnValueUpdate: false })
 
-  if (value.length <= 8)
-    return 'Field must have at least 8 characters'
-
-  return true
-}
-const { errorMessage, value, handleChange } = useField('fieldName', validateField, {
-  validateOnValueUpdate: false,
-})
 const validationListeners = computed(() => {
   // If the field is valid or have not been validated yet
   if (!errorMessage.value) {
