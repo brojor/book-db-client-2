@@ -29,5 +29,6 @@ declare module '@vue/runtime-core' {
     SpinnerIcon: typeof import('./src/components/icons/SpinnerIcon.vue')['default']
     TabItem: typeof import('./src/components/TabItem.vue')['default']
     TabsHeader: typeof import('./src/components/TabsHeader.vue')['default']
+    ValidatedInput: typeof import('./src/components/ValidatedInput.vue')['default']
   }
 }

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { AAlert, ABtn, ACheckbox, AInput } from 'anu-vue'
 import { useVModel } from '@vueuse/core'
+import ValidatedInput from './ValidatedInput.vue'
 
 const props = defineProps<{
   formType: 'register' | 'login'
@@ -40,9 +41,11 @@ const texts = computed(() =>
       Nesprávné přihlašovací údaje
     </AAlert>
 
+    <ValidatedInput />
+
     <div my2>
       <AInput
-        v-model="data.email" type="email" label="Email"
+        v-model="data.email" type="email" label="Email" name="emailisko"
         :hint="formType === 'register' ? 'Váš e-mail zůstane důvěrný' : ''"
       />
     </div>
@@ -50,7 +53,7 @@ const texts = computed(() =>
     <!-- TODO - Find out why input type cannot be changed dynamically -->
     <div my2>
       <AInput
-        v-if="showPassword" v-model="data.password" type="text" label="Heslo"
+        v-if="showPassword" v-model="data.password" type="text" label="Heslo" name="heslisko"
         :hint="formType === 'register' ? 'Heslo musí mít alespoň osm znaků' : ''"
       >
         <template #append-inner>
@@ -59,7 +62,7 @@ const texts = computed(() =>
       </AInput>
 
       <AInput
-        v-else v-model="data.password" type="password" label="Heslo"
+        v-else v-model="data.password" type="password" label="Heslo" name="heslisko"
         :hint="formType === 'register' ? 'Heslo musí mít alespoň osm znaků' : ''"
       >
         <template #append-inner>
