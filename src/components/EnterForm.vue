@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { AAlert, ABtn, ACheckbox } from 'anu-vue'
 import { useForm } from 'vee-validate'
-import { toFormValidator } from '@vee-validate/zod'
-import * as zod from 'zod'
 
+import { useAuthSchema } from '../composables/useAuthSchema'
 import ValidatedInput from './ValidatedInput.vue'
 import { useUserStore } from '@/stores/user'
 import router from '@/router'
@@ -35,25 +34,12 @@ const texts = computed(() =>
       },
 )
 
-/* Validation */
-const schema = {
-  register: zod.object({
-    email: zod.string().email({ message: 'Zadejte prosím platný email' }),
-    password: zod.string().min(8, { message: 'Heslo musí mít alespoň 8 znaků' }),
-  }),
-  login: zod.object({
-    email: zod.string().min(1, 'Bez emailu Vás nemohu přihlásit'),
-    password: zod.string().min(1, 'Bez hesla Vás nemohu přihlásit'),
-  }),
-}
-const validationSchema = computed(() => toFormValidator(schema[props.formType]))
-
+const { validationSchema, checkValidity } = useAuthSchema(toRef(props, 'formType'))
 const { handleSubmit, setFieldError } = useForm({ validationSchema })
 
 /* Submission */
 const onSubmit = handleSubmit(async (values) => {
-  // loginError.value = false
-  const credentials = schema[props.formType].parse(values) // adds correct typing
+  const credentials = checkValidity(values)
   try {
     await userStore[props.formType](credentials, rememberMe.value)
     router.push('/')
