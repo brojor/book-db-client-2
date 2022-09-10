@@ -75,9 +75,11 @@ const onSubmit = handleSubmit(async (values) => {
       {{ texts.title }}
     </h2>
 
-    <AAlert v-if="loginError" color="danger" my4>
-      Nesprávné přihlašovací údaje
-    </AAlert>
+    <Transition name="bounce">
+      <AAlert v-if="loginError" color="danger" my4>
+        Nesprávné přihlašovací údaje
+      </AAlert>
+    </Transition>
 
     <ValidatedInput name="email" type="text" label="Email" @focus="loginError = false" />
 
