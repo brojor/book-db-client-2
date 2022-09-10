@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useField } from 'vee-validate'
-import { AInput } from 'anu-vue'
 const props = defineProps<{
   name: string
   type: 'text' | 'password'

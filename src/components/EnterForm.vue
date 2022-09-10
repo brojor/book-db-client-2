@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { AAlert, ABtn, ACheckbox } from 'anu-vue'
 import { useForm } from 'vee-validate'
 
 import { useAuthSchema } from '../composables/useAuthSchema'

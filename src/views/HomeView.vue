@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ASelect } from 'anu-vue'
 import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import type { Swiper as SwiperType } from 'swiper/types'
