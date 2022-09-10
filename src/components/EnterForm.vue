@@ -39,6 +39,8 @@ const onSubmit = handleSubmit(async (values) => {
     }
   }
 })
+
+const onEnter = () => onSubmit()
 </script>
 
 <template>
@@ -55,7 +57,10 @@ const onSubmit = handleSubmit(async (values) => {
 
     <ValidatedInput name="email" type="text" label="Email" @focus="loginError = false" />
 
-    <ValidatedInput name="password" :type="showPassword ? 'text' : 'password'" label="Heslo" @focus="loginError = false">
+    <ValidatedInput
+      name="password" :type="showPassword ? 'text' : 'password'" label="Heslo" @focus="loginError = false"
+      @keydown.enter.prevent="onEnter"
+    >
       <button v-if="showPassword" i-mdi:eye-off-outline absolute right-3 @click="showPassword = !showPassword" />
       <button v-else i-mdi:eye-outline absolute right-3 @click="showPassword = !showPassword" />
     </ValidatedInput>
