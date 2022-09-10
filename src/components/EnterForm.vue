@@ -6,6 +6,7 @@ import { useAuthSchema } from '../composables/useAuthSchema'
 import ValidatedInput from './ValidatedInput.vue'
 import { useUserStore } from '@/stores/user'
 import router from '@/router'
+import labels from '@/assets/EnterViewTexts.json'
 
 interface ValidatorError {
   field: string
@@ -22,17 +23,7 @@ const rememberMe = ref<boolean>(true)
 const loginError = ref<boolean>(false)
 const showPassword = ref<boolean>(false)
 
-const texts = computed(() =>
-  props.formType === 'register'
-    ? {
-        title: 'Pro registraci zadejte svůj email a zvolte heslo:',
-        button: 'Vytvořit účet',
-      }
-    : {
-        title: 'Pro přihlášení zadejte své přihlašovací údaje',
-        button: 'Přihlásit se',
-      },
-)
+const texts = computed(() => labels[props.formType])
 
 const { validationSchema, checkValidity } = useAuthSchema(toRef(props, 'formType'))
 const { handleSubmit, setFieldError } = useForm({ validationSchema })
