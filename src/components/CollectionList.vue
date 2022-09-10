@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useCollectionStore } from '@/stores/collection'
-import { useSearchStore } from '@/stores/search'
 import type { AuthorWithCount, CollectionType } from '@/types'
 
 const props = defineProps<{

@@ -3,7 +3,6 @@ import { Capacitor } from '@capacitor/core'
 import type { BookToAdd } from '@/types'
 import apiService from '@/services/api'
 import { useScanner } from '@/composables/scanner'
-import { useCollectionStore } from '@/stores/collection'
 
 const isNative = Capacitor.isNativePlatform()
 const { startScan, stopScan, isScanning } = useScanner()

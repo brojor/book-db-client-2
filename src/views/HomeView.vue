@@ -3,7 +3,6 @@ import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import type { Swiper as SwiperType } from 'swiper/types'
 import 'swiper/css'
-import { collectionList, useCollectionStore } from '@/stores/collection'
 
 const selected = ref()
 const fruits = ['banana', 'apple', 'watermelon', 'orange']

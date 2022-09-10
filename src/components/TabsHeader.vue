@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { Swiper } from 'swiper/types'
 import type { CollectionList } from '@/stores/collection'
-import { useCollectionStore } from '@/stores/collection'
 
 defineProps<{
   swiperInstance: Swiper | null

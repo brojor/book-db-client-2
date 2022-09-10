@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useCollectionStore } from '@/stores/collection'
-import { useSearchStore } from '@/stores/search'
-
 const searchStore = useSearchStore()
 
 const collection = useCollectionStore()

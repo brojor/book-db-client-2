@@ -22,6 +22,9 @@ export default defineConfig({
         'vue/macros',
         'vue-router',
       ],
+      dirs: [
+        './src/stores',
+      ],
       dts: true,
       vueTemplate: true,
     }),

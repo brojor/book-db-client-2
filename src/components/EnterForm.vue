@@ -2,7 +2,6 @@
 import { useForm } from 'vee-validate'
 
 import { useAuthSchema } from '../composables/useAuthSchema'
-import { useUserStore } from '@/stores/user'
 import router from '@/router'
 import labels from '@/assets/EnterViewTexts.json'
 

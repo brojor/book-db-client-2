@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useSearchStore } from '@/stores/search'
-import { useUserStore } from '@/stores/user'
-
 const user = useUserStore()
 const searchbar = useSearchStore()
 const route = useRoute()

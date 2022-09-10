@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { useCollectionStore } from '@/stores/collection'
 import type { AuthorWithCount } from '@/types'
 
 export const useSearchStore = defineStore({
