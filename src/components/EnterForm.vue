@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useForm } from 'vee-validate'
 
-import router from '@/router'
 import labels from '@/assets/EnterViewTexts.json'
 
 interface ValidatorError {
@@ -29,7 +28,7 @@ const onSubmit = handleSubmit(async (values) => {
   const credentials = checkValidity(values)
   try {
     await userStore[props.formType](credentials, rememberMe.value)
-    router.push('/')
+    useRouter().push('/')
   }
   catch (error: any) {
     if (error.response.status === 401)
