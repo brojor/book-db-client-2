@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { AAlert, ABtn, ACheckbox } from 'anu-vue'
-import { useVModel } from '@vueuse/core'
 import { useForm } from 'vee-validate'
 import { toFormValidator } from '@vee-validate/zod'
 import * as zod from 'zod'
@@ -9,28 +8,21 @@ import ValidatedInput from './ValidatedInput.vue'
 import { useUserStore } from '@/stores/user'
 import router from '@/router'
 
-const props = defineProps<{
-  formType: 'register' | 'login'
-  loginError: boolean
-  modelValue: {
-    email: string
-    password: string
-    rememberMe: boolean
-  }
-}>()
-
-const emit = defineEmits(['submit', 'update:modelValue'])
-
-const userStore = useUserStore()
-
 interface ValidatorError {
   field: string
   message: string
 }
-const rememberMe = ref<boolean>(true)
-const data = useVModel(props, 'modelValue', emit)
 
+const props = defineProps<{
+  formType: 'register' | 'login'
+}>()
+
+const userStore = useUserStore()
+
+const rememberMe = ref<boolean>(true)
+const loginError = ref<boolean>(false)
 const showPassword = ref<boolean>(false)
+
 const texts = computed(() =>
   props.formType === 'register'
     ? {
@@ -56,26 +48,23 @@ const schema = {
 }
 const validationSchema = computed(() => toFormValidator(schema[props.formType]))
 
-const { handleSubmit, setFieldError, resetForm } = useForm({ validationSchema })
-
-watch(
-  () => props.formType,
-  () => {
-    resetForm()
-  },
-)
+const { handleSubmit, setFieldError } = useForm({ validationSchema })
 
 /* Submission */
-
 const onSubmit = handleSubmit(async (values) => {
+  // loginError.value = false
   const credentials = schema[props.formType].parse(values) // adds correct typing
   try {
     await userStore[props.formType](credentials, rememberMe.value)
     router.push('/')
   }
   catch (error: any) {
-    const { errors } = error.response.data
-    errors.forEach(({ field, message }: ValidatorError) => setFieldError(field, message))
+    if (error.response.status === 401)
+      loginError.value = true
+    if (error.response.status === 422) {
+      const { errors } = error.response.data
+      errors.forEach(({ field, message }: ValidatorError) => setFieldError(field, message))
+    }
   }
 })
 </script>
@@ -98,7 +87,7 @@ const onSubmit = handleSubmit(async (values) => {
     </ValidatedInput>
 
     <div my4>
-      <ACheckbox v-model="data.rememberMe">
+      <ACheckbox v-model="rememberMe">
         Pamatuj si mě
       </ACheckbox>
     </div>

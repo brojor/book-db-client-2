@@ -70,7 +70,7 @@ const handleSubmit = async () => {
     <p text-center m="y-3 x-auto" w="5/6">
       Na místě, kde máte dokonalý přehled o své sbírce knih.
     </p>
-    <EnterForm v-model="credentials" :form-type="formType" :login-error="loginError" @submit="handleSubmit" />
+    <EnterForm v-model="credentials" :form-type="formType" :login-error="loginError" />
     <p mt8>
       {{ formType === 'register' ? 'Máte již účet?' : 'Nemáte účet? ' }}
       <a text-teal-500 tabIndex="0" @click="changeFormType">{{
