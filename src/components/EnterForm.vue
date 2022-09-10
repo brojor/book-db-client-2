@@ -13,6 +13,7 @@ const props = defineProps<{
 }>()
 
 const userStore = useUserStore()
+const router = useRouter()
 
 const rememberMe = ref<boolean>(true)
 const loginError = ref<boolean>(false)
@@ -28,7 +29,7 @@ const onSubmit = handleSubmit(async (values) => {
   const credentials = checkValidity(values)
   try {
     await userStore[props.formType](credentials, rememberMe.value)
-    useRouter().push('/')
+    router.push('/')
   }
   catch (error: any) {
     if (error.response.status === 401)
