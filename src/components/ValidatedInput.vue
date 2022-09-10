@@ -8,6 +8,8 @@ const props = defineProps<{
   label: string
 }>()
 
+defineEmits(['focus'])
+
 const nameRef = toRef(props, 'name')
 const { errorMessage, value, handleChange } = useField<string>(nameRef, undefined, { validateOnValueUpdate: false })
 
@@ -33,7 +35,10 @@ const validationListeners = computed(() => {
 
 <template>
   <div mt2>
-    <AInput v-model="value" :type="props.type" :error="errorMessage" :label="props.label" v-on="validationListeners">
+    <AInput
+      v-model="value" :type="props.type" :error="errorMessage" :label="props.label" v-on="validationListeners"
+      @focus="$emit('focus')"
+    >
       <template #append-inner>
         <slot />
       </template>
