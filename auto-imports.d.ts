@@ -53,12 +53,14 @@ declare global {
   const triggerRef: typeof import('vue')['triggerRef']
   const unref: typeof import('vue')['unref']
   const useAttrs: typeof import('vue')['useAttrs']
+  const useAuthSchema: typeof import('./src/composables/useAuthSchema')['useAuthSchema']
   const useCollectionStore: typeof import('./src/stores/collection')['useCollectionStore']
   const useCounterStore: typeof import('./src/stores/counter')['useCounterStore']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
+  const useScanner: typeof import('./src/composables/scanner')['useScanner']
   const useSearchStore: typeof import('./src/stores/search')['useSearchStore']
   const useSlots: typeof import('vue')['useSlots']
   const useUserStore: typeof import('./src/stores/user')['useUserStore']
@@ -123,12 +125,14 @@ declare module '@vue/runtime-core' {
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly unref: UnwrapRef<typeof import('vue')['unref']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
+    readonly useAuthSchema: UnwrapRef<typeof import('./src/composables/useAuthSchema')['useAuthSchema']>
     readonly useCollectionStore: UnwrapRef<typeof import('./src/stores/collection')['useCollectionStore']>
     readonly useCounterStore: UnwrapRef<typeof import('./src/stores/counter')['useCounterStore']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useRoute: UnwrapRef<typeof import('vue-router')['useRoute']>
     readonly useRouter: UnwrapRef<typeof import('vue-router')['useRouter']>
+    readonly useScanner: UnwrapRef<typeof import('./src/composables/scanner')['useScanner']>
     readonly useSearchStore: UnwrapRef<typeof import('./src/stores/search')['useSearchStore']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useUserStore: UnwrapRef<typeof import('./src/stores/user')['useUserStore']>

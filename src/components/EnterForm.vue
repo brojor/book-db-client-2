@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useForm } from 'vee-validate'
 
-import { useAuthSchema } from '../composables/useAuthSchema'
 import router from '@/router'
 import labels from '@/assets/EnterViewTexts.json'
 
