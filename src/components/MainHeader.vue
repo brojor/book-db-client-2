@@ -21,34 +21,14 @@ const handleLogout = () => {
 </script>
 
 <template>
-  <header flex relative bg-canvas>
-    <input
-      autocomplete="off"
-      type="text"
-      :placeholder="placeholder"
-      pt-18px
-      pb-18px
-      pl13
-      w-full
-      rounded-full
-      m3
-      bg-base
-      un-placeholder="$color-text font-normal"
-      text="$color-heading"
-      font-medium
-      border-none
-      :value="searchbar.value"
-      @input="handleInput"
+  <header flex relative bg-canvas px4 py2>
+    <AInput
+      v-model="searchbar.value" :placeholder="placeholder" input-wrapper-classes="rounded-full"
+      prepend-inner-icon="i-material-symbols:search" bg-base
     >
-    <SearchIcon absolute top-26px left-7 text="2xl $color-text" rounded-full />
-    <DotsVertical
-      absolute
-      top-26px
-      right-7
-      text="2xl $color-text"
-      @click="handleLogout"
-    />
+      <template #append-inner>
+        <button :class="searchbar.value ? 'i-mdi:close:' : 'i-mdi:dots-vertical'" right-4 absolute />
+      </template>
+    </AInput>
   </header>
 </template>
-
-<style scoped></style>
