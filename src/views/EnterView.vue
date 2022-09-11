@@ -9,7 +9,7 @@ const changeFormType = () => {
 </script>
 
 <template>
-  <div bg="$color-background-soft" w-full h-screen p-6 flex="~ col">
+  <div bg-canvas w-full h-screen p-6 flex="~ col">
     <h1 font="bold" text-2xl text-center>
       Vítejte v databázi knih
     </h1>

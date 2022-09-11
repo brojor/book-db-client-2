@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
     ABtn: typeof import('anu-vue')['ABtn']
     AddBook: typeof import('./src/components/icons/AddBook.vue')['default']
     AddBookForm: typeof import('./src/components/AddBookForm.vue')['default']
+    ADrawer: typeof import('anu-vue')['ADrawer']
     ACheckbox: typeof import('anu-vue')['ACheckbox']
     AInput: typeof import('anu-vue')['AInput']
     ASelect: typeof import('anu-vue')['ASelect']

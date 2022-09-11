@@ -5,6 +5,7 @@ import 'swiper/css'
 
 const collectionStore = useCollectionStore()
 const swiperInstance = ref<SwiperType | null>(null)
+const isDrawerShown = ref<boolean>(false)
 
 const onSwiper = (swiper: SwiperType) => {
   swiperInstance.value = swiper
@@ -16,7 +17,7 @@ const onSlideChange = (swiper: SwiperType) => {
 </script>
 
 <template>
-  <MainHeader />
+  <MainHeader @show-drawer="isDrawerShown = true" />
   <TabsHeader :collections="collectionList" :swiper-instance="swiperInstance" />
   <Swiper bg-canvas @slide-change="onSlideChange" @swiper="onSwiper">
     <SwiperSlide v-for="collection in collectionList" :key="collection.id">
@@ -31,6 +32,13 @@ const onSlideChange = (swiper: SwiperType) => {
     <AddBook text-3xl />
   </RouterLink>
   <MainFooter />
+  <ADrawer
+    v-model="isDrawerShown"
+    title="Drawer title"
+    subtitle="Chocolate cake tiramisu donut"
+  >
+    <DarkSwitcher />
+  </ADrawer>
 </template>
 
 <style>

@@ -1,11 +1,10 @@
 <script setup lang="ts">
-const user = useUserStore()
+const emit = defineEmits(['showDrawer'])
+
 const searchbar = useSearchStore()
 
 const placeholder = computed(() => `Hledat v ${searchbar.display === 'books' ? 'knihách' : 'autorech'}`)
-const handleLogout = () => {
-  user.logout()
-}
+
 const deleteSearchbarValue = (e: Event) => {
   searchbar.clean()
   const button = e.target as HTMLButtonElement
@@ -17,7 +16,7 @@ const buttonHandler = (e: Event) => {
   if (searchbar.value)
     deleteSearchbarValue(e)
   else
-    handleLogout()
+    emit('showDrawer')
 }
 </script>
 
