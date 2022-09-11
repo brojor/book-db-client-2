@@ -32,13 +32,7 @@ const onSlideChange = (swiper: SwiperType) => {
     <AddBook text-3xl />
   </RouterLink>
   <MainFooter />
-  <ADrawer
-    v-model="isDrawerShown"
-    title="Drawer title"
-    subtitle="Chocolate cake tiramisu donut"
-  >
-    <DarkSwitcher />
-  </ADrawer>
+  <MainDrawer v-model="isDrawerShown" />
 </template>
 
 <style>

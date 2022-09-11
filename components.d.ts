@@ -25,6 +25,7 @@ declare module '@vue/runtime-core' {
     EyeOffOutline: typeof import('./src/components/icons/EyeOffOutline.vue')['default']
     EyeOutline: typeof import('./src/components/icons/EyeOutline.vue')['default']
     ListItem: typeof import('./src/components/ListItem.vue')['default']
+    MainDrawer: typeof import('./src/components/MainDrawer.vue')['default']
     MainFooter: typeof import('./src/components/MainFooter.vue')['default']
     MainHeader: typeof import('./src/components/MainHeader.vue')['default']
     PersonIcon: typeof import('./src/components/icons/PersonIcon.vue')['default']
