@@ -1,4 +1,4 @@
 <template>
-  <DarkSwitcher mb2 />
-  <RouterView />
+  <DarkSwitcher />
+  <RouterView bg-canvas />
 </template>

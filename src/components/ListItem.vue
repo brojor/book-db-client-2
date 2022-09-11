@@ -10,7 +10,7 @@ defineProps<{
   <div ml4 mb2 flex items-center gap3>
     <div
       rounded-full
-      bg="$color-background-mute"
+      bg-base
       h="48px"
       w="48px"
       flex

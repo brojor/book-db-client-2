@@ -7,8 +7,8 @@ defineProps<{
 
 <template>
   <div
-    px2 rounded m1 text="$color-text"
-    :class="{ 'bg-$color-accent text-white': isActive }"
+    px2 rounded m1
+    :class="{ 'bg-accent text-white': isActive }"
   >
     {{ title }}
   </div>

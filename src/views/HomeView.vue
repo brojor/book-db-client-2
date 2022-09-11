@@ -18,7 +18,7 @@ const onSlideChange = (swiper: SwiperType) => {
 <template>
   <MainHeader />
   <TabsHeader :collections="collectionList" :swiper-instance="swiperInstance" />
-  <Swiper @slide-change="onSlideChange" @swiper="onSwiper">
+  <Swiper bg-canvas @slide-change="onSlideChange" @swiper="onSwiper">
     <SwiperSlide v-for="collection in collectionList" :key="collection.id">
       <CollectionList :collection-type="collection.id" />
     </SwiperSlide>

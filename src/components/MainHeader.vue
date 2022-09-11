@@ -21,7 +21,7 @@ const handleLogout = () => {
 </script>
 
 <template>
-  <header flex relative bg="$color-background-soft">
+  <header flex relative bg-canvas>
     <input
       autocomplete="off"
       type="text"
@@ -32,7 +32,7 @@ const handleLogout = () => {
       w-full
       rounded-full
       m3
-      bg="$color-background-mute"
+      bg-base
       un-placeholder="$color-text font-normal"
       text="$color-heading"
       font-medium

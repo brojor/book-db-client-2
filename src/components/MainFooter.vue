@@ -7,13 +7,11 @@ const collection = useCollectionStore()
 <template>
   <footer
     text-center
-    bg="$color-background-mute"
-    border-t="2px solid $color-background-soft"
+    bg-base
   >
     <nav v-if="!searchStore.author" flex justify-around>
       <button
-        class="text-$color-text"
-        :class="{ active: searchStore.display === 'books' }"
+        :class="{ 'text-primary': searchStore.display === 'books' }"
         bg-inherit
         m2
         py1
@@ -30,8 +28,7 @@ const collection = useCollectionStore()
         <span>Knihy ({{ collection.activeCollection.books.length }})</span>
       </button>
       <button
-        class="text-$color-text"
-        :class="{ active: searchStore.display === 'authors' }"
+        :class="{ 'text-primary': searchStore.display === 'authors' }"
         bg-inherit
         m2
         py1
@@ -50,7 +47,6 @@ const collection = useCollectionStore()
     </nav>
     <nav v-else flex justify-center>
       <button
-        class="text-$color-text"
         bg-inherit
         m1
         px3
@@ -73,9 +69,3 @@ const collection = useCollectionStore()
     </nav>
   </footer>
 </template>
-
-<style scoped>
-.active {
-  color: var(--color-accent);
-}
-</style>
