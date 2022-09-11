@@ -3,9 +3,6 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import type { Swiper as SwiperType } from 'swiper/types'
 import 'swiper/css'
 
-const selected = ref()
-const fruits = ['banana', 'apple', 'watermelon', 'orange']
-
 const collectionStore = useCollectionStore()
 const swiperInstance = ref<SwiperType | null>(null)
 
@@ -19,7 +16,6 @@ const onSlideChange = (swiper: SwiperType) => {
 </script>
 
 <template>
-  <ASelect v-model="selected" placeholder="Select Fruit" :options="fruits" />
   <MainHeader />
   <TabsHeader :collections="collectionList" :swiper-instance="swiperInstance" />
   <Swiper @slide-change="onSlideChange" @swiper="onSwiper">
