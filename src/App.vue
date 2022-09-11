@@ -1,4 +1,4 @@
 <template>
-  <DarkSwitcher m--2 mb2 />
+  <DarkSwitcher mb2 />
   <RouterView />
 </template>
