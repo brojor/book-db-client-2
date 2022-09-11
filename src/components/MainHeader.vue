@@ -27,7 +27,7 @@ const buttonHandler = (e: Event) => {
       input-wrapper-classes="rounded-full" prepend-inner-icon="i-material-symbols:search" bg-base
     >
       <template #append-inner>
-        <button :class="searchbar.value ? 'i-mdi:close:' : 'i-mdi:dots-vertical'" right-4 absolute @click="buttonHandler" />
+        <button :class="searchbar.value ? 'i-mdi:close:' : 'i-mdi:dots-vertical'" right-0 absolute p="x6 y2" @click="buttonHandler" />
       </template>
     </AInput>
   </header>
