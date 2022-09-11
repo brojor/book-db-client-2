@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { useDark, useVModel } from '@vueuse/core'
+import { useVModel } from '@vueuse/core'
+import { isDark } from '@/stores/appState'
 
 const props = defineProps<{ modelValue: boolean }>()
 const emit = defineEmits(['update:modelValue'])
 const isOpen = useVModel(props, 'modelValue', emit)
-
-const isDark = useDark()
 
 const user = useUserStore()
 </script>
