@@ -15,6 +15,7 @@ const emptyForm = {
 
 const bookToAdd = ref<BookToAdd>(emptyForm)
 const isLoading = ref(false)
+const showWarning = ref(false)
 
 const fetchInfo = async (isbn: string) => {
   const { data } = await apiService.get(
@@ -27,6 +28,9 @@ const fetchInfo = async (isbn: string) => {
 }
 
 const onStartScanning = async () => {
+  if (!isNative)
+    return showWarning.value = true
+
   bookToAdd.value = emptyForm
   isLoading.value = true
 
@@ -59,7 +63,7 @@ const onSubmit = async () => {
     <button
       flex items-center gap2 mx-a p="y-2 x-3" bg-transparent
       border="1px solid teal-700 rounded" text-teal font-bold
-      :disabled="!isNative" @click="onStartScanning"
+      @click="onStartScanning"
     >
       <BarCodeIcon text="xl teal" />
       <p>Naskenovat kód</p>
@@ -70,6 +74,17 @@ const onSubmit = async () => {
       @cancel="() => router.push('/')"
     />
     <ScannerUI v-if="isScanning" class="scanner-ui" @stop-scan="stopScan" />
+    <ADialog
+      v-model="showWarning"
+      title="Nelze použít skener"
+      text="Skener je dostupný pouze v mobilní aplikaci. Tu si můžete stáhnout na App Store nebo Google Play."
+    >
+      <div pb6 pt2 flex justify-center>
+        <ABtn @click="showWarning = false">
+          Rozumím
+        </ABtn>
+      </div>
+    </ADialog>
   </div>
 </template>
 
