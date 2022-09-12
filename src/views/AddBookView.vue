@@ -41,7 +41,7 @@ const onStartScanning = async () => {
     isLoading.value = false
   }
   else {
-    // TODO: error not found
+    // TODO: handle scanning error
   }
 }
 
@@ -49,28 +49,31 @@ const onSubmit = async () => {
   await collection.addToCollection('default', bookToAdd.value)
   router.push('/')
 }
+const searchISBN = async () => {
+  if (!bookToAdd.value.isbn)
+    return
+  isLoading.value = true
+  await fetchInfo(bookToAdd.value.isbn.toString())
+  isLoading.value = false
+}
 </script>
 
 <template>
-  <div
-    p4 grow bg-canvas overflow-y="auto"
-    :class="{ 'scanner-hide': isScanning }"
-  >
+  <div p4 grow bg-canvas overflow-y="auto" :class="{ 'scanner-hide': isScanning }">
     <h1 text-2xl m2 text-center>
       Přidání nové knihy
     </h1>
-    <button @click="isLoading = !isLoading">
-      TOggle isLoading
-    </button>
-    <small block text-center m6>Předvyplnit pomocí kódu EAN</small>
-    <button
-      flex items-center gap2 mx-a p="y-2 x-3" bg-transparent
-      border="1px solid teal-700 rounded" text-teal font-bold
-      @click="onStartScanning"
-    >
-      <BarCodeIcon text="xl teal" />
-      <p>Naskenovat kód</p>
-    </button>
+    <small block text-center m6>Předvyplnit pomocí ISBN</small>
+    <div flex items-center>
+      <AInput
+        v-model="bookToAdd.isbn" text-sm
+        placeholder="Zadejte ručně, nebo oskenujte EAN" type="number" @blur="searchISBN"
+      >
+        <template #append-inner>
+          <ABtn icon-only icon="i-mdi:barcode-scan" ml-auto mr-1 @click="onStartScanning" />
+        </template>
+      </AInput>
+    </div>
     <DividerWithText text="nebo vyplnit ručně" my8 />
     <AddBookForm
       v-model="bookToAdd" :is-loading="isLoading" @submit="onSubmit"
