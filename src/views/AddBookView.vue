@@ -46,7 +46,7 @@ const onStartScanning = async () => {
 }
 
 const onSubmit = async () => {
-  await collection.addToCollection('default', bookToAdd.value)
+  await collection.addToCollection(collection.activeCollectionName, bookToAdd.value)
   router.push('/')
 }
 const searchISBN = async () => {
