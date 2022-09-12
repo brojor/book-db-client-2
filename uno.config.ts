@@ -24,7 +24,11 @@ export default defineConfig({
 
     // anu-vue presets
     presetCore(),
-    presetThemeDefault(),
+    presetThemeDefault({
+      shortcutOverrides: {
+        'a-base-input-root': 'min-w-[150px] gap-y-1',
+      },
+    }),
 
     presetAttributify({}),
   ],
