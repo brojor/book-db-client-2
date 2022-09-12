@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Haptics } from '@capacitor/haptics'
 defineProps<{
   title: string
   subtitle: string | number
@@ -8,20 +9,20 @@ defineProps<{
 const longPressTimer = ref<NodeJS.Timeout>()
 const el = ref<HTMLElement | null>(null)
 
-const handleLongPress = () => {
+const handleLongPress = async () => {
   console.log('long press')
+  await Haptics.vibrate({ duration: 10 })
 
   el.value?.classList.remove('pressed')
   el.value?.classList.toggle('selected')
 }
-const isSelected = ref(false)
 
 const touchHandler = {
   touchstart: (event: TouchEvent) => {
     el.value?.classList.add('pressed')
     longPressTimer.value = setTimeout(() => {
       handleLongPress()
-    }, 500)
+    }, 450)
   },
   touchmove: (event: TouchEvent) => {
     clearTimeout(longPressTimer.value)

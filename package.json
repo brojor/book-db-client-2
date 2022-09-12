@@ -17,6 +17,7 @@
     "@capacitor-community/barcode-scanner": "^3.0.0",
     "@capacitor/android": "^4.1.0",
     "@capacitor/core": "^4.1.0",
+    "@capacitor/haptics": "^4.0.1",
     "@unocss/reset": "^0.41.1",
     "@vee-validate/zod": "^4.6.7",
     "@vueuse/core": "^8.9.4",
