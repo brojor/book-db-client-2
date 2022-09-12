@@ -7,9 +7,9 @@ defineProps<{
 <template>
   <div
     relative text-center
-    un-after="content-none border border-$color-border block absolute top-50% w-full"
+    un-after="content-none border-b border-$color-border block absolute top-50% w-full mt-2px"
   >
-    <small bg="$color-background-soft" z1 relative px2>
+    <small bg-canvas z1 relative px2>
       {{ text }}
     </small>
   </div>
