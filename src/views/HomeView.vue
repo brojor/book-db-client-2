@@ -14,6 +14,11 @@ const onSwiper = (swiper: SwiperType) => {
 const onSlideChange = (swiper: SwiperType) => {
   collectionStore.activeCollectionName = collectionList[swiper.activeIndex].id
 }
+
+onMounted(() => {
+  swiperInstance.value?.slideTo(collectionStore.activeCollectionIndex, 0)
+  // swiperInstance.value?.onAny(() => console.log('event'))
+})
 </script>
 
 <template>

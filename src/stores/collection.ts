@@ -48,5 +48,6 @@ export const useCollectionStore = defineStore({
     activeCollection: state => state.collections[state.activeCollectionName],
     availableCollections: state =>
       Object.keys(state.collections) as (keyof typeof state.collections)[],
+    activeCollectionIndex: state => collectionList.findIndex(({ id }) => id === state.activeCollectionName),
   },
 })
