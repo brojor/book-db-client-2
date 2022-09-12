@@ -53,7 +53,7 @@ const onSubmit = async () => {
 
 <template>
   <div
-    p4 grow bg="$color-background-soft" overflow-y="auto"
+    p4 grow bg-canvas overflow-y="auto"
     :class="{ 'scanner-hide': isScanning }"
   >
     <h1 text-2xl m2 text-center>
