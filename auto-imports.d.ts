@@ -59,6 +59,7 @@ declare global {
   const useCounterStore: typeof import('./src/stores/counter')['useCounterStore']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
+  const useLongPress: typeof import('./src/composables/useLongPress')['useLongPress']
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
   const useScanner: typeof import('./src/composables/scanner')['useScanner']
@@ -132,6 +133,7 @@ declare module '@vue/runtime-core' {
     readonly useCounterStore: UnwrapRef<typeof import('./src/stores/counter')['useCounterStore']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
+    readonly useLongPress: UnwrapRef<typeof import('./src/composables/useLongPress')['useLongPress']>
     readonly useRoute: UnwrapRef<typeof import('vue-router')['useRoute']>
     readonly useRouter: UnwrapRef<typeof import('vue-router')['useRouter']>
     readonly useScanner: UnwrapRef<typeof import('./src/composables/scanner')['useScanner']>
