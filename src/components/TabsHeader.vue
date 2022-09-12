@@ -10,7 +10,7 @@ const collectionStore = useCollectionStore()
 </script>
 
 <template>
-  <div name="tabs" flex bg-canvas>
+  <div name="tabs" flex bg-canvas px4 pb2>
     <TabItem
       v-for="(collection, index) in collections"
       :key="collection.id"
