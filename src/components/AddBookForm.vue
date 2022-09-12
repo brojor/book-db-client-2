@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useVModel } from '@vueuse/core'
-import SpinnerIcon from './icons/SpinnerIcon.vue'
 import type { BookToAdd } from '@/types'
 
 const props = defineProps<{
@@ -79,7 +78,11 @@ const formRows = [
     <div v-for="(row, i) in formRows" :key="`row${i}`" flex gap2 mb2>
       <AInput
         v-for="item in row.items" :key="item.label" v-model="data[item.key]" :label="item.label" :type="item.type"
-      />
+      >
+        <template v-if="isLoading" #prepend-inner>
+          <div i-ph:spinner-gap ml2 animate-spin /><span text-sm op-70>načítám...</span>
+        </template>
+      </AInput>
       <!-- TODO: for language should be used select element -->
     </div>
     <div mt8 flex gap2>

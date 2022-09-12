@@ -10,6 +10,7 @@ specifiers:
   '@iconify-json/carbon': ^1.1.7
   '@iconify-json/material-symbols': ^1.1.16
   '@iconify-json/mdi': ^1.1.31
+  '@iconify-json/ph': ^1.1.2
   '@rushstack/eslint-patch': ^1.1.4
   '@types/jsdom': ^20.0.0
   '@types/node': ^16.11.56
@@ -68,6 +69,7 @@ devDependencies:
   '@iconify-json/carbon': 1.1.7
   '@iconify-json/material-symbols': 1.1.16
   '@iconify-json/mdi': 1.1.31
+  '@iconify-json/ph': 1.1.2
   '@rushstack/eslint-patch': 1.1.4
   '@types/jsdom': 20.0.0
   '@types/node': 16.11.57
@@ -431,6 +433,12 @@ packages:
 
   /@iconify-json/mdi/1.1.31:
     resolution: {integrity: sha512-2lUKoj6tqvVQ6q8XmhxfeqWdC34IhUpjz6eYMvwLLEgF+0cIL0ANLqBL7+/Vklt7Ugv5vJ0btJBHvW5Ij9Ikyw==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: true
+
+  /@iconify-json/ph/1.1.2:
+    resolution: {integrity: sha512-NuTdtt/UmuxIHS4hfdyv3BP5JiWikNkr81hFHXDScXlH0GUMdRSY/B5T9vDvbXDY/esMLFnIAXoFVDLsGinhpw==}
     dependencies:
       '@iconify/types': 1.1.0
     dev: true

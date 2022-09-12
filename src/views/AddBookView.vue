@@ -59,6 +59,9 @@ const onSubmit = async () => {
     <h1 text-2xl m2 text-center>
       Přidání nové knihy
     </h1>
+    <button @click="isLoading = !isLoading">
+      TOggle isLoading
+    </button>
     <small block text-center m6>Předvyplnit pomocí kódu EAN</small>
     <button
       flex items-center gap2 mx-a p="y-2 x-3" bg-transparent
