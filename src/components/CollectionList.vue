@@ -43,7 +43,7 @@ const selectAuthor = (author: AuthorWithCount) => {
 </script>
 
 <template>
-  <div v-if="searchStore.display === 'books'" h-full>
+  <div v-show="searchStore.display === 'books'" h-full>
     <ListItem
       v-for="book in filtredBooks"
       :key="book.id"
@@ -52,7 +52,7 @@ const selectAuthor = (author: AuthorWithCount) => {
       icon="book"
     />
   </div>
-  <div v-if="searchStore.display === 'authors'">
+  <div v-show="searchStore.display === 'authors'">
     <ListItem
       v-for="author in filtredAuthors"
       :key="author.id"
