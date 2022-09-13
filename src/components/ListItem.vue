@@ -12,20 +12,7 @@ const touchHandler = useLongPress(el)
 <template>
   <div ref="el" px3 py1 mx1 mb2px flex items-center gap3 relative rounded-lg overflow-hidden v-on="touchHandler ">
     <div class="press-marker" />
-    <div
-      rounded-full
-      bg-base
-      h="48px"
-      w="48px"
-      flex
-      items-center
-      justify-center
-      text-2xl
-      text-teal
-    >
-      <BookIcon v-if="icon === 'book'" />
-      <PersonIcon v-if="icon === 'author'" />
-    </div>
+    <ItemAvatar :icon="icon" />
     <div>
       <h3 text-sm font-bold>
         {{ title }}

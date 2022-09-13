@@ -7,6 +7,7 @@ specifiers:
   '@capacitor/cli': ^4.1.0
   '@capacitor/core': ^4.1.0
   '@capacitor/haptics': ^4.0.1
+  '@iconify-json/bi': ^1.1.8
   '@iconify-json/bx': ^1.1.3
   '@iconify-json/carbon': ^1.1.7
   '@iconify-json/material-symbols': ^1.1.16
@@ -67,6 +68,7 @@ dependencies:
 devDependencies:
   '@antfu/eslint-config': 0.26.3_sorwav4hsh5vncerguqybud76i
   '@capacitor/cli': 4.1.0
+  '@iconify-json/bi': 1.1.8
   '@iconify-json/bx': 1.1.3
   '@iconify-json/carbon': 1.1.7
   '@iconify-json/material-symbols': 1.1.16
@@ -421,6 +423,12 @@ packages:
 
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: true
+
+  /@iconify-json/bi/1.1.8:
+    resolution: {integrity: sha512-aUmRT4iKjpz9fRF2/6d2JcMd7Lz6Fwn4rQnMZy8rhAw3CCBKPRpcbSW3tf+O1K4+oVe/+gV2FqO50ZZiWsjaEw==}
+    dependencies:
+      '@iconify/types': 1.1.0
     dev: true
 
   /@iconify-json/bx/1.1.3:
