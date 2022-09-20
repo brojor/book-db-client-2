@@ -41,6 +41,13 @@ export const useCollectionStore = defineStore({
       const response = await apiService.post(`/collections/${collectionType}`, book)
       this.collections[collectionType] = response.data as Collection
     },
+    async deleteSelectedFromCollection() {
+      const response = await apiService.delete(`/collections/${this.activeCollectionName}`, {
+        data: { bookIds: this.selectedItems },
+      })
+      this.collections[this.activeCollectionName] = response.data as Collection
+      this.removeSelectedItems()
+    },
     async fetchCollections() {
       await Promise.all(collectionList.map(({ id }) => this.getCollection(id)))
     },

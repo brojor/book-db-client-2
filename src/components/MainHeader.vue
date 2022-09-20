@@ -19,6 +19,10 @@ const buttonHandler = (e: Event) => {
   else
     emit('showDrawer')
 }
+
+const removeFromCollection = () => {
+  collectionStore.deleteSelectedFromCollection()
+}
 </script>
 
 <template>
@@ -34,14 +38,20 @@ const buttonHandler = (e: Event) => {
       </AInput>
     </header>
     <header
-      bg-base p2 text-xl flex items-center absolute inset-x-0 top-0 z1 transition-all duration-300
+      bg-base p2 text-xl flex justify-between absolute inset-x-0 top-0 z1 transition-all duration-300
       :class="collectionStore.selectedItemsCount ? 'opacity-100' : 'opacity-0  -translate-y-full'"
     >
+      <div flex items-center>
+        <ABtn
+          icon="i-material-symbols:arrow-back" text-white icon-only variant="text"
+          @click="collectionStore.removeSelectedItems()"
+        />
+        <span ml6>{{ collectionStore.selectedItemsCount }}</span>
+      </div>
       <ABtn
-        icon="i-material-symbols:arrow-back" text-white icon-only variant="text"
-        @click="collectionStore.removeSelectedItems()"
+        icon="i-mdi:trash-can-outline" text-white icon-only variant="text"
+        @click="removeFromCollection"
       />
-      <span ml6>{{ collectionStore.selectedItemsCount }}</span>
     </header>
   </div>
 </template>
