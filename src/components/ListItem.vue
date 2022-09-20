@@ -1,18 +1,25 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   title: string
   subtitle: string | number
   icon: 'author' | 'book'
+  id: number
 }>()
 
+const collectionStore = useCollectionStore()
+
 const el = ref<HTMLElement | null>(null)
-const touchHandler = useLongPress(el)
+const touchHandler = useLongPress(el, props.id)
 </script>
 
 <template>
-  <div ref="el" px3 py1 mx1 mb2px flex items-center gap3 relative rounded-lg overflow-hidden v-on="touchHandler ">
+  <div
+    ref="el" px3 py1 mx1 mb2px flex items-center gap3 relative rounded-lg overflow-hidden
+    :class="{ selected: collectionStore.selectedItems.includes(props.id) }"
+    v-on="touchHandler "
+  >
     <div class="press-marker" />
-    <ItemAvatar :icon="icon" />
+    <ItemAvatar :icon="icon" @click="collectionStore.selectItem(props.id)" />
     <div>
       <h3 text-sm font-bold>
         {{ title }}

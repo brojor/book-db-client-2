@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps<{
-  icon: 'person' | 'book'
+  icon: 'author' | 'book'
 }>()
 </script>
 

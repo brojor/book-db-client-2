@@ -46,7 +46,9 @@ const selectAuthor = (author: AuthorWithCount) => {
   <div v-show="searchStore.display === 'books'" h-full>
     <ListItem
       v-for="book in filtredBooks"
+      :id="book.id"
       :key="book.id"
+      :collection-type="props.collectionType"
       :title="book.title"
       :subtitle="book.author.fullName"
       icon="book"
@@ -55,6 +57,7 @@ const selectAuthor = (author: AuthorWithCount) => {
   <div v-show="searchStore.display === 'authors'">
     <ListItem
       v-for="author in filtredAuthors"
+      :id="author.id"
       :key="author.id"
       :title="`${author.firstName} ${author.lastName}`"
       :subtitle="`Počet knih: ${author.numOfBooks}`"

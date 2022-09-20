@@ -30,6 +30,7 @@ export const useCollectionStore = defineStore({
   state: () => ({
     collections,
     activeCollectionName: 'default' as CollectionType,
+    selectedItems: [] as number[],
   }),
   actions: {
     async getCollection(collectionType: CollectionType) {
@@ -43,11 +44,22 @@ export const useCollectionStore = defineStore({
     async fetchCollections() {
       await Promise.all(collectionList.map(({ id }) => this.getCollection(id)))
     },
+    selectItem(bookId: number) {
+      if (this.selectedItems.includes(bookId))
+        this.selectedItems = this.selectedItems.filter(id => id !== bookId)
+
+      else
+        this.selectedItems.push(bookId)
+    },
+    removeSelectedItems() {
+      this.selectedItems = []
+    },
   },
   getters: {
     activeCollection: state => state.collections[state.activeCollectionName],
     availableCollections: state =>
       Object.keys(state.collections) as (keyof typeof state.collections)[],
     activeCollectionIndex: state => collectionList.findIndex(({ id }) => id === state.activeCollectionName),
+    selectedItemsCount: state => state.selectedItems.length,
   },
 })
