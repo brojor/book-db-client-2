@@ -14,25 +14,29 @@ const authors = computed(() => filter.authors(collectionStore.collections[props.
 
 <template>
   <div v-show="filter.displayedSubject === 'books'" h-full>
-    <ListItem
-      v-for="book in books"
-      :id="book.id"
-      :key="book.id"
-      :collection-type="props.collectionType"
-      :title="book.title"
-      :subtitle="book.author.fullName"
-      icon="book"
-    />
+    <TransitionGroup name="list">
+      <ListItem
+        v-for="book in books"
+        :id="book.id"
+        :key="book.id"
+        :collection-type="props.collectionType"
+        :title="book.title"
+        :subtitle="book.author.fullName"
+        icon="book"
+      />
+    </TransitionGroup>
   </div>
   <div v-show="filter.displayedSubject === 'authors'">
-    <ListItem
-      v-for="author in authors"
-      :id="author.id"
-      :key="author.id"
-      :title="`${author.firstName} ${author.lastName}`"
-      :subtitle="`Počet knih: ${author.numOfBooks}`"
-      icon="author"
-      @click="filter.selectAuthor(author)"
-    />
+    <TransitionGroup name="list">
+      <ListItem
+        v-for="author in authors"
+        :id="author.id"
+        :key="author.id"
+        :title="`${author.firstName} ${author.lastName}`"
+        :subtitle="`Počet knih: ${author.numOfBooks}`"
+        icon="author"
+        @click="filter.selectAuthor(author)"
+      />
+    </TransitionGroup>
   </div>
 </template>
