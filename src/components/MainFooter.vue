@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const searchStore = useSearchStore()
+const filter = useFilter()
 
 const collection = useCollectionStore()
 </script>
@@ -9,9 +9,9 @@ const collection = useCollectionStore()
     text-center
     bg-base
   >
-    <nav v-if="!searchStore.author" flex justify-around>
+    <nav v-if="!filter.selectedAuthor" flex justify-around>
       <button
-        :class="{ 'text-primary': searchStore.display === 'books' }"
+        :class="{ 'text-primary': filter.displayedSubject === 'books' }"
         bg-inherit
         m2
         py1
@@ -22,13 +22,13 @@ const collection = useCollectionStore()
         flex
         items-center
         border-none
-        @click="searchStore.display = 'books'"
+        @click="filter.displayedSubject = 'books'"
       >
         <BookIcon mr2 text-xl />
         <span>Knihy ({{ collection.activeCollection.books.length }})</span>
       </button>
       <button
-        :class="{ 'text-primary': searchStore.display === 'authors' }"
+        :class="{ 'text-primary': filter.displayedSubject === 'authors' }"
         bg-inherit
         m2
         py1
@@ -39,7 +39,7 @@ const collection = useCollectionStore()
         flex
         items-center
         border-none
-        @click="searchStore.display = 'authors'"
+        @click="filter.displayedSubject = 'authors'"
       >
         <PersonIcon mr2 text-xl />
         <span>Autoři ({{ collection.activeCollection.authors.length }})</span>
@@ -58,11 +58,11 @@ const collection = useCollectionStore()
         border-none
         text-rose
         rounded
-        @click="searchStore.author = null"
+        @click="filter.selectedAuthor = null"
       >
         <PersonIcon mr2 text-xl />
         <span>{{
-          `${searchStore.author.firstName}${searchStore.author.lastName} (${searchStore.numOfBooks})`
+          `${filter.selectedAuthor.firstName}${filter.selectedAuthor.lastName} (${filter.numOfBooks})`
         }}</span>
         <span ml2 text-2xl font-light> &times;</span>
       </button>

@@ -59,11 +59,11 @@ declare global {
   const useCounterStore: typeof import('./src/stores/counter')['useCounterStore']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
+  const useFilter: typeof import('./src/stores/filter')['useFilter']
   const useLongPress: typeof import('./src/composables/useLongPress')['useLongPress']
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
   const useScanner: typeof import('./src/composables/scanner')['useScanner']
-  const useSearchStore: typeof import('./src/stores/search')['useSearchStore']
   const useSlots: typeof import('vue')['useSlots']
   const useUserStore: typeof import('./src/stores/user')['useUserStore']
   const watch: typeof import('vue')['watch']
@@ -133,11 +133,11 @@ declare module '@vue/runtime-core' {
     readonly useCounterStore: UnwrapRef<typeof import('./src/stores/counter')['useCounterStore']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
+    readonly useFilter: UnwrapRef<typeof import('./src/stores/filter')['useFilter']>
     readonly useLongPress: UnwrapRef<typeof import('./src/composables/useLongPress')['useLongPress']>
     readonly useRoute: UnwrapRef<typeof import('vue-router')['useRoute']>
     readonly useRouter: UnwrapRef<typeof import('vue-router')['useRouter']>
     readonly useScanner: UnwrapRef<typeof import('./src/composables/scanner')['useScanner']>
-    readonly useSearchStore: UnwrapRef<typeof import('./src/stores/search')['useSearchStore']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useUserStore: UnwrapRef<typeof import('./src/stores/user')['useUserStore']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
