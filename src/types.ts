@@ -5,6 +5,7 @@ export type CollectionType = typeof collectionTypes[number]
 export interface Book {
   id: number
   title: string
+  isRead: boolean
   author: {
     id: number
     fullName: string

@@ -54,6 +54,15 @@ const removeFromCollection = () => {
           icon="i-mdi:home-import-outline" text-white icon-only variant="text"
           @click="collectionStore.moveSelectedToCollection('default')"
         />
+
+        <ABtn
+          icon="i-mdi:checkbox-marked-outline" text-white icon-only variant="text"
+          @click="collectionStore.setIsRead(true)"
+        />
+        <ABtn
+          icon="i-mdi:checkbox-blank-outline" text-white icon-only variant="text"
+          @click="collectionStore.setIsRead(false)"
+        />
         <ABtn
           icon="i-mdi:trash-can-outline" text-white icon-only variant="text"
           @click="removeFromCollection"

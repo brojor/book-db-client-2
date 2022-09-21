@@ -23,6 +23,7 @@ const authors = computed(() => filter.authors(collectionStore.collections[props.
         :subtitle="book.author.fullName"
         icon="book"
         :selected="collectionStore.selectedItems.includes(book.id)"
+        :is-read="book.isRead"
         @select="collectionStore.selectItem(book.id)"
       />
     </TransitionGroup>

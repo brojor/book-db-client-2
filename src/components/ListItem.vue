@@ -4,6 +4,7 @@ const props = defineProps<{
   subtitle: string | number
   icon: 'author' | 'book'
   selected: boolean
+  isRead?: boolean
 }>()
 
 const emit = defineEmits(['select'])
@@ -22,13 +23,15 @@ const touchHandler = useLongPress(el, () => {
   >
     <div class="press-marker" />
     <ItemAvatar :icon="icon" @click.stop="$emit('select')" />
-    <div>
+    <div grow>
       <h3 text-sm font-bold>
         {{ title }}
       </h3>
-      <p text-xs>
-        {{ subtitle }}
-      </p>
+      <div flex justify-between>
+        <p text-xs>
+          {{ subtitle }}
+        </p><div i-mdi:checkbox-marked-outline :class="isRead ? 'text-[#0BB842]' : 'text-[#404040]' " />
+      </div>
     </div>
   </div>
 </template>

@@ -56,6 +56,13 @@ export const useCollectionStore = defineStore({
       this.collections[targerCollection] = response.data.targetCollection as Collection
       this.removeSelectedItems()
     },
+    async setIsRead(isRead: boolean) {
+      const response = await apiService.patch(`/collections/${this.activeCollectionName}?isRead=${isRead}`, {
+        bookIds: this.selectedItems,
+      })
+      this.collections[this.activeCollectionName] = response.data as Collection
+      this.removeSelectedItems()
+    },
     async fetchCollections() {
       await Promise.all(collectionList.map(({ id }) => this.getCollection(id)))
     },
