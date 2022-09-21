@@ -10,7 +10,7 @@ interface Credentials {
 export const useUserStore = defineStore({
   id: 'user',
   state: () => ({
-    token: '',
+    token: localStorage.getItem('token') || '',
   }),
   getters: {
     isAuthenticated: state => !!state.token,
