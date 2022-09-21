@@ -1,15 +1,13 @@
 import { Haptics } from '@capacitor/haptics'
 import type { Ref } from 'vue'
 
-export function useLongPress(el: Ref<HTMLElement | null>, bookId: number) {
-  const collectionStore = useCollectionStore()
+export function useLongPress(el: Ref<HTMLElement | null>, callback: () => void) {
   const longPressTimer = ref<NodeJS.Timeout>()
 
   const handleLongPress = async () => {
     await Haptics.vibrate({ duration: 10 })
     el.value?.classList.remove('pressed')
-    // el.value?.classList.toggle('selected')
-    collectionStore.selectItem(bookId)
+    callback()
   }
 
   return {

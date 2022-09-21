@@ -19,10 +19,11 @@ const authors = computed(() => filter.authors(collectionStore.collections[props.
         v-for="book in books"
         :id="book.id"
         :key="book.id"
-        :collection-type="props.collectionType"
         :title="book.title"
         :subtitle="book.author.fullName"
         icon="book"
+        :selected="collectionStore.selectedItems.includes(book.id)"
+        @select="collectionStore.selectItem(book.id)"
       />
     </TransitionGroup>
   </div>
@@ -35,7 +36,9 @@ const authors = computed(() => filter.authors(collectionStore.collections[props.
         :title="`${author.firstName} ${author.lastName}`"
         :subtitle="`Počet knih: ${author.numOfBooks}`"
         icon="author"
+        :selected="collectionStore.selectedItems.includes(author.id)"
         @click="filter.selectAuthor(author)"
+        @select="collectionStore.selectItem(author.id)"
       />
     </TransitionGroup>
   </div>

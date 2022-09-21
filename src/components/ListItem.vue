@@ -3,23 +3,25 @@ const props = defineProps<{
   title: string
   subtitle: string | number
   icon: 'author' | 'book'
-  id: number
+  selected: boolean
 }>()
 
-const collectionStore = useCollectionStore()
+const emit = defineEmits(['select'])
 
 const el = ref<HTMLElement | null>(null)
-const touchHandler = useLongPress(el, props.id)
+const touchHandler = useLongPress(el, () => {
+  emit('select')
+})
 </script>
 
 <template>
   <div
     ref="el" px3 py1 mx1 mb2px flex items-center gap3 relative rounded-lg overflow-hidden
-    :class="{ selected: collectionStore.selectedItems.includes(props.id) }"
+    :class="{ selected: props.selected }"
     v-on="touchHandler "
   >
     <div class="press-marker" />
-    <ItemAvatar :icon="icon" @click="collectionStore.selectItem(props.id)" />
+    <ItemAvatar :icon="icon" @click.stop="$emit('select')" />
     <div>
       <h3 text-sm font-bold>
         {{ title }}
