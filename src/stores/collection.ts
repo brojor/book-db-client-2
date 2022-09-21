@@ -48,6 +48,14 @@ export const useCollectionStore = defineStore({
       this.collections[this.activeCollectionName] = response.data as Collection
       this.removeSelectedItems()
     },
+    async moveSelectedToCollection(targerCollection: CollectionType) {
+      const response = await apiService.put(`/collections/${this.activeCollectionName}?target=${targerCollection}`, {
+        bookIds: this.selectedItems,
+      })
+      this.collections[this.activeCollectionName] = response.data.sourceCollection as Collection
+      this.collections[targerCollection] = response.data.targetCollection as Collection
+      this.removeSelectedItems()
+    },
     async fetchCollections() {
       await Promise.all(collectionList.map(({ id }) => this.getCollection(id)))
     },
@@ -61,6 +69,7 @@ export const useCollectionStore = defineStore({
     removeSelectedItems() {
       this.selectedItems = []
     },
+
   },
   getters: {
     activeCollection: state => state.collections[state.activeCollectionName],

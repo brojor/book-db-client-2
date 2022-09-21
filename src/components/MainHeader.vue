@@ -48,10 +48,17 @@ const removeFromCollection = () => {
         />
         <span ml6>{{ collectionStore.selectedItemsCount }}</span>
       </div>
-      <ABtn
-        icon="i-mdi:trash-can-outline" text-white icon-only variant="text"
-        @click="removeFromCollection"
-      />
+      <div>
+        <ABtn
+          v-if="collectionStore.activeCollectionName === 'wishlist'"
+          icon="i-mdi:home-import-outline" text-white icon-only variant="text"
+          @click="collectionStore.moveSelectedToCollection('default')"
+        />
+        <ABtn
+          icon="i-mdi:trash-can-outline" text-white icon-only variant="text"
+          @click="removeFromCollection"
+        />
+      </div>
     </header>
   </div>
 </template>
