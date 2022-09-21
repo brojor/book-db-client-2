@@ -33,7 +33,7 @@ const authors = computed(() => filter.authors(collectionStore.collections[props.
         v-for="author in authors"
         :id="author.id"
         :key="author.id"
-        :title="`${author.firstName} ${author.lastName}`"
+        :title="author.fullName"
         :subtitle="`Počet knih: ${author.numOfBooks}`"
         icon="author"
         :selected="collectionStore.selectedItems.includes(author.id)"

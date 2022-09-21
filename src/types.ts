@@ -13,8 +13,7 @@ export interface Book {
 
 export interface AuthorWithCount {
   id: number
-  firstName: string
-  lastName: string
+  fullName: string
   numOfBooks: number
 }
 
