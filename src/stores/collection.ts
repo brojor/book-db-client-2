@@ -5,6 +5,9 @@ import type {
   Collection,
   CollectionType,
 } from '@/types'
+import {
+  ReadStatus,
+} from '@/types'
 
 export const collectionList = [
   { id: 'default', title: 'Knihovna' },
@@ -56,8 +59,8 @@ export const useCollectionStore = defineStore({
       this.collections[targerCollection] = response.data.targetCollection as Collection
       this.removeSelectedItems()
     },
-    async setIsRead(isRead: boolean) {
-      const response = await apiService.patch(`/collections/${this.activeCollectionName}?isRead=${isRead}`, {
+    async setReadStatus(readStatus: ReadStatus) {
+      const response = await apiService.patch(`/collections/${this.activeCollectionName}?readStatus=${readStatus}`, {
         bookIds: this.selectedItems,
       })
       this.collections[this.activeCollectionName] = response.data as Collection
@@ -84,7 +87,8 @@ export const useCollectionStore = defineStore({
       Object.keys(state.collections) as (keyof typeof state.collections)[],
     activeCollectionIndex: state => collectionList.findIndex(({ id }) => id === state.activeCollectionName),
     selectedItemsCount: state => state.selectedItems.length,
-    readBooksIds: state => state.collections.default.books.filter(book => book.isRead).map(book => book.id),
-
+    readBooksIds: state => state.collections.default.books.filter(book => book.readStatus === ReadStatus.READ).map(book => book.id),
+    readInProgresIds: state => state.collections.default.books.filter(book => book.readStatus === ReadStatus.IN_PROGRESS).map(book => book.id),
+    unreadBooksIds: state => state.collections.default.books.filter(book => book.readStatus === ReadStatus.UNREAD).map(book => book.id),
   },
 })

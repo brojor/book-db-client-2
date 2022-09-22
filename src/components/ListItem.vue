@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { ReadStatus } from '@/types'
 const props = defineProps<{
   title: string
   subtitle: string | number
   icon: 'author' | 'book'
   selected: boolean
-  isRead?: boolean
+  readStatus?: ReadStatus
 }>()
 
 const emit = defineEmits(['select'])
@@ -28,10 +29,14 @@ const touchHandler = useLongPress(el, () => {
         {{ title }}
       </h3>
       <div flex justify-between>
-        <p text-xs>
+        <p text-xs leading-5>
           {{ subtitle }}
         </p>
-        <div v-if="isRead !== undefined" i-mdi:checkbox-marked-outline :class="isRead ? 'text-[#0BB842]' : 'text-[#404040]' " />
+        <div>
+          <div v-if="readStatus === ReadStatus.READ" i-mdi:checkbox-marked-circle-outline text-green:90 />
+          <div v-if="readStatus === ReadStatus.IN_PROGRESS" i-mdi:progress-clock text-yellow:90 />
+          <div v-if="readStatus === ReadStatus.UNREAD" i-mdi:close-circle-outline text-red:50 />
+        </div>
       </div>
     </div>
   </div>

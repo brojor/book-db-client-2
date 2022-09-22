@@ -2,10 +2,16 @@ const collectionTypes = ['default', 'wishlist'] as const
 
 export type CollectionType = typeof collectionTypes[number]
 
+export enum ReadStatus {
+  UNREAD = 1,
+  IN_PROGRESS = 2,
+  READ = 3,
+}
+
 export interface Book {
   id: number
   title: string
-  isRead: boolean
+  readStatus: ReadStatus
   author: {
     id: number
     fullName: string

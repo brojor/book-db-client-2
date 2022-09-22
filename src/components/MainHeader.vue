@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ReadStatus } from '@/types'
+
 const emit = defineEmits(['showDrawer'])
 
 const filter = useFilter()
@@ -55,22 +57,27 @@ const removeFromCollection = () => {
           @click="collectionStore.moveSelectedToCollection('default')"
         />
 
-        <div v-if="collectionStore.activeCollectionName === 'default'">
+        <div v-if="collectionStore.activeCollectionName === 'default'" flex gap-1>
           <ABtn
             v-if="!collectionStore.selectedItems.some(i => collectionStore.readBooksIds.includes(i))"
-            icon="i-mdi:checkbox-marked-outline" text-white icon-only variant="text"
-            @click="collectionStore.setIsRead(true)"
+            icon="i-mdi:checkbox-marked-circle-outline" text-white icon-only variant="text"
+            @click="collectionStore.setReadStatus(ReadStatus.READ)"
           />
           <ABtn
-            v-if="collectionStore.selectedItems.every(i => collectionStore.readBooksIds.includes(i))"
-            icon="i-mdi:checkbox-blank-outline" text-white icon-only variant="text"
-            @click="collectionStore.setIsRead(false)"
+            v-if="!collectionStore.selectedItems.some(i => collectionStore.readInProgresIds.includes(i))"
+            icon="i-mdi:progress-clock" text-white icon-only variant="text"
+            @click="collectionStore.setReadStatus(ReadStatus.IN_PROGRESS)"
+          />
+          <ABtn
+            v-if="!collectionStore.selectedItems.some(i => collectionStore.unreadBooksIds.includes(i))"
+            icon="i-mdi:close-circle-outline" text-white icon-only variant="text"
+            @click="collectionStore.setReadStatus(ReadStatus.UNREAD)"
+          />
+          <ABtn
+            icon="i-mdi:trash-can-outline" text-white icon-only variant="text"
+            @click="removeFromCollection"
           />
         </div>
-        <ABtn
-          icon="i-mdi:trash-can-outline" text-white icon-only variant="text"
-          @click="removeFromCollection"
-        />
       </div>
     </header>
   </div>

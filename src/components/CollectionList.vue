@@ -23,7 +23,7 @@ const authors = computed(() => filter.authors(collectionStore.collections[props.
         :subtitle="book.author.fullName"
         icon="book"
         :selected="collectionStore.selectedItems.includes(book.id)"
-        :is-read="collectionStore.activeCollectionName === 'default' ? book.isRead : undefined"
+        :read-status="collectionStore.activeCollectionName === 'default' ? book.readStatus : undefined"
         @select="collectionStore.selectItem(book.id)"
       />
     </TransitionGroup>
@@ -36,7 +36,6 @@ const authors = computed(() => filter.authors(collectionStore.collections[props.
         :key="author.id"
         :title="author.fullName"
         :subtitle="`Počet knih: ${author.numOfBooks}`"
-        :is-read="undefined"
         icon="author"
         :selected="collectionStore.selectedItems.includes(author.id)"
         @click="filter.selectAuthor(author)"
