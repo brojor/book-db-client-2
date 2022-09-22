@@ -48,21 +48,25 @@ const removeFromCollection = () => {
         />
         <span ml6>{{ collectionStore.selectedItemsCount }}</span>
       </div>
-      <div>
+      <div v-if="collectionStore.selectedItems.length" flex>
         <ABtn
           v-if="collectionStore.activeCollectionName === 'wishlist'"
           icon="i-mdi:home-import-outline" text-white icon-only variant="text"
           @click="collectionStore.moveSelectedToCollection('default')"
         />
 
-        <ABtn
-          icon="i-mdi:checkbox-marked-outline" text-white icon-only variant="text"
-          @click="collectionStore.setIsRead(true)"
-        />
-        <ABtn
-          icon="i-mdi:checkbox-blank-outline" text-white icon-only variant="text"
-          @click="collectionStore.setIsRead(false)"
-        />
+        <div v-if="collectionStore.activeCollectionName === 'default'">
+          <ABtn
+            v-if="!collectionStore.selectedItems.some(i => collectionStore.readBooksIds.includes(i))"
+            icon="i-mdi:checkbox-marked-outline" text-white icon-only variant="text"
+            @click="collectionStore.setIsRead(true)"
+          />
+          <ABtn
+            v-if="collectionStore.selectedItems.every(i => collectionStore.readBooksIds.includes(i))"
+            icon="i-mdi:checkbox-blank-outline" text-white icon-only variant="text"
+            @click="collectionStore.setIsRead(false)"
+          />
+        </div>
         <ABtn
           icon="i-mdi:trash-can-outline" text-white icon-only variant="text"
           @click="removeFromCollection"

@@ -84,5 +84,7 @@ export const useCollectionStore = defineStore({
       Object.keys(state.collections) as (keyof typeof state.collections)[],
     activeCollectionIndex: state => collectionList.findIndex(({ id }) => id === state.activeCollectionName),
     selectedItemsCount: state => state.selectedItems.length,
+    readBooksIds: state => state.collections.default.books.filter(book => book.isRead).map(book => book.id),
+
   },
 })
