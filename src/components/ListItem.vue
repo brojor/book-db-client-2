@@ -30,7 +30,8 @@ const touchHandler = useLongPress(el, () => {
       <div flex justify-between>
         <p text-xs>
           {{ subtitle }}
-        </p><div i-mdi:checkbox-marked-outline :class="isRead ? 'text-[#0BB842]' : 'text-[#404040]' " />
+        </p>
+        <div v-if="isRead !== undefined" i-mdi:checkbox-marked-outline :class="isRead ? 'text-[#0BB842]' : 'text-[#404040]' " />
       </div>
     </div>
   </div>
