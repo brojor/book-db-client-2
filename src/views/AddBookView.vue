@@ -18,9 +18,7 @@ const isLoading = ref(false)
 const showWarning = ref(false)
 
 const fetchInfo = async (isbn: string) => {
-  const { data } = await apiService.get(
-    `http://192.168.1.133:3333/isbn/${isbn}`,
-  )
+  const { data } = await apiService.get(`/isbn/${isbn}`)
   bookToAdd.value = {
     ...bookToAdd.value,
     ...data,
