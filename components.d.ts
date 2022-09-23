@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     AAlert: typeof import('anu-vue')['AAlert']
     ABtn: typeof import('anu-vue')['ABtn']
     AddBook: typeof import('./src/components/icons/AddBook.vue')['default']
+    AddBookButton: typeof import('./src/components/AddBookButton.vue')['default']
     AddBookForm: typeof import('./src/components/AddBookForm.vue')['default']
     ADialog: typeof import('anu-vue')['ADialog']
     ADrawer: typeof import('anu-vue')['ADrawer']

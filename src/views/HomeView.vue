@@ -29,13 +29,7 @@ onMounted(() => {
       <CollectionList :collection-type="collection.id" />
     </SwiperSlide>
   </Swiper>
-  <RouterLink
-    to="/add-book" flex items-center justify-center
-    absolute bottom-16 right-6 z-2 h-14 w-14
-    bg-teal-700 text-white rounded-full
-  >
-    <AddBook text-3xl />
-  </RouterLink>
+  <AddBookButton />
   <MainFooter />
   <MainDrawer v-model="isDrawerShown" />
 </template>
