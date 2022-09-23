@@ -61,9 +61,7 @@ const collection = useCollectionStore()
         @click="filter.selectedAuthor = null"
       >
         <PersonIcon mr2 text-xl />
-        <span>{{
-          `${filter.selectedAuthor.firstName}${filter.selectedAuthor.lastName} (${filter.numOfBooks})`
-        }}</span>
+        <span>{{ filter.selectedAuthor.fullName }}</span>
         <span ml2 text-2xl font-light> &times;</span>
       </button>
     </nav>
