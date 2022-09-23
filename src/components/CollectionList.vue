@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import type { CollectionType } from '@/types'
+import type { CollectionId } from '@/stores/collection'
 
 const props = defineProps<{
-  collectionType: CollectionType
+  collectionType: CollectionId
 }>()
 
 const collectionStore = useCollectionStore()
 const filter = useFilter()
 
-const books = computed(() => filter.books(collectionStore.collections[props.collectionType].books))
-const authors = computed(() => filter.authors(collectionStore.collections[props.collectionType].authors))
+const books = computed(() => filter.books(collectionStore[props.collectionType].books))
+const authors = computed(() => filter.authors(collectionStore[props.collectionType].authors))
 </script>
 
 <template>

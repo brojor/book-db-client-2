@@ -1,4 +1,4 @@
-const collectionTypes = ['default', 'wishlist'] as const
+export const collectionTypes = ['default', 'wishlist'] as const
 
 export type CollectionType = typeof collectionTypes[number]
 

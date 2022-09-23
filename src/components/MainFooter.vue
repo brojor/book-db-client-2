@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const filter = useFilter()
 
-const collection = useCollectionStore()
+const collectionStore = useCollectionStore()
 </script>
 
 <template>
@@ -25,7 +25,7 @@ const collection = useCollectionStore()
         @click="filter.displayedSubject = 'books'"
       >
         <BookIcon mr2 text-xl />
-        <span>Knihy ({{ collection.activeCollection.books.length }})</span>
+        <span>Knihy ({{ collectionStore[collectionStore.activeCollectionName].books.length }})</span>
       </button>
       <button
         :class="{ 'text-primary': filter.displayedSubject === 'authors' }"
@@ -42,7 +42,7 @@ const collection = useCollectionStore()
         @click="filter.displayedSubject = 'authors'"
       >
         <PersonIcon mr2 text-xl />
-        <span>Autoři ({{ collection.activeCollection.authors.length }})</span>
+        <span>Autoři ({{ collectionStore[collectionStore.activeCollectionName].authors.length }})</span>
       </button>
     </nav>
     <nav v-else flex justify-center>

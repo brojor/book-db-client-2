@@ -1,22 +1,28 @@
 import { defineStore } from 'pinia'
 import apiService from '@/services/api'
 import type {
+  AuthorWithCount,
+  Book,
   BookToAdd,
   Collection,
   CollectionType,
 } from '@/types'
 import {
   ReadStatus,
+  collectionTypes,
 } from '@/types'
 
 export const collectionList = [
   { id: 'default', title: 'Knihovna' },
   { id: 'wishlist', title: 'Seznam přání' },
+  { id: 'readBooks', title: 'Přečtené' },
+  { id: 'readInProgres', title: 'Čtu' },
+  { id: 'unreadBooks', title: 'Nepřečtené' },
 ] as const
 
 export type CollectionList = typeof collectionList
 
-type CollectionId = typeof collectionList[number]['id']
+export type CollectionId = typeof collectionList[number]['id']
 
 const emptyCollection = {
   books: [],
@@ -32,7 +38,7 @@ export const useCollectionStore = defineStore({
   id: 'collection',
   state: () => ({
     collections,
-    activeCollectionName: 'default' as CollectionType,
+    activeCollectionName: 'default' as CollectionId,
     selectedItems: [] as number[],
   }),
   actions: {
@@ -67,7 +73,7 @@ export const useCollectionStore = defineStore({
       this.removeSelectedItems()
     },
     async fetchCollections() {
-      await Promise.all(collectionList.map(({ id }) => this.getCollection(id)))
+      await Promise.all(collectionTypes.map(collectionName => this.getCollection(collectionName)))
     },
     selectItem(bookId: number) {
       if (this.selectedItems.includes(bookId))
@@ -87,8 +93,35 @@ export const useCollectionStore = defineStore({
       Object.keys(state.collections) as (keyof typeof state.collections)[],
     activeCollectionIndex: state => collectionList.findIndex(({ id }) => id === state.activeCollectionName),
     selectedItemsCount: state => state.selectedItems.length,
+    // ----------------------------------
     readBooksIds: state => state.collections.default.books.filter(book => book.readStatus === ReadStatus.READ).map(book => book.id),
     readInProgresIds: state => state.collections.default.books.filter(book => book.readStatus === ReadStatus.IN_PROGRESS).map(book => book.id),
     unreadBooksIds: state => state.collections.default.books.filter(book => book.readStatus === ReadStatus.UNREAD).map(book => book.id),
+    // ----------------------------------
+    default: state => state.collections.default,
+    wishlist: state => state.collections.wishlist,
+    readBooks: (state) => {
+      const books = state.collections.default.books.filter(book => book.readStatus === ReadStatus.READ)
+      const authors = books.reduce(sumBooksFromAuthor, [])
+      return { books, authors }
+    },
+    readInProgres: (state) => {
+      const books = state.collections.default.books.filter(book => book.readStatus === ReadStatus.IN_PROGRESS)
+      const authors = books.reduce(sumBooksFromAuthor, [])
+      return { books, authors }
+    },
+    unreadBooks: (state) => {
+      const books = state.collections.default.books.filter(book => book.readStatus === ReadStatus.UNREAD)
+      const authors = books.reduce(sumBooksFromAuthor, [])
+      return { books, authors }
+    },
   },
 })
+
+function sumBooksFromAuthor(arr: AuthorWithCount[], book: Book) {
+  const author = arr.find(author => author.id === book.author.id)
+  if (author)
+    author.numOfBooks += 1
+  else arr.push({ ...book.author, numOfBooks: 1 })
+  return arr
+}
