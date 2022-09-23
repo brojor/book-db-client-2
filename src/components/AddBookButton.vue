@@ -8,8 +8,10 @@ const collection = computed(() =>
 <template>
   <RouterLink
     to="/add-book" flex items-center justify-center absolute bottom-16 right-6 z-2 h-14 w-14 text-white rounded-full
-    :class="collection === 'default' ? 'bg-teal-500:60' : 'bg-pink-500:60' "
+    :style="{
+      'background-color': 'rgba(var(--c-accent), 0.4)',
+    }"
   >
-    <div :class="collection === 'default' ? 'i-bx:book-add' : 'i-bx:book-heart'" text-3xl />
+    <div :class="collection !== 'wishlist' ? 'i-bx:book-add' : 'i-bx:book-heart'" text-3xl />
   </RouterLink>
 </template>

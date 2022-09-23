@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <div flex rounded m1 :class="{ 'bg-accent text-white': isActive }" px1>
+  <div flex rounded m1 :class="{ isActive }" px1>
     <div flex items-center pl-2>
       <div :class="icon" />
     </div>
@@ -16,3 +16,10 @@ defineProps<{
     </div>
   </div>
 </template>
+
+<style scoped>
+  .isActive {
+    background-color: rgba(var(--c-accent), 0.4);
+    color: white;
+  }
+</style>

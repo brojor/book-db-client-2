@@ -55,7 +55,7 @@ const touchHandler = useLongPress(el, () => {
   transition-delay: 0.1s;
 }
 .selected {
-  background: #14b8a534;
+  background: rgba(var(--c-accent), 0.1);
 }
 .pressed > .press-marker {
   width: 100%;
