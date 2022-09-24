@@ -24,6 +24,11 @@ const touchHandler = useLongPress(el, () => {
   >
     <div class="press-marker" />
     <ItemAvatar :icon="icon" @click.stop="$emit('select')" />
+    <small absolute bottom-0 left-12>
+      <div v-if="readStatus === ReadStatus.READ" i-mdi:checkbox-marked-circle-outline text-white:70 />
+      <div v-if="readStatus === ReadStatus.IN_PROGRESS" i-mdi:progress-clock text-white:70 />
+      <div v-if="readStatus === ReadStatus.UNREAD" i-mdi:close-circle-outline text-white:70 />
+    </small>
     <div grow>
       <h3 text-sm font-bold>
         {{ title }}
@@ -32,11 +37,6 @@ const touchHandler = useLongPress(el, () => {
         <p text-xs leading-5>
           {{ subtitle }}
         </p>
-        <div>
-          <div v-if="readStatus === ReadStatus.READ" i-mdi:checkbox-marked-circle-outline text-green:90 />
-          <div v-if="readStatus === ReadStatus.IN_PROGRESS" i-mdi:progress-clock text-yellow:90 />
-          <div v-if="readStatus === ReadStatus.UNREAD" i-mdi:close-circle-outline text-red:50 />
-        </div>
       </div>
     </div>
   </div>
