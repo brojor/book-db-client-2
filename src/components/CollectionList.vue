@@ -8,8 +8,8 @@ const props = defineProps<{
 const collectionStore = useCollectionStore()
 const filter = useFilter()
 
-const books = computed(() => filter.books(collectionStore[props.collectionType].books))
-const authors = computed(() => filter.authors(collectionStore[props.collectionType].authors))
+const books = computed(() => filter.books(collectionStore.collections[props.collectionType].books))
+const authors = computed(() => filter.authors(collectionStore.collections[props.collectionType].authors))
 </script>
 
 <template>
@@ -23,7 +23,7 @@ const authors = computed(() => filter.authors(collectionStore[props.collectionTy
         :subtitle="book.author.fullName"
         icon="book"
         :selected="collectionStore.selectedItems.includes(book.id)"
-        :read-status="collectionStore.activeCollectionName === 'default' ? book.readStatus : undefined"
+        :book-state="collectionStore.activeCollectionName === 'library' ? book.bookState : undefined"
         @select="collectionStore.selectItem(book.id)"
       />
     </TransitionGroup>

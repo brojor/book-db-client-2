@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ReadStatus } from '@/types'
+import { BookState } from '@/types'
 const props = defineProps<{
   title: string
   subtitle: string | number
   icon: 'author' | 'book'
   selected: boolean
-  readStatus?: ReadStatus
+  bookState?: BookState
 }>()
 
 const emit = defineEmits(['select'])
@@ -25,9 +25,9 @@ const touchHandler = useLongPress(el, () => {
     <div class="press-marker" />
     <ItemAvatar :icon="icon" @click.stop="$emit('select')" />
     <small absolute bottom-0 left-12>
-      <div v-if="readStatus === ReadStatus.READ" i-mdi:checkbox-marked-circle-outline text-white:70 />
-      <div v-if="readStatus === ReadStatus.IN_PROGRESS" i-mdi:progress-clock text-white:70 />
-      <div v-if="readStatus === ReadStatus.UNREAD" i-mdi:close-circle-outline text-white:70 />
+      <div v-if="bookState === BookState.read" i-mdi:checkbox-marked-circle-outline text-white:70 />
+      <div v-if="bookState === BookState.reading" i-mdi:progress-clock text-white:70 />
+      <div v-if="bookState === BookState.unread" i-mdi:close-circle-outline text-white:70 />
     </small>
     <div grow>
       <h3 text-sm font-bold>

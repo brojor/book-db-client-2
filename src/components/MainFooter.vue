@@ -25,7 +25,7 @@ const collectionStore = useCollectionStore()
         @click="filter.displayedSubject = 'books'"
       >
         <BookIcon mr2 text-xl />
-        <span>Knihy ({{ collectionStore[collectionStore.activeCollectionName].books.length }})</span>
+        <span>Knihy ({{ collectionStore.activeCollection.books.length }})</span>
       </button>
       <button
         :class="{ isActive: filter.displayedSubject === 'authors' }"
@@ -42,7 +42,7 @@ const collectionStore = useCollectionStore()
         @click="filter.displayedSubject = 'authors'"
       >
         <PersonIcon mr2 text-xl />
-        <span>Autoři ({{ collectionStore[collectionStore.activeCollectionName].authors.length }})</span>
+        <span>Autoři ({{ collectionStore.activeCollection.authors.length }})</span>
       </button>
     </nav>
     <nav v-else flex justify-center>
