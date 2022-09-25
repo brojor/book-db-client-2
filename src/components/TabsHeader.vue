@@ -8,12 +8,27 @@ defineProps<{
 }>()
 const collectionStore = useCollectionStore()
 
-const icons = [
-  'i-mdi:home',
-  'i-mdi:gift-outline',
-  'i-mdi:checkbox-marked-circle-outline',
-  'i-mdi:progress-clock',
-  'i-mdi:close-circle-outline',
+const items = [
+  {
+    icon: 'i-mdi:home',
+    color: '139,92,246',
+  },
+  {
+    icon: 'i-mdi:gift-outline',
+    color: '244,114,182',
+  },
+  {
+    icon: 'i-mdi:checkbox-marked-circle-outline',
+    color: '16,185,129',
+  },
+  {
+    icon: 'i-mdi:progress-clock',
+    color: '234,179,8',
+  },
+  {
+    icon: 'i-mdi:close-circle-outline',
+    color: '239,68,68',
+  },
 ] as const
 </script>
 
@@ -25,7 +40,8 @@ const icons = [
       :title="collectionList[index].title"
       :index="index"
       :is-active="collection.id === collectionStore.activeCollectionName"
-      :icon="icons[index]"
+      :icon="items[index].icon"
+      :color="items[index].color"
       @click="swiperInstance?.slideTo(index)"
     />
   </div>
