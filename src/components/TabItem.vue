@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <div flex rounded m1 :class="{ isActive }" px1 :style="{ backgroundColor: `rgba(${color}, 0.1)` }">
+  <div flex rounded m1 :class="{ isActive }" px1 :style="{ backgroundColor: `rgba(${color}, 0.1)` }" transition duration-500>
     <div flex items-center p-2>
       <div :class="icon" />
     </div>
