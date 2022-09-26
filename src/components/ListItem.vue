@@ -6,6 +6,8 @@ const props = defineProps<{
   icon: 'author' | 'book'
   selected: boolean
   bookState?: BookState
+  rightTopText?: string
+  rightBottomText?: string
 }>()
 
 const emit = defineEmits(['select'])
@@ -30,12 +32,20 @@ const touchHandler = useLongPress(el, () => {
       <div v-if="bookState === BookState.unread" i-mdi:close-circle-outline text-white:70 />
     </small>
     <div grow>
-      <h3 text-sm font-bold>
-        {{ title }}
-      </h3>
+      <div flex justify-between>
+        <h3 text-sm font-bold>
+          {{ title }}
+        </h3>
+        <h3 text-sm font-bold>
+          {{ rightTopText }}
+        </h3>
+      </div>
       <div flex justify-between>
         <p text-xs leading-5>
           {{ subtitle }}
+        </p>
+        <p text-xs>
+          {{ rightBottomText }}
         </p>
       </div>
     </div>

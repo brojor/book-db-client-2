@@ -17,6 +17,8 @@ export interface Book {
     id: number
     fullName: string
   }
+  pageCount: number
+  publishedDate: string
 }
 
 export interface AuthorWithCount {
