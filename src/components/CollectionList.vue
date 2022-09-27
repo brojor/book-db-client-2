@@ -26,6 +26,7 @@ const authors = computed(() => filter.authors(collectionStore.collections[props.
         :book-state="collectionStore.activeCollectionName === 'library' ? book.bookState : undefined"
         :right-top-text="book.publishedDate"
         :right-bottom-text="`${book.pageCount} str.`"
+        @click="$router.push({ name: 'book', params: { id: book.id } })"
         @select="collectionStore.selectItem(book.id)"
       />
     </TransitionGroup>
