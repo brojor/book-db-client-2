@@ -14,8 +14,8 @@ const bookData = ref<{
   language?: string
   publisher?: string
 }>({
-  title: '',
-  author: '',
+  title: route.query.title as string,
+  author: route.query.author as string,
 })
 
 const translation = {
@@ -27,7 +27,7 @@ const translation = {
 }
 const fetchData = async () => {
   const { data } = await apiService.get(`books/${bookId}`)
-  bookData.value = data
+  bookData.value = { ...data, author: bookData.value.author }
 }
 fetchData()
 const details = computed(() => {
