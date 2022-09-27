@@ -46,6 +46,13 @@ const details = computed(() => {
 },
 )
 const widths = [[20, 40], [30, 10], [25, 30], [30, 40], [20, 40]]
+const bookStates = [
+  { label: 'Seznam přání', value: 'wishlist', icon: 'i-mdi:gift-outline', color: '#ec4899' },
+  { label: 'Přečtené', value: 'read', icon: 'i-mdi:checkbox-marked-circle-outline', color: '#10b981' },
+  { label: 'Rozečtené', value: 'reading', icon: 'i-mdi:progress-clock', color: '#eab308' },
+  { label: 'Nepřečtené', value: 'unread', icon: 'i-mdi:close-circle-outline', color: '#ef4444' },
+]
+const selected = ref(bookStates[0])
 </script>
 
 <template>
@@ -62,6 +69,7 @@ const widths = [[20, 40], [30, 10], [25, 30], [30, 40], [20, 40]]
     <p m2 text-high-emphasis>
       {{ bookData.author }}
     </p>
+
     <div text-left grow mt-10>
       <div v-if="isLoading" bg-base py2 rounded-lg>
         <div v-for="(width, i) in widths" :key="i" text-high-emphasis font-bold m-4 flex items-center gap4>
@@ -74,6 +82,24 @@ const widths = [[20, 40], [30, 10], [25, 30], [30, 40], [20, 40]]
           {{ translation[key] }}:
           <span font-normal text-medium-emphasis>{{ value }}</span>
         </div>
+      </div>
+      <div mt4>
+        <ASelect
+          v-slot="{ attrs }"
+          v-model="selected"
+          :prepend-inner-icon="selected.icon"
+        >
+          <li
+            v-for="bookState in bookStates"
+            v-bind="attrs"
+            :key="bookState"
+            class="flex items-center gap-x-3"
+            @click="selected = bookState"
+          >
+            <div :class="bookState.icon" :style="{ color: bookState.color }" />
+            <span>{{ bookState.label }}</span>
+          </li>
+        </ASelect>
       </div>
     </div>
     <ABtn my1 @click="$router.push('/')">
