@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import apiService from '@/services/api'
+import { BookState } from '@/types'
 
 const route = useRoute()
+const collectionStore = useCollectionStore()
 const bookId = route.params.id
+
+const state = route.query.state as unknown as BookState
+collectionStore.activeCollectionName = BookState[state] as keyof typeof BookState
 
 const bookData = ref<{
   title: string

@@ -29,7 +29,7 @@ const authors = computed(() => filter.authors(collectionStore.collections[props.
         @click="$router.push({
           name: 'book',
           params: { id: book.id },
-          query: { title: book.title, author: book.author.fullName },
+          query: { title: book.title, author: book.author.fullName, state: book.bookState },
         })"
         @select="collectionStore.selectItem(book.id)"
       />
