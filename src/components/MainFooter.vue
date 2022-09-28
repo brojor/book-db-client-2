@@ -11,7 +11,7 @@ const collectionStore = useCollectionStore()
   >
     <nav v-if="!filter.selectedAuthor" flex justify-around>
       <button
-        :class="{ isActive: filter.displayedSubject === 'books' }"
+        :class="{ 'text-primary': filter.displayedSubject === 'books' }"
         bg-inherit
         m2
         py1
@@ -28,7 +28,7 @@ const collectionStore = useCollectionStore()
         <span>Knihy ({{ collectionStore.activeCollection.books.length }})</span>
       </button>
       <button
-        :class="{ isActive: filter.displayedSubject === 'authors' }"
+        :class="{ 'text-primary': filter.displayedSubject === 'authors' }"
         bg-inherit
         m2
         py1
@@ -67,9 +67,3 @@ const collectionStore = useCollectionStore()
     </nav>
   </footer>
 </template>
-
-<style scoped>
-  .isActive {
-    color: rgb(var(--c-accent));
-  }
-</style>

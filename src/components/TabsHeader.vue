@@ -11,23 +11,23 @@ const collectionStore = useCollectionStore()
 const items = [
   {
     icon: 'i-mdi:home',
-    color: '139,92,246',
+    name: 'library',
   },
   {
     icon: 'i-mdi:gift-outline',
-    color: '244,114,182',
+    name: 'wishlist',
   },
   {
     icon: 'i-mdi:checkbox-marked-circle-outline',
-    color: '16,185,129',
+    name: 'read',
   },
   {
     icon: 'i-mdi:progress-clock',
-    color: '234,179,8',
+    name: 'reading',
   },
   {
     icon: 'i-mdi:close-circle-outline',
-    color: '239,68,68',
+    name: 'unread',
   },
 ] as const
 </script>
@@ -41,7 +41,7 @@ const items = [
       :index="index"
       :is-active="collection.id === collectionStore.activeCollectionName"
       :icon="items[index].icon"
-      :color="items[index].color"
+      :name="items[index].name"
       @click="swiperInstance?.slideTo(index)"
     />
   </div>
