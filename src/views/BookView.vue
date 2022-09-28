@@ -4,7 +4,7 @@ import { BookState } from '@/types'
 
 const route = useRoute()
 const collectionStore = useCollectionStore()
-const bookId = route.params.id
+const bookId = Number(route.params.id)
 
 const state = route.query.state as unknown as BookState
 collectionStore.activeCollectionName = BookState[state] as keyof typeof BookState
@@ -62,7 +62,10 @@ const details = computed(() => {
 
     <div text-left grow mt-10>
       <BookDetails :book-details="details" :is-loading="isLoading" />
-      <SelectCollection mt4 :current-state="state - 1" />
+      <SelectCollection
+        mt4 :current-state="state - 1"
+        @update:state="collectionStore.setBookState(BookState[$event], bookId)"
+      />
     </div>
     <ABtn my1 @click="$router.push('/')">
       Zpět

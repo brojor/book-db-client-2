@@ -1,7 +1,14 @@
 <script setup lang="ts">
+import type { BookState } from '@/types'
+
 const props = defineProps<{
   currentState: number
 }>()
+
+const emit = defineEmits({
+  'update:state': (state: keyof typeof BookState) => true,
+})
+
 const bookStates = [
   { label: 'Seznam přání', value: 'wishlist', icon: 'i-mdi:gift-outline' },
   { label: 'Nepřečtené', value: 'unread', icon: 'i-mdi:close-circle-outline' },
@@ -11,8 +18,9 @@ const bookStates = [
 const selected = ref<typeof bookStates[number]>(bookStates[props.currentState])
 
 const collectionStore = useCollectionStore()
-watchEffect(() => {
-  collectionStore.activeCollectionName = selected.value.value
+watch(selected, (value) => {
+  collectionStore.activeCollectionName = value.value
+  emit('update:state', value.value)
 })
 </script>
 
@@ -36,7 +44,3 @@ watchEffect(() => {
     </ASelect>
   </div>
 </template>
-
-<style scoped>
-
-</style>

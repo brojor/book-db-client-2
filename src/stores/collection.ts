@@ -55,9 +55,9 @@ export const useCollectionStore = defineStore({
       }
       this.removeSelectedItems()
     },
-    async setBookState(targetState: BookState) {
+    async setBookState(targetState: BookState, bookId: number) {
       await apiService.put(`collection/${BookState[targetState]}`, {
-        bookIds: this.selectedItems,
+        bookIds: bookId ? [bookId] : this.selectedItems,
       })
       this.fetchCollections()
       this.removeSelectedItems()
