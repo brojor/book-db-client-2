@@ -19,6 +19,7 @@ declare module '@vue/runtime-core' {
     ASelect: typeof import('anu-vue')['ASelect']
     ASwitch: typeof import('anu-vue')['ASwitch']
     BarCodeIcon: typeof import('./src/components/icons/BarCodeIcon.vue')['default']
+    BookDetails: typeof import('./src/components/BookDetails.vue')['default']
     BookIcon: typeof import('./src/components/icons/BookIcon.vue')['default']
     CollectionList: typeof import('./src/components/CollectionList.vue')['default']
     DividerWithText: typeof import('./src/components/DividerWithText.vue')['default']
