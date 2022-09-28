@@ -1,11 +1,19 @@
 <script setup lang="ts">
+const props = defineProps<{
+  currentState: number
+}>()
 const bookStates = [
   { label: 'Seznam přání', value: 'wishlist', icon: 'i-mdi:gift-outline' },
-  { label: 'Přečtené', value: 'read', icon: 'i-mdi:checkbox-marked-circle-outline' },
-  { label: 'Rozečtené', value: 'reading', icon: 'i-mdi:progress-clock' },
   { label: 'Nepřečtené', value: 'unread', icon: 'i-mdi:close-circle-outline' },
-]
-const selected = ref(bookStates[0])
+  { label: 'Rozečtené', value: 'reading', icon: 'i-mdi:progress-clock' },
+  { label: 'Přečtené', value: 'read', icon: 'i-mdi:checkbox-marked-circle-outline' },
+] as const
+const selected = ref<typeof bookStates[number]>(bookStates[props.currentState])
+
+const collectionStore = useCollectionStore()
+watchEffect(() => {
+  collectionStore.activeCollectionName = selected.value.value
+})
 </script>
 
 <template>

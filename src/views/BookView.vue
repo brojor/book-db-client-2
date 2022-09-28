@@ -62,7 +62,7 @@ const details = computed(() => {
 
     <div text-left grow mt-10>
       <BookDetails :book-details="details" :is-loading="isLoading" />
-      <SelectCollection mt4 />
+      <SelectCollection mt4 :current-state="state - 1" />
     </div>
     <ABtn my1 @click="$router.push('/')">
       Zpět
