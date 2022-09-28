@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import apiService from '@/services/api'
 import type { BookToAdd, Collection } from '@/types'
-
+import { BookState } from '@/types'
 export const collectionList = [
   { id: 'library', title: 'Knihovna' },
   { id: 'wishlist', title: 'Seznam přání' },
@@ -13,7 +13,6 @@ export const collectionList = [
 export type CollectionList = typeof collectionList
 
 export type CollectionId = typeof collectionList[number]['id']
-type BookState = 'wishlist' | 'read' | 'reading' | 'unread'
 
 const emptyCollection = {
   books: [],
@@ -57,7 +56,7 @@ export const useCollectionStore = defineStore({
       this.removeSelectedItems()
     },
     async setBookState(targetState: BookState) {
-      await apiService.put(`collection/${targetState}`, {
+      await apiService.put(`collection/${BookState[targetState]}`, {
         bookIds: this.selectedItems,
       })
       this.fetchCollections()

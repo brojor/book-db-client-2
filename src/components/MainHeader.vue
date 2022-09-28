@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { BookState } from '@/types'
+
 const emit = defineEmits(['showDrawer'])
 
 const filter = useFilter()
@@ -52,7 +54,7 @@ const removeFromCollection = () => {
         <ABtn
           v-if="collectionStore.activeCollectionName === 'wishlist'"
           icon="i-mdi:home-import-outline" text-white icon-only variant="text"
-          @click="collectionStore.setBookState('unread')"
+          @click="collectionStore.setBookState(BookState.unread)"
         />
 
         <div flex gap-1>
@@ -61,19 +63,19 @@ const removeFromCollection = () => {
               v-if="!collectionStore.selectedItems.some(id => collectionStore.collections.read.books.find(
                 book => book.id === id))"
               icon="i-mdi:checkbox-marked-circle-outline" text-white icon-only variant="text"
-              @click="collectionStore.setBookState('read')"
+              @click="collectionStore.setBookState(BookState.read)"
             />
             <ABtn
               v-if="!collectionStore.selectedItems.some(id => collectionStore.collections.reading.books.find(
                 book => book.id === id))"
               icon="i-mdi:progress-clock" text-white icon-only variant="text"
-              @click="collectionStore.setBookState('reading')"
+              @click="collectionStore.setBookState(BookState.reading)"
             />
             <ABtn
               v-if="!collectionStore.selectedItems.some(id => collectionStore.collections.unread.books.find(
                 book => book.id === id))"
               icon="i-mdi:close-circle-outline" text-white icon-only variant="text"
-              @click="collectionStore.setBookState('unread')"
+              @click="collectionStore.setBookState(BookState.unread)"
             />
           </template>
           <ABtn
