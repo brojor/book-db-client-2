@@ -37,6 +37,7 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     ScannerUI: typeof import('./src/components/ScannerUI.vue')['default']
     SearchIcon: typeof import('./src/components/icons/SearchIcon.vue')['default']
+    SelectCollection: typeof import('./src/components/SelectCollection.vue')['default']
     SpinnerIcon: typeof import('./src/components/icons/SpinnerIcon.vue')['default']
     TabItem: typeof import('./src/components/TabItem.vue')['default']
     TabsHeader: typeof import('./src/components/TabsHeader.vue')['default']

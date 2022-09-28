@@ -38,14 +38,6 @@ const details = computed(() => {
   return rest
 },
 )
-
-const bookStates = [
-  { label: 'Seznam přání', value: 'wishlist', icon: 'i-mdi:gift-outline', color: '#ec4899' },
-  { label: 'Přečtené', value: 'read', icon: 'i-mdi:checkbox-marked-circle-outline', color: '#10b981' },
-  { label: 'Rozečtené', value: 'reading', icon: 'i-mdi:progress-clock', color: '#eab308' },
-  { label: 'Nepřečtené', value: 'unread', icon: 'i-mdi:close-circle-outline', color: '#ef4444' },
-]
-const selected = ref(bookStates[0])
 </script>
 
 <template>
@@ -65,24 +57,7 @@ const selected = ref(bookStates[0])
 
     <div text-left grow mt-10>
       <BookDetails :book-details="details" :is-loading="isLoading" />
-      <div mt4>
-        <ASelect
-          v-slot="{ attrs }"
-          v-model="selected"
-          :prepend-inner-icon="selected.icon"
-        >
-          <li
-            v-for="bookState in bookStates"
-            v-bind="attrs"
-            :key="bookState"
-            class="flex items-center gap-x-3"
-            @click="selected = bookState"
-          >
-            <div :class="bookState.icon" :style="{ color: bookState.color }" />
-            <span>{{ bookState.label }}</span>
-          </li>
-        </ASelect>
-      </div>
+      <SelectCollection mt4 />
     </div>
     <ABtn my1 @click="$router.push('/')">
       Zpět
