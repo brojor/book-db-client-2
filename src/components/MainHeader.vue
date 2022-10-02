@@ -25,6 +25,8 @@ const buttonHandler = (e: Event) => {
 const removeFromCollection = () => {
   collectionStore.deleteSelectedFromCollection()
 }
+
+const statesToSet = collectionList.slice(2)
 </script>
 
 <template>
@@ -56,27 +58,16 @@ const removeFromCollection = () => {
           icon="i-mdi:home-import-outline" text-white icon-only variant="text"
           @click="collectionStore.setBookState(BookState.unread)"
         />
-
         <div flex gap-1>
           <template v-if="collectionStore.activeCollectionName !== 'wishlist'">
-            <ABtn
-              v-if="!collectionStore.selectedItems.some(id => collectionStore.collections.read.books.find(
-                book => book.id === id))"
-              icon="i-mdi:checkbox-marked-circle-outline" text-white icon-only variant="text"
-              @click="collectionStore.setBookState(BookState.read)"
-            />
-            <ABtn
-              v-if="!collectionStore.selectedItems.some(id => collectionStore.collections.reading.books.find(
-                book => book.id === id))"
-              icon="i-mdi:progress-clock" text-white icon-only variant="text"
-              @click="collectionStore.setBookState(BookState.reading)"
-            />
-            <ABtn
-              v-if="!collectionStore.selectedItems.some(id => collectionStore.collections.unread.books.find(
-                book => book.id === id))"
-              icon="i-mdi:close-circle-outline" text-white icon-only variant="text"
-              @click="collectionStore.setBookState(BookState.unread)"
-            />
+            <template v-for="state in statesToSet" :key="state.id">
+              <ABtn
+                v-if="!collectionStore.selectedItems.some(id => collectionStore.collections[state.id].books.find(
+                  book => book.id === id))"
+                :icon="`i-${state.icon}`" text-white icon-only variant="text"
+                @click="collectionStore.setBookState(BookState[state.id as keyof typeof BookState])"
+              />
+            </template>
           </template>
           <ABtn
             icon="i-mdi:trash-can-outline" text-white icon-only variant="text"
