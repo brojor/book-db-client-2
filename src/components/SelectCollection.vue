@@ -5,16 +5,13 @@ const props = defineProps<{
   currentState: number
 }>()
 
-const emit = defineEmits({
-  'update:state': (state: keyof typeof BookState) => true,
-})
+const emit = defineEmits<{ (e: 'update:state', state: keyof typeof BookState): void }>()
 
-const bookStates = [
-  { label: 'Seznam přání', value: 'wishlist', icon: 'i-mdi:gift-outline' },
-  { label: 'Nepřečtené', value: 'unread', icon: 'i-mdi:close-circle-outline' },
-  { label: 'Rozečtené', value: 'reading', icon: 'i-mdi:progress-clock' },
-  { label: 'Přečtené', value: 'read', icon: 'i-mdi:checkbox-marked-circle-outline' },
-] as const
+const bookStates = collectionList.slice(1).map(({ id: value, title: label, icon }) => ({ value, label, icon })) as {
+  value: keyof typeof BookState
+  label: string
+  icon: string
+}[]
 const selected = ref<typeof bookStates[number]>(bookStates[props.currentState])
 
 const collectionStore = useCollectionStore()
@@ -26,11 +23,7 @@ watch(selected, (value) => {
 
 <template>
   <div>
-    <ASelect
-      v-slot="{ attrs }"
-      v-model="selected"
-      :prepend-inner-icon="selected.icon"
-    >
+    <ASelect v-slot="{ attrs }" v-model="selected" :prepend-inner-icon="`i-${selected.icon}`">
       <li
         v-for="bookState in bookStates"
         v-bind="attrs"
@@ -38,7 +31,7 @@ watch(selected, (value) => {
         class="flex items-center gap-x-3"
         @click="selected = bookState"
       >
-        <div :class="bookState.icon" :style="{ color: `hsl(var(--c-${bookState.value}))` }" />
+        <i :class="`i-${bookState.icon}`" :style="{ color: `hsl(var(--c-${bookState.value}))` }" />
         <span>{{ bookState.label }}</span>
       </li>
     </ASelect>
