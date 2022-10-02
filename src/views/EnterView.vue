@@ -19,7 +19,7 @@ const changeFormType = () => {
     <EnterForm :form-type="formType" />
     <p mt12>
       {{ formType === 'register' ? 'Máte již účet?' : 'Nemáte účet? ' }}
-      <a text-teal-500 tabIndex="0" @click="changeFormType">{{
+      <a text-primary tabIndex="0" @click="changeFormType">{{
         formType === 'register' ? 'Přihlašte se' : 'Zaregistrujte se'
       }}</a>
     </p>
