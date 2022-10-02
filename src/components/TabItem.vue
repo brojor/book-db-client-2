@@ -13,7 +13,7 @@ defineProps<{
     :style="{ backgroundColor: `hsla(var(--c-${name}), 0.1)` }" :class="{ '!bg-primary:40 text-white': isActive }"
   >
     <div flex items-center px2>
-      <div :class="icon" />
+      <div :class="`i-${icon}`" />
     </div>
     <div
       py2 max-w-0 transition-all duration-300 overflow-hidden whitespace-nowrap

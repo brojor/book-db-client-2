@@ -23,6 +23,7 @@ export default defineConfig({
     ['backface-hidden', { 'backface-visibility': 'hidden' }],
     ['rotateY180', { transform: 'rotateY(180deg)' }],
   ],
+  safelist: ['i-mdi:home', 'i-mdi:gift-outline'],
   presets: [
     presetUno(),
     presetIcons({

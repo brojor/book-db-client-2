@@ -7,29 +7,6 @@ defineProps<{
   collections: CollectionList
 }>()
 const collectionStore = useCollectionStore()
-
-const items = [
-  {
-    icon: 'i-mdi:home',
-    name: 'library',
-  },
-  {
-    icon: 'i-mdi:gift-outline',
-    name: 'wishlist',
-  },
-  {
-    icon: 'i-mdi:checkbox-marked-circle-outline',
-    name: 'read',
-  },
-  {
-    icon: 'i-mdi:progress-clock',
-    name: 'reading',
-  },
-  {
-    icon: 'i-mdi:close-circle-outline',
-    name: 'unread',
-  },
-] as const
 </script>
 
 <template>
@@ -38,10 +15,9 @@ const items = [
       v-for="(collection, index) in collections"
       :key="collection.id"
       :title="collectionList[index].title"
-      :index="index"
       :is-active="collection.id === collectionStore.activeCollectionName"
-      :icon="items[index].icon"
-      :name="items[index].name"
+      :icon="collection.icon"
+      :name="collection.id"
       @click="swiperInstance?.slideTo(index)"
     />
   </div>
