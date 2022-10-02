@@ -9,6 +9,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AAlert: typeof import('anu-vue')['AAlert']
     ABtn: typeof import('anu-vue')['ABtn']
+    ActionBar: typeof import('./src/components/ActionBar.vue')['default']
     AddBook: typeof import('./src/components/icons/AddBook.vue')['default']
     AddBookButton: typeof import('./src/components/AddBookButton.vue')['default']
     AddBookForm: typeof import('./src/components/AddBookForm.vue')['default']

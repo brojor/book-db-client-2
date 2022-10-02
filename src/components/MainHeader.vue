@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import { BookState } from '@/types'
-
 const emit = defineEmits(['showDrawer'])
 
 const filter = useFilter()
-const collectionStore = useCollectionStore()
-
 const placeholder = computed(() => `Hledat v ${filter.displayedSubject === 'books' ? 'knihách' : 'autorech'}`)
 
 const deleteSearchbarValue = (e: Event) => {
@@ -21,12 +17,6 @@ const buttonHandler = (e: Event) => {
   else
     emit('showDrawer')
 }
-
-const removeFromCollection = () => {
-  collectionStore.deleteSelectedFromCollection()
-}
-
-const statesToSet = collectionList.slice(2)
 </script>
 
 <template>
@@ -37,44 +27,13 @@ const statesToSet = collectionList.slice(2)
         input-wrapper-classes="rounded-full" prepend-inner-icon="i-material-symbols:search" bg-base
       >
         <template #append-inner>
-          <button :class="filter.searchBarValue ? 'i-mdi:close:' : 'i-mdi:dots-vertical'" right-0 absolute p="x6 y2" @click="buttonHandler" />
+          <button
+            :class="filter.searchBarValue ? 'i-mdi:close:' : 'i-mdi:dots-vertical'" right-0 absolute p="x6 y2"
+            @click="buttonHandler"
+          />
         </template>
       </AInput>
     </header>
-    <header
-      bg-base p2 text-xl flex justify-between absolute inset-x-0 top-0 z1 transition-all duration-300
-      :class="collectionStore.selectedItemsCount ? 'opacity-100' : 'opacity-0  -translate-y-full'"
-    >
-      <div flex items-center>
-        <ABtn
-          icon="i-material-symbols:arrow-back" text-white icon-only variant="text"
-          @click="collectionStore.removeSelectedItems()"
-        />
-        <span ml6>{{ collectionStore.selectedItemsCount }}</span>
-      </div>
-      <div v-if="collectionStore.selectedItems.length" flex>
-        <ABtn
-          v-if="collectionStore.activeCollectionName === 'wishlist'"
-          icon="i-mdi:home-import-outline" text-white icon-only variant="text"
-          @click="collectionStore.setBookState(BookState.unread)"
-        />
-        <div flex gap-1>
-          <template v-if="collectionStore.activeCollectionName !== 'wishlist'">
-            <template v-for="state in statesToSet" :key="state.id">
-              <ABtn
-                v-if="!collectionStore.selectedItems.some(id => collectionStore.collections[state.id].books.find(
-                  book => book.id === id))"
-                :icon="`i-${state.icon}`" text-white icon-only variant="text"
-                @click="collectionStore.setBookState(BookState[state.id as keyof typeof BookState])"
-              />
-            </template>
-          </template>
-          <ABtn
-            icon="i-mdi:trash-can-outline" text-white icon-only variant="text"
-            @click="removeFromCollection"
-          />
-        </div>
-      </div>
-    </header>
+    <ActionBar />
   </div>
 </template>
