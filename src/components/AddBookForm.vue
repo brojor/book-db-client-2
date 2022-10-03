@@ -27,7 +27,7 @@ const formRows = [
         v-for="item in row.items" :key="item.key" v-model="data[item.key]" :label="$t(`forms.AddBookForm.${item.key}`)" :type="item.type"
       >
         <template v-if="isLoading" #prepend-inner>
-          <div i-ph:spinner-gap ml2 animate-spin /><span text-sm op-70>načítám...</span>
+          <div i-ph:spinner-gap ml2 animate-spin /><span text-sm op-70>{{ $t('forms.AddBookForm.loading') }}</span>
         </template>
       </AInput>
       <!-- TODO: for language should be used select element -->

@@ -54,6 +54,7 @@
       "publishedDate": "Year of publication",
       "pageCount": "Number of pages",
       "language": "Language",
+      "loading": "Loading...",
       "buttons": {
         "submit": "Add",
         "cancel": "Cancel"

@@ -54,6 +54,7 @@
       "publishedDate": "Rok vydania",
       "pageCount": "Počet strán",
       "language": "Jazyk",
+      "loading": "Načítavanie...",
       "buttons": {
         "submit": "Pridať knihu",
         "cancel": "Zrušiť"
