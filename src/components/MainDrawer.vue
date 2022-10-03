@@ -7,6 +7,9 @@ const emit = defineEmits(['update:modelValue'])
 const isOpen = useVModel(props, 'modelValue', emit)
 
 const user = useUserStore()
+const onChange = (e: Event) => {
+  localStorage.setItem('locale', (e.target as HTMLInputElement).value)
+}
 </script>
 
 <template>
@@ -21,7 +24,7 @@ const user = useUserStore()
         off-icon=" i-carbon-sun"
       />
       <div flex gap-1>
-        <select v-model="$i18n.locale">
+        <select v-model="$i18n.locale" @change="onChange">
           <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale">
             {{ locale }}
           </option>
