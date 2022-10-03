@@ -20,6 +20,14 @@ const user = useUserStore()
         on-icon="i-carbon-moon"
         off-icon=" i-carbon-sun"
       />
+      <div flex gap-1>
+        <select v-model="$i18n.locale">
+          <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale">
+            {{ locale }}
+          </option>
+        </select>
+        <p>{{ $t("message.hello") }}</p>
+      </div>
       <ABtn icon="i-material-symbols:logout" @click="user.logout()">
         <span>Odhlásit se</span>
       </ABtn>
