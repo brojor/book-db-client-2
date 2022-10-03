@@ -38,6 +38,9 @@
       "register": "Log in"
     }
   },
+  "CollectionList": {
+    "numOfBooks": "Number of books: {count}"
+  },
   "forms": {
     "AddBookForm": {
       "title": "Book title",

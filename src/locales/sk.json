@@ -38,6 +38,9 @@
       "register": "Prihláste sa"
     }
   },
+  "CollectionList": {
+    "numOfBooks": "Počet kníh: {count}"
+  },
   "forms": {
     "AddBookForm": {
       "title": "Názov knihy",
