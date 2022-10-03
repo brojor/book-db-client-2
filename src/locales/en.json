@@ -10,6 +10,10 @@
         "read": "Read",
         "reading": "Reading",
         "unread": "Unread"
+    }, 
+    "MainFooter": {
+        "books": "Books",
+        "authors": "Authors"
     }
 
 }

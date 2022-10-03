@@ -7,12 +7,12 @@ const collectionStore = useCollectionStore()
   <footer text-center bg-base>
     <nav v-if="!filter.selectedAuthor" flex justify-around>
       <FooterItem
-        title="Knihy" :count="collectionStore.activeCollection.books.length"
+        :title="$t('MainFooter.books')" :count="collectionStore.activeCollection.books.length"
         :is-active="filter.displayedSubject === 'books'"
         @click="filter.displayedSubject = 'books'"
       />
       <FooterItem
-        title="Autoři" :count="collectionStore.activeCollection.authors.length"
+        :title="$t('MainFooter.authors')" :count="collectionStore.activeCollection.authors.length"
         :is-active="filter.displayedSubject === 'authors'"
         @click="filter.displayedSubject = 'authors'"
       />

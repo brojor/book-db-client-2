@@ -10,5 +10,9 @@
         "read": "Prečítané",
         "reading": "Práve čítam",
         "unread": "Neprečítané"
+    },
+    "MainFooter": {
+        "books": "Knihy",
+        "authors": "Autori"
     }
 }
