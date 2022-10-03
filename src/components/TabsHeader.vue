@@ -14,7 +14,7 @@ const collectionStore = useCollectionStore()
     <TabItem
       v-for="(collection, index) in collections"
       :key="collection.id"
-      :title="collectionList[index].title"
+      :title="$t(`collections.${collection.id}`)"
       :is-active="collection.id === collectionStore.activeCollectionName"
       :icon="collection.icon"
       :name="collection.id"

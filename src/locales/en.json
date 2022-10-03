@@ -3,5 +3,13 @@
         "placeholder": "Search in {target}",
         "books": "books",
         "authors": "authors"
+    },
+    "collections": {
+        "library": "Library",
+        "wishlist": "Wishlist",
+        "read": "Read",
+        "reading": "Reading",
+        "unread": "Unread"
     }
+
 }

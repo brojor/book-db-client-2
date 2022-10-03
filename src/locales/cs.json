@@ -3,5 +3,12 @@
         "placeholder": "Hledat v {target}",
         "books": "knihách",
         "authors": "autorech"
+    },
+    "collections": {
+        "library": "Knihovna",
+        "wishlist": "Seznam přání",
+        "read": "Přečtené",
+        "reading": "Právě čtu",
+        "unread": "Nepřečtené"
     }
 }

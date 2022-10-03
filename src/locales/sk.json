@@ -3,5 +3,12 @@
         "placeholder": "Hľadať v {target}",
         "books": "knihách",
         "authors": "autoroch"
+    },
+    "collections": {
+        "library": "Knižnica",
+        "wishlist": "Zoznam želaní",
+        "read": "Prečítané",
+        "reading": "Práve čítam",
+        "unread": "Neprečítané"
     }
 }
