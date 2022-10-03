@@ -63,7 +63,7 @@
     "EnterForm": {
       "title": {
         "login": "Enter your login credentials to log in",
-        "register": "Pro registraci zadejte svůj email a zvolte heslo"
+        "register": "To register, enter your email and choose a password"
       },
       "email": "E-mail",
       "password": "Password",
