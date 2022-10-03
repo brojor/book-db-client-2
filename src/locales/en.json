@@ -71,10 +71,8 @@
       "submit": {
         "login": "Log in",
         "register": "Sign up"
-      }
+      },
+      "loginError": "Incorrect login credentials"
     }
-  },
-  "validation": {
-    "register": {}
   }
 }

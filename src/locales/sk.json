@@ -71,10 +71,8 @@
       "submit": {
         "login": "Prihlásiť sa",
         "register": "Vytvoriť účet"
-      }
+      },
+      "loginError": "Nesprávne prihlasovacie údaje"
     }
-  },
-  "validation": {
-    "register": {}
   }
 }
