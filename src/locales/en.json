@@ -1,44 +1,72 @@
 {
-    "searchbar": {
-        "placeholder": "Search in {target}",
-        "books": "books",
-        "authors": "authors"
-    },
-    "collections": {
-        "library": "Library",
-        "wishlist": "Wishlist",
-        "read": "Read",
-        "reading": "Reading",
-        "unread": "Unread"
-    }, 
-    "MainFooter": {
-        "books": "Books",
-        "authors": "Authors"
-    }, 
-    "AddBookView": {
-        "title": "Add a new book",
-        "viaISBN": "Pre-fill with ISBN",
-        "manually": "or fill manually",
-        "inputPlaceholder": "Enter manually or scan EAN",
-        "warning": {
-            "title": "Cannot use the scanner",
-            "text": "The scanner is only available in the mobile app. You can download it from the App Store or Google Play.",
-            "button": "Ok"
-        }
-    },
-    "forms": {
-        "AddBookForm": {
-            "title": "Book title",
-            "subtitle": "Subtitle",
-            "author": "Author",
-            "publisher": "Publisher",
-            "publishedDate": "Year of publication",
-            "pageCount": "Number of pages",
-            "language": "Language",
-            "buttons": {
-                "submit": "Add",
-                "cancel": "Cancel"
-            }
-        }
+  "searchbar": {
+    "placeholder": "Search in {target}",
+    "books": "books",
+    "authors": "authors"
+  },
+  "collections": {
+    "library": "Library",
+    "wishlist": "Wishlist",
+    "read": "Read",
+    "reading": "Reading",
+    "unread": "Unread"
+  },
+  "MainFooter": {
+    "books": "Books",
+    "authors": "Authors"
+  },
+  "AddBookView": {
+    "title": "Add a new book",
+    "viaISBN": "Pre-fill with ISBN",
+    "manually": "or fill manually",
+    "inputPlaceholder": "Enter manually or scan EAN",
+    "warning": {
+      "title": "Cannot use the scanner",
+      "text": "The scanner is only available in the mobile app. You can download it from the App Store or Google Play.",
+      "button": "Ok"
     }
+  },
+  "EnterView": {
+    "title": "Welcome to the book database",
+    "subtitle": "A place where you have a perfect overview of your book collection",
+    "question": {
+      "login": "Don't have an account yet?",
+      "register": "Already have an account?"
+    },
+    "action": {
+      "login": "Sign up",
+      "register": "Log in"
+    }
+  },
+  "forms": {
+    "AddBookForm": {
+      "title": "Book title",
+      "subtitle": "Subtitle",
+      "author": "Author",
+      "publisher": "Publisher",
+      "publishedDate": "Year of publication",
+      "pageCount": "Number of pages",
+      "language": "Language",
+      "buttons": {
+        "submit": "Add",
+        "cancel": "Cancel"
+      }
+    },
+    "EnterForm": {
+      "title": {
+        "login": "Enter your login credentials to log in",
+        "register": "Pro registraci zadejte svůj email a zvolte heslo"
+      },
+      "email": "E-mail",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "submit": {
+        "login": "Log in",
+        "register": "Sign up"
+      }
+    }
+  },
+  "validation": {
+    "register": {}
+  }
 }

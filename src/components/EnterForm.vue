@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { useForm } from 'vee-validate'
 
-import labels from '@/assets/EnterViewTexts.json'
-
 interface ValidatorError {
   field: string
   message: string
@@ -18,8 +16,6 @@ const router = useRouter()
 const rememberMe = ref<boolean>(true)
 const loginError = ref<boolean>(false)
 const showPassword = ref<boolean>(false)
-
-const texts = computed(() => labels[props.formType])
 
 const { validationSchema, checkValidity } = useAuthSchema(toRef(props, 'formType'))
 const { handleSubmit, setFieldError } = useForm({ validationSchema })
@@ -40,27 +36,25 @@ const onSubmit = handleSubmit(async (values) => {
     }
   }
 })
-
-const onEnter = () => onSubmit()
 </script>
 
 <template>
   <form mt16 @submit.prevent="onSubmit">
     <h2 text-base font-bold text-center mb4>
-      {{ texts.title }}
+      {{ $t(`forms.EnterForm.title.${props.formType}`) }}
     </h2>
 
     <Transition name="bounce">
       <AAlert v-if="loginError" color="danger" my4>
-        Nesprávné přihlašovací údaje
+        {{ $t('forms.EnterForm.loginError') }}
       </AAlert>
     </Transition>
 
-    <ValidatedInput name="email" type="text" label="Email" @focus="loginError = false" />
+    <ValidatedInput name="email" type="text" :label="$t('forms.EnterForm.email')" @focus="loginError = false" />
 
     <ValidatedInput
-      name="password" :type="showPassword ? 'text' : 'password'" label="Heslo" @focus="loginError = false"
-      @keydown.enter.prevent="onEnter"
+      name="password" :type="showPassword ? 'text' : 'password'" :label="$t('forms.EnterForm.password')" @focus="loginError = false"
+      @keydown.enter.prevent="onSubmit()"
     >
       <button v-if="showPassword" i-mdi:eye-off-outline absolute right-3 @click="showPassword = !showPassword" />
       <button v-else i-mdi:eye-outline absolute right-3 @click="showPassword = !showPassword" />
@@ -68,12 +62,12 @@ const onEnter = () => onSubmit()
 
     <div my4>
       <ACheckbox v-model="rememberMe">
-        Pamatuj si mě
+        {{ $t('forms.EnterForm.rememberMe') }}
       </ACheckbox>
     </div>
 
     <ABtn w-full>
-      {{ texts.button }}
+      {{ $t(`forms.EnterForm.submit.${props.formType}`) }}
     </ABtn>
   </form>
 </template>

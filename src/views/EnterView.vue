@@ -11,17 +11,15 @@ const changeFormType = () => {
 <template>
   <div bg-canvas w-full h-screen p-6 flex="~ col">
     <h1 font="bold" text-2xl text-center>
-      Vítejte v databázi knih
+      {{ $t('EnterView.title') }}
     </h1>
     <p text-center m="y-3 x-auto" w="5/6">
-      Na místě, kde máte dokonalý přehled o své sbírce knih.
+      {{ $t('EnterView.subtitle') }}
     </p>
     <EnterForm :form-type="formType" />
     <p mt12>
-      {{ formType === 'register' ? 'Máte již účet?' : 'Nemáte účet? ' }}
-      <a text-primary tabIndex="0" @click="changeFormType">{{
-        formType === 'register' ? 'Přihlašte se' : 'Zaregistrujte se'
-      }}</a>
+      {{ $t(`EnterView.question.${formType}`) }}
+      <a text-primary tabIndex="0" @click="changeFormType">{{ $t(`EnterView.action.${formType}`) }}</a>
     </p>
   </div>
 </template>

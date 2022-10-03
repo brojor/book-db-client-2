@@ -1,44 +1,72 @@
 {
-    "searchbar": {
-        "placeholder": "Hľadať v {target}",
-        "books": "knihách",
-        "authors": "autoroch"
-    },
-    "collections": {
-        "library": "Knižnica",
-        "wishlist": "Zoznam želaní",
-        "read": "Prečítané",
-        "reading": "Práve čítam",
-        "unread": "Neprečítané"
-    },
-    "MainFooter": {
-        "books": "Knihy",
-        "authors": "Autori"
-    },
-    "AddBookView": {
-        "title": "Pridanie novej knihy",
-        "viaISBN": "Predvyplnenie pomocou ISBN",
-        "manually": "alebo vyplniť ručne",
-        "inputPlaceholder": "Zadajte manuálne alebo naskenujte EAN",
-        "warning": {
-            "title": "Nemožno používať skener",
-            "text": "Skener je k dispozícii len v mobilnej aplikácii. Môžete si ju stiahnuť z obchodu App Store alebo Google Play.",
-            "button": "Rozumiem"
-        }
-    },
-    "forms": {
-        "AddBookForm": {
-            "title": "Názov knihy",
-            "subtitle": "Podtitul",
-            "author": "Autor",
-            "publisher": "Vydavateľ",
-            "publishedDate": "Rok vydania",
-            "pageCount": "Počet strán",
-            "language": "Jazyk",
-            "buttons": {
-                "submit": "Pridať knihu",
-                "cancel": "Zrušiť"
-            }
-        }
+  "searchbar": {
+    "placeholder": "Hľadať v {target}",
+    "books": "knihách",
+    "authors": "autoroch"
+  },
+  "collections": {
+    "library": "Knižnica",
+    "wishlist": "Zoznam želaní",
+    "read": "Prečítané",
+    "reading": "Práve čítam",
+    "unread": "Neprečítané"
+  },
+  "MainFooter": {
+    "books": "Knihy",
+    "authors": "Autori"
+  },
+  "AddBookView": {
+    "title": "Pridanie novej knihy",
+    "viaISBN": "Predvyplnenie pomocou ISBN",
+    "manually": "alebo vyplniť ručne",
+    "inputPlaceholder": "Zadajte manuálne alebo naskenujte EAN",
+    "warning": {
+      "title": "Nemožno používať skener",
+      "text": "Skener je k dispozícii len v mobilnej aplikácii. Môžete si ju stiahnuť z obchodu App Store alebo Google Play.",
+      "button": "Rozumiem"
     }
+  },
+  "EnterView": {
+    "title": "Vitajte v databáze kníh",
+    "subtitle": "Na mieste, kde máte dokonalý prehľad o svojej zbierke kníh",
+    "question": {
+      "login": "Ešte nemáte účet?",
+      "register": "Máte už účet?"
+    },
+    "action": {
+      "login": "Zaregistrujte sa",
+      "register": "Prihláste sa"
+    }
+  },
+  "forms": {
+    "AddBookForm": {
+      "title": "Názov knihy",
+      "subtitle": "Podtitul",
+      "author": "Autor",
+      "publisher": "Vydavateľ",
+      "publishedDate": "Rok vydania",
+      "pageCount": "Počet strán",
+      "language": "Jazyk",
+      "buttons": {
+        "submit": "Pridať knihu",
+        "cancel": "Zrušiť"
+      }
+    },
+    "EnterForm": {
+      "title": {
+        "login": "Na prihlásenie zadajte svoje prihlasovacie údaje",
+        "register": "Na registráciu zadajte svoj e-mail a vyberte si heslo"
+      },
+      "email": "E-mail",
+      "password": "Heslo",
+      "rememberMe": "Pamätaj si ma",
+      "submit": {
+        "login": "Prihlásiť sa",
+        "register": "Vytvoriť účet"
+      }
+    }
+  },
+  "validation": {
+    "register": {}
+  }
 }
