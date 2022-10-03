@@ -59,20 +59,20 @@ const searchISBN = async () => {
 <template>
   <div p4 grow bg-canvas overflow-y="auto" :class="{ 'scanner-hide': isScanning }">
     <h1 text-2xl m2 text-center>
-      Přidání nové knihy
+      {{ $t('AddBookView.title') }}
     </h1>
-    <small block text-center m6>Předvyplnit pomocí ISBN</small>
+    <small block text-center m6>{{ $t('AddBookView.viaISBN') }}</small>
     <div flex items-center>
       <AInput
         v-model="bookToAdd.isbn" text-sm
-        placeholder="Zadejte ručně, nebo oskenujte EAN" type="number" @blur="searchISBN"
+        :placeholder="$t('AddBookView.inputPlaceholder')" type="number" @blur="searchISBN"
       >
         <template #append-inner>
           <ABtn icon-only icon="i-mdi:barcode-scan" ml-auto mr-1 @click="onStartScanning" />
         </template>
       </AInput>
     </div>
-    <DividerWithText text="nebo vyplnit ručně" my8 />
+    <DividerWithText :text="$t('AddBookView.manually')" my8 />
     <AddBookForm
       v-model="bookToAdd" :is-loading="isLoading" @submit="onSubmit"
       @cancel="() => router.push('/')"
@@ -80,12 +80,12 @@ const searchISBN = async () => {
     <ScannerUI v-if="isScanning" class="scanner-ui" @stop-scan="stopScan" />
     <ADialog
       v-model="showWarning"
-      title="Nelze použít skener"
-      text="Skener je dostupný pouze v mobilní aplikaci. Tu si můžete stáhnout na App Store nebo Google Play."
+      :title="$t('AddBookView.warning.title')"
+      :text="$t('AddBookView.warning.text')"
     >
       <div pb6 pt2 flex justify-center>
         <ABtn @click="showWarning = false">
-          Rozumím
+          {{ $t('AddBookView.warning.button') }}
         </ABtn>
       </div>
     </ADialog>

@@ -14,5 +14,31 @@
     "MainFooter": {
         "books": "Knihy",
         "authors": "Autoři"
+    },
+    "AddBookView": {
+        "title": "Přidat novou knihu",
+        "viaISBN": "Předvyplnit pomocí ISBN",
+        "manually": "nebo vyplnit ručně",
+        "inputPlaceholder": "Zadejte ručně, nebo oskenujte EAN",
+        "warning": {
+            "title": "Nelze použít skener",
+            "text": "Skener je dostupný pouze v mobilní aplikaci. Tu si můžete stáhnout na App Store nebo Google Play.",
+            "button": "Rozumím"
+        }
+    },
+    "forms": {
+        "AddBookForm": {
+            "title": "Název knihy",
+            "subtitle": "Podtitul",
+            "author": "Autor",
+            "publisher": "Vydavatel",
+            "publishedDate": "Rok vydání",
+            "pageCount": "Počet stran",
+            "language": "Jazyk",
+            "buttons": {
+                "submit": "Přidat",
+                "cancel": "Zrušit"
+            }
+        }
     }
 }

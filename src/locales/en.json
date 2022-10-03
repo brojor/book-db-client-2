@@ -14,6 +14,31 @@
     "MainFooter": {
         "books": "Books",
         "authors": "Authors"
+    }, 
+    "AddBookView": {
+        "title": "Add a new book",
+        "viaISBN": "Pre-fill with ISBN",
+        "manually": "or fill manually",
+        "inputPlaceholder": "Enter manually or scan EAN",
+        "warning": {
+            "title": "Cannot use the scanner",
+            "text": "The scanner is only available in the mobile app. You can download it from the App Store or Google Play.",
+            "button": "Ok"
+        }
+    },
+    "forms": {
+        "AddBookForm": {
+            "title": "Book title",
+            "subtitle": "Subtitle",
+            "author": "Author",
+            "publisher": "Publisher",
+            "publishedDate": "Year of publication",
+            "pageCount": "Number of pages",
+            "language": "Language",
+            "buttons": {
+                "submit": "Add",
+                "cancel": "Cancel"
+            }
+        }
     }
-
 }
