@@ -1,5 +1,7 @@
 {
-    "message": {
-        "hello": "ahoj světe"
+    "searchbar": {
+        "placeholder": "Hledat v {target}",
+        "books": "knihách",
+        "authors": "autorech"
     }
 }

@@ -26,7 +26,6 @@ const user = useUserStore()
             {{ locale }}
           </option>
         </select>
-        <p>{{ $t("message.hello") }}</p>
       </div>
       <ABtn icon="i-material-symbols:logout" @click="user.logout()">
         <span>Odhlásit se</span>

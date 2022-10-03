@@ -1,5 +1,7 @@
 {
-    "message": {
-        "hello": "hello world"
+    "searchbar": {
+        "placeholder": "Search in {target}",
+        "books": "books",
+        "authors": "authors"
     }
 }

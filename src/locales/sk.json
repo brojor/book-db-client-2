@@ -1,0 +1,7 @@
+{
+    "searchbar": {
+        "placeholder": "Hľadať v {target}",
+        "books": "knihách",
+        "authors": "autoroch"
+    }
+}

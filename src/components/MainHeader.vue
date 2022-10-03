@@ -2,7 +2,7 @@
 const emit = defineEmits(['showDrawer'])
 
 const filter = useFilter()
-const placeholder = computed(() => `Hledat v ${filter.displayedSubject === 'books' ? 'knihách' : 'autorech'}`)
+const searchTarget = computed(() => filter.displayedSubject === 'books' ? 'books' : 'authors')
 
 const deleteSearchbarValue = (e: Event) => {
   filter.searchBarValue = ''
@@ -23,7 +23,7 @@ const buttonHandler = (e: Event) => {
   <div relative h16>
     <header flex relative bg-canvas px4 py2>
       <AInput
-        v-model="filter.searchBarValue" :placeholder="placeholder"
+        v-model="filter.searchBarValue" :placeholder="$t('searchbar.placeholder', { target: $t(`searchbar.${searchTarget}`) })"
         input-wrapper-classes="rounded-full" prepend-inner-icon="i-material-symbols:search" bg-base
       >
         <template #append-inner>
