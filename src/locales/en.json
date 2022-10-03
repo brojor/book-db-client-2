@@ -41,6 +41,10 @@
   "CollectionList": {
     "numOfBooks": "Number of books: {count}"
   },
+  "ScannerUI": {
+    "title": "Target the book barcode",
+    "scanning": "Scanning"
+  },
   "forms": {
     "AddBookForm": {
       "title": "Book title",

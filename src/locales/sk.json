@@ -41,6 +41,10 @@
   "CollectionList": {
     "numOfBooks": "Počet kníh: {count}"
   },
+  "ScannerUI": {
+    "title": "Zamerajte na čiarový kód knihy",
+    "scanning": "Skenujem"
+  },
   "forms": {
     "AddBookForm": {
       "title": "Názov knihy",

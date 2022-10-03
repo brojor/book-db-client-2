@@ -41,6 +41,10 @@
   "CollectionList": {
     "numOfBooks": "Počet knih: {count}"
   },
+  "ScannerUI": {
+    "title": "Zaměřte čárový kód knihy",
+    "scanning": "Skenuji"
+  },
   "forms": {
     "AddBookForm": {
       "title": "Název knihy",
@@ -69,5 +73,5 @@
       },
       "loginError": "Nesprávné přihlašovací údaje"
     }
-  } 
+  }
 }

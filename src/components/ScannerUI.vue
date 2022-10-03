@@ -5,7 +5,7 @@ defineEmits(['stopScan'])
 <template>
   <div h-screen flex flex-col justify-center items-center font-sans tracking-wide text-white relative>
     <h1 mb8 text-lg>
-      Zaměřte čárový kód knihy
+      {{ $t('ScannerUI.title') }}
     </h1>
     <div>
       <div class="anim-box">
@@ -15,7 +15,7 @@ defineEmits(['stopScan'])
     <div flex justify-center items-center gap2 my8>
       <span class="red-dot">&#11044;</span>
       <span text="lg center" mr3>
-        Skenuji
+        {{ $t('ScannerUI.scanning') }}
       </span>
     </div>
     <div absolute bottom-8 flex w-full justify-center>
