@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useVModel } from '@vueuse/core'
 import { isDark } from '@/stores/appState'
+import apiService from '@/services/api'
 
 const props = defineProps<{ modelValue: boolean }>()
 const emit = defineEmits(['update:modelValue'])
@@ -8,7 +9,9 @@ const isOpen = useVModel(props, 'modelValue', emit)
 
 const user = useUserStore()
 const onChange = (e: Event) => {
-  localStorage.setItem('locale', (e.target as HTMLInputElement).value)
+  const language = (e.target as HTMLInputElement).value
+  localStorage.setItem('locale', language)
+  apiService.defaults.headers.common.AcceptLanguage = language
 }
 </script>
 
