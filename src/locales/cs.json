@@ -74,5 +74,15 @@
       },
       "loginError": "Nesprávné přihlašovací údaje"
     }
+  },
+  "validation": {
+    "register": {
+      "email": "Zadejte prosím platný email",
+      "password": "Heslo musí mít alespoň 8 znaků"
+    },
+    "login": {
+      "email": "Bez emailu vás nemohu přihlásit",
+      "password": "Bez hesla vás nemohu přihlásit"
+    }
   }
 }

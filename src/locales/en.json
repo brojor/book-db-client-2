@@ -74,5 +74,15 @@
       },
       "loginError": "Incorrect login credentials"
     }
+  },
+  "validation": {
+    "register": {
+      "email": "Please enter a valid email",
+      "password": "Password must be at least 8 characters"
+    },
+    "login": {
+      "email": "I can't log you in without your email",
+      "password": "I can't log you in without your password"
+    }
   }
 }

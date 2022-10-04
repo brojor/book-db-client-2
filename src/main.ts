@@ -14,6 +14,7 @@ import 'anu-vue/dist/style.css'
 const locale = localStorage.getItem('locale') || 'cs'
 
 const i18n = createI18n({
+  legacy: false,
   locale,
   fallbackLocale: 'en',
   messages,
