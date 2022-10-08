@@ -9,7 +9,7 @@ import {
 export default defineConfig({
   shortcuts: {
     'flex-center': 'flex items-center justify-center',
-    'bg-canvas': 'bg-[#f8f8f8v] dark:bg-[#202020]',
+    'bg-canvas': 'bg-[#f8f8f8] dark:bg-[#202020]',
     'bg-base': 'bg-[#e6e6e6] dark:bg-[#2e2e2e]',
     'bg-accent': 'bg-[#0f766e]',
     'text-canvas': 'text-[#f8f8f8] dark:text-[#202020]',

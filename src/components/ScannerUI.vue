@@ -3,8 +3,8 @@ defineEmits(['stopScan'])
 </script>
 
 <template>
-  <div h-screen flex flex-col justify-center items-center font-sans tracking-wide text-white relative>
-    <h1 mb8 text-lg>
+  <div h-full flex flex-col justify-center items-center font-sans tracking-wide text-white relative>
+    <h1 mb8 text-lg text-white>
       {{ $t('ScannerUI.title') }}
     </h1>
     <div>
@@ -18,10 +18,10 @@ defineEmits(['stopScan'])
         {{ $t('ScannerUI.scanning') }}
       </span>
     </div>
-    <div absolute bottom-8 flex w-full justify-center>
-      <button w="1/2" text-2xl bg-white text-black border-none rounded px5 py2 @click="$emit('stopScan')">
+    <div absolute bottom-8 inset-x-0 flex-center>
+      <ABtn w="1/2" @click="$emit('stopScan')">
         Stop
-      </button>
+      </ABtn>
     </div>
   </div>
 </template>

@@ -27,9 +27,9 @@ const touchHandler = useLongPress(el, () => {
     <div class="press-marker" />
     <ItemAvatar :icon="icon" @click.stop="$emit('select')" />
     <small absolute bottom-0 left-12>
-      <div v-if="bookState === BookState.read" i-mdi:checkbox-marked-circle-outline text-white:70 />
-      <div v-if="bookState === BookState.reading" i-mdi:progress-clock text-white:70 />
-      <div v-if="bookState === BookState.unread" i-mdi:close-circle-outline text-white:70 />
+      <div v-if="bookState === BookState.read" i-mdi:checkbox-marked-circle-outline text-medium-emphasis />
+      <div v-if="bookState === BookState.reading" i-mdi:progress-clock text-medium-emphasis />
+      <div v-if="bookState === BookState.unread" i-mdi:close-circle-outline text-medium-emphasis />
     </small>
     <div grow>
       <div flex justify-between>

@@ -47,7 +47,7 @@ const details = computed(() => {
 
 <template>
   <div p4 text-center bg-canvas h-full flex="~ col">
-    <div w="30vw" h="30vw" bg-red rounded-full mx-auto my-8 flex-center bg-base text-primary>
+    <div w="30vw" h="30vw" rounded-full mx-auto my-8 flex-center bg-base text-primary>
       <div class="i-bi-book" text="15vw" />
     </div>
     <h1 text-3xl m1 font-bold>

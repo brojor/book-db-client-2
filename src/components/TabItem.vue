@@ -9,8 +9,9 @@ defineProps<{
 
 <template>
   <div
-    flex rounded m1 transition-all duration-800 px1
-    :style="{ backgroundColor: `hsla(var(--c-${name}), 0.1)` }" :class="{ '!bg-primary:40 text-white': isActive }"
+    flex rounded m1 transition-all duration-300 px1 text-light-emphasis
+    :style="{ backgroundColor: `hsla(var(--c-${name}), var(--c-opacity))` }"
+    :class="{ 'dark:!bg-primary:40 !bg-primary:80 text-white': isActive }"
   >
     <div flex items-center px2>
       <div :class="`i-${icon}`" />

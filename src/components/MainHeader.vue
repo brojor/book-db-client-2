@@ -23,8 +23,9 @@ const buttonHandler = (e: Event) => {
   <div relative h16>
     <header flex relative bg-canvas px4 py2>
       <AInput
-        v-model="filter.searchBarValue" :placeholder="$t('searchbar.placeholder', { target: $t(`searchbar.${searchTarget}`) })"
-        input-wrapper-classes="rounded-full" prepend-inner-icon="i-material-symbols:search" bg-base
+        v-model="filter.searchBarValue"
+        :placeholder="$t('searchbar.placeholder', { target: $t(`searchbar.${searchTarget}`) })"
+        input-wrapper-classes="rounded-full border-0" prepend-inner-icon="i-material-symbols:search" placeholder:text-medium-emphasis bg-base
       >
         <template #append-inner>
           <button
