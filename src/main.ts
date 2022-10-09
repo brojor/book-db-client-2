@@ -1,7 +1,6 @@
 import { createPinia } from 'pinia'
 
-import { createI18n } from 'vue-i18n'
-import messages from '@intlify/unplugin-vue-i18n/messages'
+
 import App from './App.vue'
 import router from './router'
 
@@ -11,14 +10,10 @@ import 'uno.css'
 
 // import styles
 import 'anu-vue/dist/style.css'
-const locale = localStorage.getItem('locale') || 'cs'
+import i18n from './i18n'
 
-const i18n = createI18n({
-  legacy: false,
-  locale,
-  fallbackLocale: 'en',
-  messages,
-})
+
+
 
 const app = createApp(App)
 

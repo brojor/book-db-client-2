@@ -1,38 +1,61 @@
 <script setup lang="ts">
 import { useVModel } from '@vueuse/core'
 import { isDark } from '@/stores/appState'
-import apiService from '@/services/api'
+import i18n from '@/i18n'
+import apiService from '@/services/api';
 
 const props = defineProps<{ modelValue: boolean }>()
 const emit = defineEmits(['update:modelValue'])
 const isOpen = useVModel(props, 'modelValue', emit)
 
+const locales = [
+  {
+    value: "cs",
+    icon: "i-twemoji:flag-czechia",
+    label: "Čeština"
+  },
+  {
+    value: "en",
+    icon: "i-twemoji:flag-united-kingdom",
+    label: "English"
+  },
+  {
+    value: "sk",
+    icon: "i-twemoji:flag-slovakia",
+    label: "Slovenčina"
+  }
+]
+
+const selectedLocale = ref(locales.find(l => l.value === i18n.global.locale.value) ?? locales[0])
+
+
 const user = useUserStore()
-const onChange = (e: Event) => {
-  const language = (e.target as HTMLInputElement).value
-  localStorage.setItem('locale', language)
-  apiService.defaults.headers.common.AcceptLanguage = language
-}
+watch(() => selectedLocale.value.value,
+  (locale) => {
+    i18n.global.locale.value = locale
+    localStorage.setItem('locale', locale)
+    apiService.defaults.headers.common.AcceptLanguage = locale
+  })
 </script>
 
 <template>
-  <ADrawer
-    v-model="isOpen"
-  >
+  <ADrawer v-model="isOpen">
     <div flex flex-col justify-between flex-grow p4 h-full>
-      <ASwitch
-        v-model="isDark"
-        label="Tmavý režim"
-        on-icon="i-carbon-moon"
-        off-icon=" i-carbon-sun"
-      />
-      <div flex gap-1>
-        <select v-model="$i18n.locale" @change="onChange">
-          <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale">
-            {{ locale }}
-          </option>
-        </select>
+
+      <div>
+        <ASwitch v-model="isDark" label="Tmavý režim" on-icon="i-carbon-moon" off-icon=" i-carbon-sun" />
+        <div mt3>
+          <ASelect v-slot="{ attrs }" v-model="selectedLocale" optionsWrapperClasses="z-52" label="Jazyk"
+            :prepend-inner-icon="selectedLocale.icon">
+            <li v-for="locale in locales" v-bind="attrs" :key="locale.label" class="flex items-center gap-x-3"
+              @click="selectedLocale = locale">
+              <i :class="locale.icon" />
+              <span>{{ locale.label }}</span>
+            </li>
+          </ASelect>
+        </div>
       </div>
+
       <ABtn icon="i-material-symbols:logout" @click="user.logout()">
         <span>Odhlásit se</span>
       </ABtn>
