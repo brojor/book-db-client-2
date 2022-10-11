@@ -19,22 +19,19 @@ const touchHandler = useLongPress(el, () => {
 </script>
 
 <template>
-  <div
-    ref="el" px3 py1 mx1 mb2px flex items-center gap3 relative rounded-lg overflow-hidden
-    :class="{ selected: props.selected }"
-    v-on="touchHandler "
-  >
+  <div ref="el" px3 py1 mx1 mb2px flex items-center gap3 relative rounded-lg overflow-hidden
+    :class="{ selected: props.selected }" v-on="touchHandler ">
     <div class="press-marker" />
     <ItemAvatar :icon="icon" @click.stop="$emit('select')" />
-    <small absolute bottom-0 left-12>
-      <div v-if="bookState === BookState.read" i-mdi:checkbox-marked-circle-outline text-medium-emphasis />
-      <div v-if="bookState === BookState.reading" i-mdi:progress-clock text-medium-emphasis />
-      <div v-if="bookState === BookState.unread" i-mdi:close-circle-outline text-medium-emphasis />
-    </small>
     <div grow>
       <div flex justify-between>
-        <h3 text-sm font-bold>
+        <h3 text-sm font-bold flex gap1 items-center>
           {{ title }}
+          <span opacity-50 text-xs>
+            <div v-if="bookState === BookState.read" i-mdi:checkbox-marked-circle-outline />
+            <div v-if="bookState === BookState.reading" i-mdi:progress-clock />
+            <div v-if="bookState === BookState.unread" i-mdi:close-circle-outline />
+          </span>
         </h3>
         <h3 text-sm font-bold>
           {{ rightTopText }}
@@ -64,10 +61,12 @@ const touchHandler = useLongPress(el, () => {
   transition: all 0.25s;
   transition-delay: 0.1s;
 }
+
 .selected {
   background: hsla(var(--a-primary), 0.1);
 }
-.pressed > .press-marker {
+
+.pressed>.press-marker {
   width: 100%;
   height: 100%;
   background: #ffffff10;
