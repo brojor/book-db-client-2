@@ -3,6 +3,7 @@ defineProps<{
   isActive: boolean
   title: string
   count: number
+  icon: string
 }>()
 </script>
 

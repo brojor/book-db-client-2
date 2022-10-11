@@ -8,12 +8,12 @@ const collectionStore = useCollectionStore()
     <nav v-if="!filter.selectedAuthor" flex justify-around>
       <FooterItem
         :title="$t('MainFooter.books')" :count="collectionStore.activeCollection.books.length"
-        :is-active="filter.displayedSubject === 'books'"
+        :is-active="filter.displayedSubject === 'books'" icon="i-ph:book-open"
         @click="filter.displayedSubject = 'books'"
       />
       <FooterItem
         :title="$t('MainFooter.authors')" :count="collectionStore.activeCollection.authors.length"
-        :is-active="filter.displayedSubject === 'authors'"
+        :is-active="filter.displayedSubject === 'authors'" icon="i-bi:person"
         @click="filter.displayedSubject = 'authors'"
       />
     </nav>
