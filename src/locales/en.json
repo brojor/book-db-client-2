@@ -46,6 +46,7 @@
     "scanning": "Scanning"
   },
   "MainDrawer": {
+    "title": "Menu",
     "language": "Language",
     "darkMode": "Dark mode",
     "logout": "Log out"

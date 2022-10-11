@@ -46,6 +46,7 @@
     "scanning": "Skenujem"
   },
   "MainDrawer": {
+    "title": "Ponuka",
     "language": "Jazyk",
     "darkMode": "Tmavý režim",
     "logout": "Odhlásiť sa"

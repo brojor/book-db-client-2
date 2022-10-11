@@ -40,9 +40,10 @@ watch(() => selectedLocale.value.value,
 
 <template>
   <ADrawer v-model="isOpen">
-    <div flex flex-col justify-between flex-grow p4 h-full>
+    <div flex flex-col justify-between h-full p4>
 
       <div>
+        <h1 text-2xl mb4 text-primary>{{$t('MainDrawer.title')}}</h1>
         <ASwitch v-model="isDark" :label="$t('MainDrawer.darkMode')" on-icon="i-carbon-moon" off-icon=" i-carbon-sun" />
         <div mt3>
           <ASelect v-slot="{ attrs }" v-model="selectedLocale" optionsWrapperClasses="z-52" :label="$t('MainDrawer.language')"
