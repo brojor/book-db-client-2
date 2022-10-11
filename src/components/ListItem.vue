@@ -33,7 +33,7 @@ const touchHandler = useLongPress(el, () => {
             <div v-if="bookState === BookState.unread" i-mdi:close-circle-outline />
           </span>
         </h3>
-        <h3 text-sm font-bold>
+        <h3 text-sm font-bold text-medium-emphasis>
           {{ rightTopText }}
         </h3>
       </div>
