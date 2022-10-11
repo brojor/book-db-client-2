@@ -45,6 +45,11 @@
     "title": "Zamerajte na čiarový kód knihy",
     "scanning": "Skenujem"
   },
+  "MainDrawer": {
+    "language": "Jazyk",
+    "darkMode": "Tmavý režim",
+    "logout": "Odhlásiť sa"
+  },
   "forms": {
     "AddBookForm": {
       "title": "Názov knihy",

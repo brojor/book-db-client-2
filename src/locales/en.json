@@ -45,6 +45,11 @@
     "title": "Target the book barcode",
     "scanning": "Scanning"
   },
+  "MainDrawer": {
+    "language": "Language",
+    "darkMode": "Dark mode",
+    "logout": "Log out"
+  },
   "forms": {
     "AddBookForm": {
       "title": "Book title",

@@ -43,9 +43,9 @@ watch(() => selectedLocale.value.value,
     <div flex flex-col justify-between flex-grow p4 h-full>
 
       <div>
-        <ASwitch v-model="isDark" label="Tmavý režim" on-icon="i-carbon-moon" off-icon=" i-carbon-sun" />
+        <ASwitch v-model="isDark" :label="$t('MainDrawer.darkMode')" on-icon="i-carbon-moon" off-icon=" i-carbon-sun" />
         <div mt3>
-          <ASelect v-slot="{ attrs }" v-model="selectedLocale" optionsWrapperClasses="z-52" label="Jazyk"
+          <ASelect v-slot="{ attrs }" v-model="selectedLocale" optionsWrapperClasses="z-52" :label="$t('MainDrawer.language')"
             :prepend-inner-icon="selectedLocale.icon">
             <li v-for="locale in locales" v-bind="attrs" :key="locale.label" class="flex items-center gap-x-3"
               @click="selectedLocale = locale">
@@ -57,7 +57,7 @@ watch(() => selectedLocale.value.value,
       </div>
 
       <ABtn icon="i-material-symbols:logout" @click="user.logout()">
-        <span>Odhlásit se</span>
+        <span>{{$t('MainDrawer.logout')}}</span>
       </ABtn>
     </div>
   </ADrawer>
