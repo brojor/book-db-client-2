@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { BookState } from '@/types'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n({ useScope: 'global' })
 
 const props = defineProps<{
   currentState: number
@@ -7,11 +9,12 @@ const props = defineProps<{
 
 const emit = defineEmits<{ (e: 'update:state', state: keyof typeof BookState): void }>()
 
-const bookStates = collectionList.slice(1).map(({ id: value, title: label, icon }) => ({ value, label, icon })) as {
-  value: keyof typeof BookState
-  label: string
-  icon: string
-}[]
+const bookStates = collectionList.slice(1)
+  .map(({ id: value, icon }) => ({ value, label: t(`collections.${value}`), icon })) as {
+    value: keyof typeof BookState
+    label: string
+    icon: string
+  }[]
 
 const selected = ref(bookStates.find(({ value }) => value === BookState[props.currentState])!)
 

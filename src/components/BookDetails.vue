@@ -12,13 +12,6 @@ defineProps<{
 
 const widths = [[20, 40], [30, 10], [25, 30], [30, 40], [20, 40]]
 
-const translation = {
-  isbn: 'ISBN',
-  publishedDate: 'Datum vydání',
-  pageCount: 'Počet stran',
-  language: 'Jazyk',
-  publisher: 'Vydavatel',
-}
 </script>
 
 <template>
@@ -30,8 +23,9 @@ const translation = {
   </div>
   <div v-else bg-base p4 rounded-lg>
     <div v-for="(value, key) in bookDetails" :key="key" text-high-emphasis font-bold m1 flex items-center gap4>
-      {{ translation[key] }}:
-      <span font-normal text-medium-emphasis>{{ value }}</span>
+      {{ $t(`BookDetails.${key}`) }}
+      <span font-normal text-medium-emphasis>{{ key === 'language' ? $t(`BookDetails.languages.${value}`): value
+      }}</span>
     </div>
   </div>
 </template>

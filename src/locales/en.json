@@ -52,6 +52,21 @@
     "darkMode": "Dark mode",
     "logout": "Log out"
   },
+  "BookDetails": {
+    "isbn": "ISBN",
+    "publishedDate": "Published",
+    "pageCount": "Number of pages",
+    "language": "Language",
+    "publisher": "Publisher",
+    "languages": {
+      "cs": "@:forms.AddBookForm.languages.cs",
+      "de": "@:forms.AddBookForm.languages.de",
+      "en": "@:forms.AddBookForm.languages.en",
+      "fr": "@:forms.AddBookForm.languages.fr",
+      "it": "@:forms.AddBookForm.languages.it",
+      "sk": "@:forms.AddBookForm.languages.sk"
+    }
+  },
   "forms": {
     "AddBookForm": {
       "title": "Book title",

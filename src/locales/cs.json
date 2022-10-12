@@ -52,6 +52,21 @@
     "darkMode": "Tmavý režim",
     "logout": "Odhlásit se"
   },
+  "BookDetails": {
+    "isbn": "ISBN",
+    "publishedDate": "Datum vydání",
+    "pageCount": "Počet stran",
+    "language": "Jazyk",
+    "publisher": "Vydavatel",
+    "languages": {
+      "cs": "@:forms.AddBookForm.languages.cs",
+      "de": "@:forms.AddBookForm.languages.de",
+      "en": "@:forms.AddBookForm.languages.en",
+      "fr": "@:forms.AddBookForm.languages.fr",
+      "it": "@:forms.AddBookForm.languages.it",
+      "sk": "@:forms.AddBookForm.languages.sk"
+    }
+  },
   "forms": {
     "AddBookForm": {
       "title": "Název knihy",
