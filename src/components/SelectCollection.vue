@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { BookState } from '@/types'
+import { BookState } from '@/types'
 
 const props = defineProps<{
   currentState: number
@@ -12,7 +12,9 @@ const bookStates = collectionList.slice(1).map(({ id: value, title: label, icon 
   label: string
   icon: string
 }[]
-const selected = ref<typeof bookStates[number]>(bookStates[props.currentState])
+
+const selected = ref(bookStates.find(({ value }) => value === BookState[props.currentState])!)
+
 
 const collectionStore = useCollectionStore()
 watch(selected, (value) => {
@@ -24,13 +26,8 @@ watch(selected, (value) => {
 <template>
   <div>
     <ASelect v-slot="{ attrs }" v-model="selected" :prepend-inner-icon="`i-${selected.icon}`">
-      <li
-        v-for="bookState in bookStates"
-        v-bind="attrs"
-        :key="bookState"
-        class="flex items-center gap-x-3"
-        @click="selected = bookState"
-      >
+      <li v-for="bookState in bookStates" v-bind="attrs" :key="bookState" class="flex items-center gap-x-3"
+        @click="selected = bookState">
         <i :class="`i-${bookState.icon}`" :style="{ color: `hsl(var(--c-${bookState.value}))` }" />
         <span>{{ bookState.label }}</span>
       </li>

@@ -63,7 +63,7 @@ const details = computed(() => {
     <div text-left grow mt-10>
       <BookDetails :book-details="details" :is-loading="isLoading" />
       <SelectCollection
-        mt4 :current-state="state - 1"
+        mt4 :current-state="Number(state)"
         @update:state="collectionStore.setBookState(BookState[$event], bookId)"
       />
     </div>
