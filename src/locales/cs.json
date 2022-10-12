@@ -62,6 +62,14 @@
       "pageCount": "Počet stran",
       "language": "Jazyk",
       "loading": "Načítám...",
+      "languages": {
+        "cs": "Čeština",
+        "de": "Němčina",
+        "en": "Angličtina",
+        "fr": "Francouzština",
+        "it": "Italština",
+        "sk": "Slovenština"
+      },
       "buttons": {
         "submit": "Přidat",
         "cancel": "Zrušit"

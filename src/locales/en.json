@@ -62,6 +62,14 @@
       "pageCount": "Number of pages",
       "language": "Language",
       "loading": "Loading...",
+      "languages": {
+        "cs": "Czech",
+        "de": "German",
+        "en": "English",
+        "fr": "French",
+        "it": "Italian",
+        "sk": "Slovak"
+      },
       "buttons": {
         "submit": "Add",
         "cancel": "Cancel"

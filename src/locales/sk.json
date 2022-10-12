@@ -62,6 +62,14 @@
       "pageCount": "Počet strán",
       "language": "Jazyk",
       "loading": "Načítavanie...",
+      "languages": {
+        "cs": "Čeština",
+        "de": "Nemčina",
+        "en": "Angličtina",
+        "fr": "Francúzština",
+        "it": "Taliančina",
+        "sk": "Slovenčina"
+      },
       "buttons": {
         "submit": "Pridať knihu",
         "cancel": "Zrušiť"
