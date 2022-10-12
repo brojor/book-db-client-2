@@ -9,6 +9,12 @@ export enum BookState {
   read = 4,
 }
 
+export interface BookStateOption {
+  value: keyof typeof BookState
+  label: string
+  icon: string
+}
+
 export interface Book {
   id: number
   title: string
