@@ -26,7 +26,7 @@ const touchHandler = useLongPress(el, () => {
     <div grow>
       <div flex justify-between>
         <h3 text-sm font-bold flex gap1 items-center>
-          {{ title }}
+          <span max-w="60vw" whitespace-nowrap overflow-hidden text-ellipsis> {{ title }}</span>
           <span opacity-50 text-xs>
             <div v-if="bookState === BookState.read" i-mdi:checkbox-marked-circle-outline />
             <div v-if="bookState === BookState.reading" i-mdi:progress-clock />
