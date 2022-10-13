@@ -8,7 +8,9 @@
 
 html {
   --c-opacity: .3;
+  --marked-color: #00000010;
 }
 html.dark {
   --c-opacity: 0.1;
+  --marked-color: #FFFFFF10;
 }

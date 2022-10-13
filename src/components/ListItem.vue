@@ -69,7 +69,6 @@ const touchHandler = useLongPress(el, () => {
 .pressed>.press-marker {
   width: 100%;
   height: 100%;
-  background: #ffffff10;
-
+  background: var(--marked-color)
 }
 </style>
