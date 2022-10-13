@@ -3,11 +3,11 @@ import apiService from '@/services/api'
 import type { BookToAdd, Collection } from '@/types'
 import { BookState } from '@/types'
 export const collectionList = [
-  { id: 'library', title: 'Knihovna', icon: 'mdi:home' },
-  { id: 'wishlist', title: 'Seznam přání', icon: 'mdi:gift-outline' },
-  { id: 'read', title: 'Přečtené', icon: 'mdi:checkbox-marked-circle-outline' },
-  { id: 'reading', title: 'Rozečtené', icon: 'mdi:progress-clock' },
-  { id: 'unread', title: 'Nepřečtené', icon: 'mdi:close-circle-outline' },
+  { id: 'library', icon: 'mdi:home' },
+  { id: 'wishlist', icon: 'mdi:gift-outline' },
+  { id: 'read', icon: 'mdi:checkbox-marked-circle-outline' },
+  { id: 'reading', icon: 'mdi:progress-clock' },
+  { id: 'unread', icon: 'mdi:close-circle-outline' },
 ] as const
 
 export type CollectionList = typeof collectionList
