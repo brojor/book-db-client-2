@@ -6,10 +6,9 @@ const isLoading = computed(() => apiCalls.value > 0 && isEnabled.value)
 
 apiService.interceptors.request.use(
     (config) => {
-        apiCalls.value += 1;
-        if (import.meta.env.DEV) {
-            return new Promise((resolve) => setTimeout(() => resolve(config), 1500));
-        }
+        setTimeout(() => {
+            apiCalls.value++
+        }, 100)
         return config;
     },
     (error) => {
