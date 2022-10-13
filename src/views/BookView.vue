@@ -4,6 +4,7 @@ import { BookState } from '@/types'
 
 const route = useRoute()
 const collectionStore = useCollectionStore()
+const { enableLoader, disableLoader } = useGlobalLoader()
 const bookId = Number(route.params.id)
 
 const state = route.query.state as unknown as BookState
@@ -25,18 +26,15 @@ const bookData = ref<{
 const isLoading = ref(true)
 
 const fetchData = async () => {
+  disableLoader()
   const { data } = await apiService.get(`books/${bookId}`)
   bookData.value = { ...data, author: bookData.value.author }
   isLoading.value = false
+  enableLoader()
 }
-if (import.meta.env.DEV) {
-  setTimeout(() => {
-    fetchData()
-  }, 2000)
-}
-else {
-  fetchData()
-}
+
+fetchData()
+
 
 const details = computed(() => {
   const { title, subtitle, author, ...rest } = bookData.value
@@ -62,10 +60,8 @@ const details = computed(() => {
 
     <div text-left grow mt-10>
       <BookDetails :book-details="details" :is-loading="isLoading" />
-      <SelectCollection
-        mt4 :current-state="Number(state)"
-        @update:state="collectionStore.setBookState(BookState[$event], bookId)"
-      />
+      <SelectCollection mt4 :current-state="Number(state)"
+        @update:state="collectionStore.setBookState(BookState[$event], bookId)" />
     </div>
     <ABtn my1 @click="$router.push('/')">
       Zpět

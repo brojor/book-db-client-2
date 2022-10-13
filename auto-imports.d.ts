@@ -61,6 +61,7 @@ declare global {
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useFilter: typeof import('./src/stores/filter')['useFilter']
+  const useGlobalLoader: typeof import('./src/composables/useGlobalLoader')['useGlobalLoader']
   const useLongPress: typeof import('./src/composables/useLongPress')['useLongPress']
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
@@ -136,6 +137,7 @@ declare module '@vue/runtime-core' {
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useFilter: UnwrapRef<typeof import('./src/stores/filter')['useFilter']>
+    readonly useGlobalLoader: UnwrapRef<typeof import('./src/composables/useGlobalLoader')['useGlobalLoader']>
     readonly useLongPress: UnwrapRef<typeof import('./src/composables/useLongPress')['useLongPress']>
     readonly useRoute: UnwrapRef<typeof import('vue-router')['useRoute']>
     readonly useRouter: UnwrapRef<typeof import('vue-router')['useRouter']>
