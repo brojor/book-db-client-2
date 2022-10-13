@@ -23,6 +23,7 @@ declare module '@vue/runtime-core' {
     DividerWithText: typeof import('./src/components/DividerWithText.vue')['default']
     EnterForm: typeof import('./src/components/EnterForm.vue')['default']
     FooterItem: typeof import('./src/components/FooterItem.vue')['default']
+    GlobalLoader: typeof import('./src/components/GlobalLoader.vue')['default']
     ItemAvatar: typeof import('./src/components/ItemAvatar.vue')['default']
     ListItem: typeof import('./src/components/ListItem.vue')['default']
     MainDrawer: typeof import('./src/components/MainDrawer.vue')['default']
