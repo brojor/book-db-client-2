@@ -30,6 +30,7 @@ declare module '@vue/runtime-core' {
     MainDrawer: typeof import('./src/components/MainDrawer.vue')['default']
     MainFooter: typeof import('./src/components/MainFooter.vue')['default']
     MainHeader: typeof import('./src/components/MainHeader.vue')['default']
+    PressMarker: typeof import('./src/components/PressMarker.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ScannerUI: typeof import('./src/components/ScannerUI.vue')['default']
