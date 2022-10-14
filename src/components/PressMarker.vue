@@ -1,5 +1,5 @@
 <template>
-  <div w="30%" h="30%" absolute inset-x-0 m-auto transition-all delay-75 duration-200 bg="#FFFFFF00" />
+  <div w="30%" h="30%" absolute inset-x-0 m-auto transition-all delay-75 duration="250" bg="#FFFFFF00" />
 </template>
 
 <style scoped>
