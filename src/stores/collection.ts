@@ -19,6 +19,11 @@ const emptyCollection = {
   authors: [],
 }
 
+const defaultSort = {
+  key: 'title',
+  order: 'asc' as 'asc' | 'desc',
+}
+
 const collections = collectionList.reduce(
   (obj, collection) => ({ ...obj, [collection.id]: emptyCollection }),
   {} as { [key in CollectionId]: Collection },
@@ -32,8 +37,9 @@ export const useCollectionStore = defineStore({
     selectedItems: [] as number[],
   }),
   actions: {
-    async getCollection(collectionType: CollectionId) {
-      const response = await apiService.get(`collection/${collectionType}`)
+    async getCollection(collectionType: CollectionId, sort?: typeof defaultSort) {
+      const sortString = `${sort?.key || defaultSort.key}:${sort?.order || defaultSort.order}`
+      const response = await apiService.get(`collection/${collectionType}?sort=${sortString}`)
       this.collections[collectionType] = response.data as Collection
     },
     async addToCollection(collectionType: CollectionId, book: BookToAdd) {

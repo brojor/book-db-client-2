@@ -49,7 +49,8 @@
     "title": "Menu",
     "language": "Language",
     "darkMode": "Dark mode",
-    "logout": "Log out"
+    "logout": "Log out",
+    "sort": "Sort books"
   },
   "BookDetails": {
     "isbn": "ISBN",

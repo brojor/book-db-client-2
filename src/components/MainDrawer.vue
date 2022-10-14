@@ -26,6 +26,10 @@ const locales = [
   }
 ]
 
+const sortVariants = ["title", "publishedDate", "pageCount"]
+const sortVariant = ref("title")
+const collectionStore = useCollectionStore()
+
 const selectedLocale = ref(locales.find(l => l.value === i18n.global.locale.value) ?? locales[0])
 
 
@@ -35,7 +39,17 @@ watch(() => selectedLocale.value.value,
     i18n.global.locale.value = locale
     localStorage.setItem('locale', locale)
     apiService.defaults.headers.common.AcceptLanguage = locale
-  })
+  }
+)
+
+watch(() => sortVariant.value,
+  (variant) => {
+    // localStorage.setItem('sortVariant', variant)
+    console.log(variant)
+    collectionStore.getCollection(collectionStore.activeCollectionName, { key: variant, order: "asc" })
+  }
+)
+
 </script>
 
 <template>
@@ -46,14 +60,19 @@ watch(() => selectedLocale.value.value,
         <h1 text-2xl mb4 text-primary>{{$t('MainDrawer.title')}}</h1>
         <ASwitch v-model="isDark" :label="$t('MainDrawer.darkMode')" on-icon="i-carbon-moon" off-icon=" i-carbon-sun" />
         <div mt3>
-          <ASelect v-slot="{ attrs }" v-model="selectedLocale" optionsWrapperClasses="z-52" :label="$t('MainDrawer.language')"
-            :prepend-inner-icon="selectedLocale.icon">
+          <ASelect v-slot="{ attrs }" v-model="selectedLocale" optionsWrapperClasses="z-52"
+            :label="$t('MainDrawer.language')" :prepend-inner-icon="selectedLocale.icon">
             <li v-for="locale in locales" v-bind="attrs" :key="locale.label" class="flex items-center gap-x-3"
               @click="selectedLocale = locale">
               <i :class="locale.icon" />
               <span>{{ locale.label }}</span>
             </li>
           </ASelect>
+        </div>
+
+        <div mt3>
+          <ASelect v-model="sortVariant" :options="sortVariants" :label="$t('MainDrawer.sort')"
+            optionsWrapperClasses="z-52" />
         </div>
       </div>
 
