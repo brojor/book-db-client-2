@@ -23,7 +23,6 @@ const authors = computed(() => filter.authors(collectionStore.collections[props.
         :subtitle="book.author.fullName"
         icon="book"
         :selected="collectionStore.selectedItems.includes(book.id)"
-        :book-state="collectionStore.activeCollectionName === 'library' ? book.bookState : undefined"
         :right-top-text="book.publishedDate || 'n/a'"
         :right-bottom-text="book.pageCount ? `${book.pageCount} ${$t('CollectionList.pages')}` : 'n/a'"
         @click="$router.push({

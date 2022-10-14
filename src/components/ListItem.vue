@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { BookState } from '@/types'
 const props = defineProps<{
   title: string
   subtitle: string | number
   icon: 'author' | 'book'
   selected: boolean
-  bookState?: BookState
   rightTopText?: string
   rightBottomText?: string
 }>()
@@ -27,11 +25,6 @@ const touchHandler = useLongPress(el, () => {
       <div flex justify-between>
         <h3 text-sm font-bold flex gap1 items-center>
           <span max-w="60vw" whitespace-nowrap overflow-hidden text-ellipsis> {{ title }}</span>
-          <span opacity-50 text-xs>
-            <div v-if="bookState === BookState.read" i-mdi:checkbox-marked-circle-outline />
-            <div v-if="bookState === BookState.reading" i-mdi:progress-clock />
-            <div v-if="bookState === BookState.unread" i-mdi:close-circle-outline />
-          </span>
         </h3>
         <h3 text-sm font-bold text-medium-emphasis>
           {{ rightTopText }}
