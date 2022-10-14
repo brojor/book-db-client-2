@@ -1,0 +1,50 @@
+{
+    "locales": [
+        {
+            "value": "cs",
+            "icon": "i-twemoji:flag-czechia",
+            "label": "Čeština"
+        },
+        {
+            "value": "en",
+            "icon": "i-twemoji:flag-united-kingdom",
+            "label": "English"
+        },
+        {
+            "value": "sk",
+            "icon": "i-twemoji:flag-slovakia",
+            "label": "Slovenčina"
+        }
+    ],
+    "sort": {
+        "keys": [
+            {
+                "value": "title",
+                "label": "Title",
+                "icon": "i-mdi:alphabetical-variant"
+            },
+            {
+                "value": "publishedDate",
+                "label": "Published date",
+                "icon": "i-material-symbols:calendar-month-outline"
+            },
+            {
+                "value": "pageCount",
+                "label": "Page count",
+                "icon": "i-fluent:document-page-bottom-right-24-regular"
+            }
+        ],
+        "directions": [
+            {
+                "value": "asc",
+                "label": "Ascending",
+                "icon": "i-mdi:arrow-up"
+            },
+            {
+                "value": "desc",
+                "label": "Descending",
+                "icon": "i-mdi:arrow-down"
+            }
+        ]
+    }
+}

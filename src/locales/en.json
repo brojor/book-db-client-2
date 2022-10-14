@@ -50,7 +50,18 @@
     "language": "Language",
     "darkMode": "Dark mode",
     "logout": "Log out",
-    "sort": "Sort books"
+    "sort": {
+      "title": "Sort books by",
+      "keys": {
+        "title": "Title",
+        "publishedDate": "Year of publication",
+        "pageCount": "Number of pages"
+      },
+      "directions": {
+        "asc": "Ascending",
+        "desc": "Descending"
+      }
+    }
   },
   "BookDetails": {
     "isbn": "ISBN",

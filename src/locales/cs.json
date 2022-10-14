@@ -50,7 +50,18 @@
     "language": "Jazyk",
     "darkMode": "Tmavý režim",
     "logout": "Odhlásit se",
-    "sort": "Řadit knihy"
+    "sort": {
+      "title": "Řadit knihy podle",
+      "keys": {
+        "title": "Názvu",
+        "publishedDate": "Data vydání",
+        "pageCount": "Počtu stran"
+      },
+      "directions": {
+        "asc": "Vzestupně",
+        "desc": "Sestupně"
+      }
+    }
   },
   "BookDetails": {
     "isbn": "ISBN",
