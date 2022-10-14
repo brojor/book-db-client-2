@@ -26,6 +26,7 @@ declare module '@vue/runtime-core' {
     GlobalLoader: typeof import('./src/components/GlobalLoader.vue')['default']
     ItemAvatar: typeof import('./src/components/ItemAvatar.vue')['default']
     ListItem: typeof import('./src/components/ListItem.vue')['default']
+    ListItemContent: typeof import('./src/components/ListItemContent.vue')['default']
     MainDrawer: typeof import('./src/components/MainDrawer.vue')['default']
     MainFooter: typeof import('./src/components/MainFooter.vue')['default']
     MainHeader: typeof import('./src/components/MainHeader.vue')['default']
