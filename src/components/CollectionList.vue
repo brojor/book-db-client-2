@@ -14,17 +14,11 @@ const authors = computed(() => filter.authors(collectionStore.collections[props.
 
 <template>
   <div v-show="filter.displayedSubject === 'books'" h-full>
-    <TransitionGroup name="list">
       <ListItem
         v-for="book in books"
-        :id="book.id"
         :key="book.id"
-        :title="book.title"
-        :subtitle="book.author.fullName"
-        icon="book"
+        :book="book"
         :selected="collectionStore.selectedItems.includes(book.id)"
-        :right-top-text="book.publishedDate || 'n/a'"
-        :right-bottom-text="book.pageCount"
         @click="$router.push({
           name: 'book',
           params: { id: book.id },
@@ -32,21 +26,15 @@ const authors = computed(() => filter.authors(collectionStore.collections[props.
         })"
         @select="collectionStore.selectItem(book.id)"
       />
-    </TransitionGroup>
   </div>
   <div v-show="filter.displayedSubject === 'authors'">
-    <TransitionGroup name="list">
       <ListItem
         v-for="author in authors"
-        :id="author.id"
         :key="author.id"
-        :title="author.fullName"
-        :subtitle="$t('CollectionList.numOfBooks', { count: author.numOfBooks })"
-        icon="author"
+        :author="author"
         :selected="collectionStore.selectedItems.includes(author.id)"
         @click="filter.selectAuthor(author)"
         @select="collectionStore.selectItem(author.id)"
       />
-    </TransitionGroup>
   </div>
 </template>
