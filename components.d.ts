@@ -21,6 +21,7 @@ declare module '@vue/runtime-core' {
     BookDetails: typeof import('./src/components/BookDetails.vue')['default']
     CollectionList: typeof import('./src/components/CollectionList.vue')['default']
     DividerWithText: typeof import('./src/components/DividerWithText.vue')['default']
+    DrawerSelect: typeof import('./src/components/DrawerSelect.vue')['default']
     EnterForm: typeof import('./src/components/EnterForm.vue')['default']
     FooterItem: typeof import('./src/components/FooterItem.vue')['default']
     GlobalLoader: typeof import('./src/components/GlobalLoader.vue')['default']
