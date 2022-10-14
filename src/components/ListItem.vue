@@ -5,7 +5,7 @@ const props = defineProps<{
   icon: 'author' | 'book'
   selected: boolean
   rightTopText?: string
-  rightBottomText?: string
+  rightBottomText?: number
 }>()
 
 const emit = defineEmits(['select'])
@@ -26,17 +26,19 @@ const touchHandler = useLongPress(el, () => {
         <h3 text-sm font-bold flex gap1 items-center>
           <span max-w="60vw" whitespace-nowrap overflow-hidden text-ellipsis> {{ title }}</span>
         </h3>
-        <h3 text-sm font-bold text-medium-emphasis>
+        <div text-xs text-medium-emphasis flex gap-1 items-center mb="3px">
           {{ rightTopText }}
-        </h3>
+          <i i-material-symbols:calendar-month-outline text-primary:70></i>
+        </div>
       </div>
       <div flex justify-between>
         <p text-xs leading-5>
           {{ subtitle }}
         </p>
-        <p text-xs>
+        <div text-xs text-medium-emphasis flex gap-1 items-center  mt="3px" >
           {{ rightBottomText }}
-        </p>
+          <i i-fluent:document-page-bottom-right-24-regular text-primary:70></i>
+        </div>
       </div>
     </div>
   </div>

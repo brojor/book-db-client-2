@@ -39,8 +39,7 @@
     }
   },
   "CollectionList": {
-    "numOfBooks": "Počet kníh: {count}", 
-    "pages": "str."
+    "numOfBooks": "Počet kníh: {count}"
   },
   "ScannerUI": {
     "title": "Zamerajte na čiarový kód knihy",

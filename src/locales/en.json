@@ -39,8 +39,7 @@
     }
   },
   "CollectionList": {
-    "numOfBooks": "Number of books: {count}",
-    "pages": "pgs."
+    "numOfBooks": "Number of books: {count}"
   },
   "ScannerUI": {
     "title": "Target the book barcode",
