@@ -17,15 +17,9 @@ const touchHandler = useLongPress(el, () => {
 
 <template>
   <div ref="el" px3 py1 mx1 mb2px flex items-center gap3 relative rounded-lg overflow-hidden
-    :class="{ selected: props.selected }" v-on="touchHandler ">
+    :class="{ 'bg-primary:10': props.selected }" v-on="touchHandler ">
     <PressMarker />
     <ItemAvatar :icon="book? 'book': 'author'" @click.stop="$emit('select')" />
     <ListItemContent :book="book" :author="author" />
   </div>
 </template>
-
-<style scoped>
-.selected {
-  background: hsla(var(--a-primary), 0.1);
-}
-</style>
