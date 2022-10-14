@@ -26,7 +26,7 @@ const locales = [
   },
 ]
 
-const sortVariants = [
+const sortKeys = [
   {
     value: 'title',
     label: 'Title',
@@ -44,7 +44,24 @@ const sortVariants = [
   },
 ]
 
-const sortVariant = ref(sortVariants[0])
+const sortDirections = [
+  {
+    value: 'asc',
+    label: 'Ascending',
+    icon: 'i-mdi:arrow-up',
+  },
+  {
+    value: 'desc',
+    label: 'Descending',
+    icon: 'i-mdi:arrow-down',
+  },
+] as const
+
+const sort = reactive({
+  key: sortKeys[0],
+  direction: sortDirections[0],
+})
+
 const collectionStore = useCollectionStore()
 
 const selectedLocale = ref(locales.find(l => l.value === i18n.global.locale.value) ?? locales[0])
@@ -58,11 +75,12 @@ watch(() => selectedLocale.value.value,
   },
 )
 
-watch(() => sortVariant.value,
-  (variant) => {
-    // localStorage.setItem('sortVariant', variant)
-    collectionStore.getCollection(collectionStore.activeCollectionName, { key: variant.value, order: 'asc' })
+watch(() => sort,
+  (option) => {
+    collectionStore.getCollection(collectionStore.activeCollectionName,
+      { key: option.key.value, order: option.direction.value })
   },
+  { deep: true },
 )
 </script>
 
@@ -75,7 +93,8 @@ watch(() => sortVariant.value,
         </h1>
         <ASwitch v-model="isDark" :label="$t('MainDrawer.darkMode')" on-icon="i-carbon-moon" off-icon=" i-carbon-sun" />
         <DrawerSelect v-model="selectedLocale" :options="locales" :label="$t('MainDrawer.language')" />
-        <DrawerSelect v-model="sortVariant" :options="sortVariants" :label="$t('MainDrawer.sort')" />
+        <DrawerSelect v-model="sort.key" :options="sortKeys" :label="$t('MainDrawer.sort')" />
+        <DrawerSelect v-model="sort.direction" :options="sortDirections" />
       </div>
 
       <ABtn icon="i-material-symbols:logout" @click="user.logout()">

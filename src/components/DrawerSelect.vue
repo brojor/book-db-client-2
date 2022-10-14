@@ -9,8 +9,8 @@ interface MenuOption {
 
 const props = defineProps<{
   modelValue: MenuOption
-  options: MenuOption[]
-  label: string
+  options: Readonly<MenuOption[]>
+  label?: string
 }>()
 const emit = defineEmits(['update:modelValue'])
 
