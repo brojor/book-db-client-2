@@ -6,9 +6,9 @@ const route = useRoute()
 const collectionStore = useCollectionStore()
 const { enableLoader, disableLoader } = useGlobalLoader()
 const bookId = Number(route.params.id)
+const book = collectionStore.activeCollection.books.find(b => b.id === bookId)!
 
-const state = route.query.state as unknown as BookState
-collectionStore.activeCollectionName = BookState[state] as keyof typeof BookState
+collectionStore.activeCollectionName = BookState[book.bookState] as keyof typeof BookState
 
 const bookData = ref<{
   title: string
@@ -20,8 +20,8 @@ const bookData = ref<{
   language?: string
   publisher?: string
 }>({
-  title: route.query.title as string,
-  author: route.query.author as string,
+  title: book.title,
+  author: book.author.fullName
 })
 const isLoading = ref(true)
 
@@ -60,7 +60,7 @@ const details = computed(() => {
 
     <div text-left grow mt-10>
       <BookDetails :book-details="details" :is-loading="isLoading" />
-      <SelectCollection mt4 :current-state="Number(state)"
+      <SelectCollection mt4 :current-state="book.bookState"
         @update:state="collectionStore.setBookState(BookState[$event], bookId)" />
     </div>
     <ABtn my1 @click="$router.push('/')">
