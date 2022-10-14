@@ -5,6 +5,7 @@ import {
   presetIcons,
   presetUno,
 } from 'unocss'
+import iconSafeList from './src/assets/iconSafeList.json'
 
 export default defineConfig({
   shortcuts: {
@@ -23,7 +24,7 @@ export default defineConfig({
     ['backface-hidden', { 'backface-visibility': 'hidden' }],
     ['rotateY180', { transform: 'rotateY(180deg)' }],
   ],
-  safelist: [ "i-mdi:home", "i-mdi:gift-outline", "i-mdi:checkbox-marked-circle-outline", "i-mdi:progress-clock", "i-mdi:close-circle-outline" ],
+  safelist: [...iconSafeList],
   presets: [
     presetUno(),
     presetIcons({
