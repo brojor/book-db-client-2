@@ -13,6 +13,18 @@ html {
   flex-direction: column;
 }
 
+@media (min-width: 481px) {
+  #app {
+    display: none;
+  }
+}
+
+.not-mobile-device {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh
+}
 
 input {
   background-color: transparent;
