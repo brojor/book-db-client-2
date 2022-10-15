@@ -21,7 +21,7 @@ const bookData = ref<{
   publisher?: string
 }>({
   title: book.title,
-  author: book.author.fullName
+  author: book.author.fullName,
 })
 const isLoading = ref(true)
 
@@ -34,7 +34,6 @@ const fetchData = async () => {
 }
 
 fetchData()
-
 
 const details = computed(() => {
   const { title, subtitle, author, ...rest } = bookData.value
@@ -57,11 +56,12 @@ const details = computed(() => {
     <p m2 text-high-emphasis>
       {{ bookData.author }}
     </p>
-
     <div text-left grow mt-10>
       <BookDetails :book-details="details" :is-loading="isLoading" />
-      <SelectCollection mt4 :current-state="book.bookState"
-        @update:state="collectionStore.setBookState(BookState[$event], bookId)" />
+      <SelectCollection
+        mt4 :current-state="book.bookState"
+        @update:state="collectionStore.setBookState(BookState[$event], bookId)"
+      />
     </div>
     <ABtn my1 @click="$router.push('/')">
       Zpět

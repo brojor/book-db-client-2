@@ -11,5 +11,4 @@ const collection = computed(() =>
       <div :class="collection !== 'wishlist' ? 'i-bx:book-add' : 'i-bx:book-heart'" text-2xl />
     </RouterLink>
   </div>
-
 </template>

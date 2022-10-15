@@ -12,7 +12,6 @@ const router = createRouter({
         const user = useUserStore()
         if (!user.isAuthenticated)
           next({ name: 'enter' })
-
         else
           next()
       },
