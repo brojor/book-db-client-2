@@ -1,14 +1,9 @@
 <script setup lang="ts">
-defineProps<{
-  isLoading: boolean
-  bookDetails: Partial<{
-    isbn: string
-    publishedDate: string
-    pageCount: number
-    language: string
-    publisher: string
-  }>
-}>()
+import type { BookToAdd } from '@/types'
+
+type BookDetails = Omit<BookToAdd, 'author' | 'title' | 'subtitle'>
+
+defineProps<{ isLoading: boolean; bookDetails: BookDetails }>()
 
 const widths = [[20, 40], [30, 10], [25, 30], [30, 40], [20, 40]]
 </script>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import apiService from '@/services/api'
+import type { BookToAdd } from '@/types'
 import { BookState } from '@/types'
 
 const route = useRoute()
@@ -10,16 +11,7 @@ const book = collectionStore.activeCollection.books.find(b => b.id === bookId)!
 
 collectionStore.activeCollectionName = BookState[book.bookState] as keyof typeof BookState
 
-const bookData = ref<{
-  title: string
-  author: string
-  subtitle?: string
-  isbn?: string
-  publishedDate?: string
-  pageCount?: number
-  language?: string
-  publisher?: string
-}>({
+const bookData = ref< BookToAdd >({
   title: book.title,
   author: book.author.fullName,
 })
