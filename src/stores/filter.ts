@@ -24,9 +24,8 @@ export const useFilter = defineStore({
         ? filtredByAuthor.filter(book => book.title.toLocaleLowerCase().includes(state.searchBarValue.toLowerCase()))
         : filtredByAuthor
     },
-    authors: state => (authors: AuthorWithCount[]) => state.selectedAuthor
-      ? authors.filter(author => `${author.firstName} ${author.lastName}`
-        .toLowerCase().includes(state.searchBarValue.toLowerCase()))
+    authors: state => (authors: AuthorWithCount[]) => state.searchBarValue
+      ? authors.filter(author => author.fullName.toLowerCase().includes(state.searchBarValue.toLowerCase()))
       : authors,
   },
 })
