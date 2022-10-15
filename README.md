@@ -2,6 +2,9 @@
 
 A hybrid mobile app that allows users to keep track of their book collection.
 
+## API
+Backend RESTful [API](https://github.com/brojor/book-db-server)
+
 ## Technologies used
 
 - :green_heart:  **[Vue 3](https://vuejs.org/)** - Approachable, performant and versatile JavaScript framework
