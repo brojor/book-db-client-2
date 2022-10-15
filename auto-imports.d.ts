@@ -57,7 +57,6 @@ declare global {
   const useAuthSchema: typeof import('./src/composables/useAuthSchema')['useAuthSchema']
   const useCollectionStore: typeof import('./src/stores/collection')['useCollectionStore']
   const useColorChanger: typeof import('./src/composables/colorChanger')['useColorChanger']
-  const useCounterStore: typeof import('./src/stores/counter')['useCounterStore']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useFilter: typeof import('./src/stores/filter')['useFilter']
@@ -133,7 +132,6 @@ declare module '@vue/runtime-core' {
     readonly useAuthSchema: UnwrapRef<typeof import('./src/composables/useAuthSchema')['useAuthSchema']>
     readonly useCollectionStore: UnwrapRef<typeof import('./src/stores/collection')['useCollectionStore']>
     readonly useColorChanger: UnwrapRef<typeof import('./src/composables/colorChanger')['useColorChanger']>
-    readonly useCounterStore: UnwrapRef<typeof import('./src/stores/counter')['useCounterStore']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useFilter: UnwrapRef<typeof import('./src/stores/filter')['useFilter']>

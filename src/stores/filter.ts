@@ -16,12 +16,6 @@ export const useFilter = defineStore({
     },
   },
   getters: {
-    numOfBooks: (state) => {
-      const collectionStore = useCollectionStore()
-      return collectionStore.activeCollection.books.filter(
-        book => book.author.id === state.selectedAuthor?.id,
-      ).length
-    },
     books: state => (books: Book[]) => {
       const filtredByAuthor = state.selectedAuthor
         ? books.filter(book => book.author.id === state.selectedAuthor?.id)
