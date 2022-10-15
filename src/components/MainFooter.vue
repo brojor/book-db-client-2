@@ -18,10 +18,10 @@ const collectionStore = useCollectionStore()
       />
     </nav>
     <nav v-else flex justify-center>
-      <ABtn m1 color="danger" variant="outline" @click="filter.selectedAuthor = null">
-        <span>{{ filter.selectedAuthor.fullName }}</span>
-        <i i-mdi:close />
-      </ABtn>
+      <FooterItem
+        :title="filter.selectedAuthor.fullName" :count="filter.selectedAuthor.numOfBooks"
+        is-active icon="i-mdi:close" @click="filter.selectedAuthor = null"
+      />
     </nav>
   </footer>
 </template>
