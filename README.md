@@ -1,8 +1,10 @@
 # Book db client
 
-A hybrid mobile app that allows users to keep track of their book collection.
+A hybrid mobile app that allows users to keep track of their book collection.  
+The web version is available online [here](https://bookdb.brojor.me/).
 
 ## API
+
 Backend RESTful [API](https://github.com/brojor/book-db-server)
 
 ## Technologies used
