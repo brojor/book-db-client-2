@@ -25,7 +25,7 @@ const fetchInfo = async (isbn: string) => {
   }
 }
 
-const onStartScanning = async () => {
+const startScanning = async () => {
   if (!isNative)
     return showWarning.value = true
 
@@ -65,10 +65,11 @@ const searchISBN = async () => {
     <div flex items-center>
       <AInput
         v-model="bookToAdd.isbn" text-sm
-        :placeholder="$t('AddBookView.inputPlaceholder')" type="number" @blur="searchISBN"
+        :placeholder="$t('AddBookView.inputPlaceholder')" type="number"
       >
         <template #append-inner>
-          <ABtn icon-only icon="i-mdi:barcode-scan" ml-auto mr-1 @click="onStartScanning" />
+          <ABtn v-if="!bookToAdd.isbn" icon-only icon="i-mdi:barcode-scan" ml-auto mr-1 @click="startScanning" />
+          <ABtn v-else icon-only icon="i-material-symbols:search" ml-auto mr-1 @click="searchISBN" />
         </template>
       </AInput>
     </div>
