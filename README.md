@@ -20,3 +20,44 @@ Backend RESTful [API](https://github.com/brojor/book-db-server)
 - :small_blue_diamond:  **[Zod](https://github.com/colinhacks/zod)** - TypeScript-first validation schema builder
 - ⚡️  **[Vite](https://vitejs.dev/)** - Lightning Fast Bundler
 - 🤖  **[unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) + [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)** - Auto import components and APIs on demand
+
+## Building app for mobile devices
+
+1. Install dependecies
+
+```bash
+# pnpm
+pnpm install
+# yarn
+yarn install
+# npm
+npm install 
+```
+
+2. Build web code
+
+```bash
+# pnpm
+pnpm run build
+# yarn
+yarn run build
+# npm
+npm run build
+```
+
+3. Copy Web Code to native project
+
+```bash
+npx cap copy
+```
+
+4. Building Native Project
+
+```bash
+# Android
+npx cap copy android
+npx cap open android
+# iOS
+npx cap copy ios
+npx cap open ios
+```
