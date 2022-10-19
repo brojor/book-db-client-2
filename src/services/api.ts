@@ -1,8 +1,8 @@
 import axios from 'axios'
+import locale from '@/locale'
 
 const baseURL = import.meta.env.VITE_API_URL
 const token = localStorage.getItem('token')
-const locale = localStorage.getItem('locale') || 'cs'
 
 const apiService = axios.create({
   baseURL,
