@@ -4,15 +4,17 @@ import type { BookToAdd } from '@/types'
 import { BookState } from '@/types'
 
 const route = useRoute()
+const router = useRouter()
 const collectionStore = useCollectionStore()
 const { enableLoader, disableLoader } = useGlobalLoader()
 const bookId = Number(route.params.id)
 const book = collectionStore.activeCollection.books.find(b => b.id === bookId)!
 
 collectionStore.removeSelectedItems()
+const prevCollection = collectionStore.activeCollectionName
 collectionStore.activeCollectionName = BookState[book.bookState] as keyof typeof BookState
 
-const bookData = ref< BookToAdd >({
+const bookData = ref<BookToAdd>({
   title: book.title,
   author: book.author.fullName,
 })
@@ -24,6 +26,11 @@ const fetchData = async () => {
   bookData.value = { ...data, author: bookData.value.author }
   isLoading.value = false
   enableLoader()
+}
+
+const goBack = () => {
+  router.push("/")
+  collectionStore.activeCollectionName = prevCollection
 }
 
 fetchData()
@@ -51,12 +58,10 @@ const details = computed(() => {
     </p>
     <div text-left grow mt-10>
       <BookDetails :book-details="details" :is-loading="isLoading" />
-      <SelectCollection
-        mt4 :current-state="book.bookState"
-        @update:state="collectionStore.setBookState(BookState[$event], bookId)"
-      />
+      <SelectCollection mt4 :current-state="book.bookState"
+        @update:state="collectionStore.setBookState(BookState[$event], bookId)" />
     </div>
-    <ABtn my1 @click="$router.push('/')">
+    <ABtn my1 @click="goBack()">
       Zpět
     </ABtn>
   </div>
