@@ -16,7 +16,9 @@ const onSlideChange = (swiper: SwiperType) => {
 }
 
 onMounted(() => {
-  collectionStore.fetchCollections()
+  if(collectionStore.activeCollection.books.length === 0) {
+    collectionStore.fetchCollections()
+  }
   swiperInstance.value?.slideTo(collectionStore.activeCollectionIndex, 0)
   // swiperInstance.value?.onAny(() => console.log('event'))
 })
