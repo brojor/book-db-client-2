@@ -13,18 +13,24 @@ html {
   flex-direction: column;
 }
 
-@media (min-width: 481px) {
-  #app {
-    display: none;
-  }
-}
-
 .not-mobile-device {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   height: 100vh
 }
+
+@media (min-width: 481px) {
+  #app {
+    display: none;
+  }
+
+  .not-mobile-device {
+    display: flex;
+  }
+}
+
+
 
 input {
   background-color: transparent;
@@ -36,24 +42,28 @@ input {
   color-scheme: 'dark';
 }
 
-.a-base-input-root{
-  min-width: 150px !important; 
+.a-base-input-root {
+  min-width: 150px !important;
 }
 
 /* animations */
 .bounce-enter-active {
   animation: bounce-in 0.5s;
 }
+
 .bounce-leave-active {
   animation: bounce-in 0.5s reverse;
 }
+
 @keyframes bounce-in {
   0% {
     transform: scale(0);
   }
+
   75% {
     transform: scale(1.05);
   }
+
   100% {
     transform: scale(1);
   }
