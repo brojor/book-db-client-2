@@ -9,6 +9,7 @@ const { enableLoader, disableLoader } = useGlobalLoader()
 const bookId = Number(route.params.id)
 const book = collectionStore.activeCollection.books.find(b => b.id === bookId)!
 
+collectionStore.removeSelectedItems()
 collectionStore.activeCollectionName = BookState[book.bookState] as keyof typeof BookState
 
 const bookData = ref< BookToAdd >({
